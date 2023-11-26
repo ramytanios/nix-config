@@ -1,3 +1,4 @@
+vim.g.mapleader = " " -- space leader keymap
 -- KEYMAPS
 local keymap = vim.keymap -- for conciseness
 keymap.set("i", "jk", "<ESC>")
@@ -54,8 +55,8 @@ keymap.set("n", "<leader>lb", gitsigns.toggle_current_line_blame)
 
 -- flash
 local flash = require("flash")
-keymap.set("n", "s", flash.jump)
-keymap.set("n", "S", flash.treesitter)
+keymap.set({"n", "x", "o"}, "s", flash.jump)
+keymap.set({"n", "x", "o"}, "S", flash.treesitter)
 
 -- telescope
 local tb = require("telescope.builtin")

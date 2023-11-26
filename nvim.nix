@@ -49,7 +49,7 @@
     ];
 
     treesitter = {
-        plugin = pkgs.vimPlugins.nvim-treesitter;
+        plugin = pkgs.vimPlugins.nvim-treesitter.withAllGrammars;
         type = "lua"; 
         config = builtins.readFile ./plugins/treesitter.lua;
      };
