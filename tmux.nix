@@ -33,6 +33,7 @@
       bind - split-window -v
       unbind %
       bind | split-window -h
+      set -g mouse on
     '';
   };
 
