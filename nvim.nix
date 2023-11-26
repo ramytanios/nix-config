@@ -38,11 +38,11 @@
         type = "lua"; 
      };
 
-    telescope = with pkgs.vimPlugins; [
-     { plugin = telescope-ui-select; }
-     { plugin = telescope-fzf-native; }
+    telescope = [
+     { plugin = pkgs.vimPlugins.telescope-ui-select-nvim; }
+     { plugin = pkgs.vimPlugins.telescope-fzf-native-nvim; }
      {
-        plugin = telescope-nvim;
+        plugin = pkgs.vimPlugins.telescope-nvim;
         type = "lua"; 
         config = builtins.readFile ./plugins/telescope.lua;
      }
