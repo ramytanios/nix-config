@@ -2,10 +2,12 @@
 
   programs.fish = {
     enable = true; 
-    plugins =[{
+    plugins =[
+    {
       name = "pure";
       inherit (pkgs.fishPlugins.pure) src;
-    }];
+    }
+  ];
 
     interactiveShellInit = ''
       fish_vi_key_bindings

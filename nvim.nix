@@ -21,8 +21,6 @@
 
     todo-comments = {
         plugin = pkgs.vimPlugins.todo-comments-nvim; 
-        type = "lua";
-        config = builtins.readFile ./plugins/todo-comments.lua;
      };
 
     tokyonight = {
@@ -33,8 +31,6 @@
 
     comment = {
         plugin = pkgs.vimPlugins.comment-nvim;
-        type = "lua"; 
-        config = builtins.readFile ./plugins/comment.lua;
      };
 
     plenary = {
@@ -43,8 +39,8 @@
      };
 
     telescope = with pkgs.vimPlugins; [
-     { plugin = telescope-ui-select }
-     { plugin = telescope-fzf-native }
+     { plugin = telescope-ui-select; }
+     { plugin = telescope-fzf-native; }
      {
         plugin = telescope-nvim;
         type = "lua"; 
@@ -66,8 +62,6 @@
 
     diffview = {
         plugin = pkgs.vimPlugins.diffview-nvim;
-        type = "lua"; 
-        config = builtins.readFile ./plugins/diffview.lua;
      };
 
     gitsigns = {
@@ -124,7 +118,7 @@
 
     fugitive = { plugin = pkgs.vimPlugins.vim-fugitive; };
 
-    lspkind = { plugin = pkgs.vimPlugins.lspkind-nvim };
+    lspkind = { plugin = pkgs.vimPlugins.lspkind-nvim; };
 
     cmp =  with pkgs.vimPlugins; [
         { 
@@ -161,8 +155,26 @@
           require("nvim-surround").setup({})
         '';
     };
+
+    lsp = {
+      plugin = pkgs.vimPlugins.nvim-lspconfig;
+      type = "lua"; 
+      config = builtins.readFile ./plugins/lsp.lua;
+    };
+
+    lsp-signature = {
+      plugin = pkgs.vimPlugins.lsp_signature-nvim;
+      type = "lua";
+      config = ''
+        require("lsp_signature").setup({})
+      '';
+    };
+
+
    
    in pkgs.lib.lists.flatten [
+      lsp
+      lsp-signature
       trouble
       neoscroll 
       surround

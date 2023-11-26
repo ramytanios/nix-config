@@ -52,6 +52,11 @@ keymap.set("n", "<leader>rh", gitsigns.reset_hunk)
 keymap.set("n", "<leader>gh", gitsigns.select_hunk)
 keymap.set("n", "<leader>lb", gitsigns.toggle_current_line_blame)
 
+-- flash
+local flash = require("flash")
+keymap.set("n", "s", flash.jump)
+keymap.set("n", "S", flash.treesitter)
+
 -- telescope
 local tb = require("telescope.builtin")
 keymap.set("n", "<leader>?", tb.oldfiles)
