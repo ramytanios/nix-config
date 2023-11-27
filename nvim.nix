@@ -31,6 +31,10 @@
 
     comment = {
         plugin = pkgs.vimPlugins.comment-nvim;
+        type = "lua"; 
+        config = ''
+          require("Comment").setup({})
+        '';
      };
 
     plenary = {
@@ -204,10 +208,14 @@
    ];
     
     extraPackages = with pkgs; [
+      # LSPs
       lua-language-server
       nil
       nodePackages.bash-language-server
       nodePackages.typescript-language-server
+
+      # Formatters
+      stylua
     ];
 
     extraLuaConfig = builtins.readFile ./init.lua;

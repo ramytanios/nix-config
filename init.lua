@@ -1,129 +1,158 @@
 vim.g.mapleader = " " -- space leader keymap
--- KEYMAPS
-local keymap = vim.keymap -- for conciseness
-keymap.set("i", "jk", "<ESC>")
-keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
-keymap.set("n", "x", '"_x')
-keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-keymap.set("v", "K", ":m '<-2<CR>gv=gv")
-keymap.set("n", "fo", ":join<CR>")
-keymap.set("n", "<leader>cf", "<cmd>edit $MYVIMRC<CR>")
 
-keymap.set("n", "<leader>tr", function()
-	require("nvim-tree.api").tree.toggle()
-end)
+local map = vim.keymap.set
+local opt = vim.opt
 
--- windows plit
-keymap.set("n", "<leader>noh", ":nohl<CR>") -- example /keymap and then clear highlight
-keymap.set("n", "<leader>sv", "<C-w>v") -- split window vertically
-keymap.set("n", "<leader>ss", "<C-w>s") -- slit window horizontal
-keymap.set("n", "<leader>se", "<C-w>=") -- make split equal width
-keymap.set("n", "<leader>sx", ":close<CR>") -- close current split
+map("i", "jk", "<ESC>", { desc = "Insert to Visual mode" })
+map("i", "jj", "<ESC>", { desc = "Insert to Visual mode" })
+map("i", "kj", "<ESC>", { desc = "Insert to Visual mode" })
 
-keymap.set("n", "<leader>tt", "<cmd>TroubleToggle<cr>")
-keymap.set("n", "<leader>tw", "<cmd>TroubleToggle workspace_diagnostics<cr>")
-keymap.set("n", "<leader>td", "<cmd>TroubleToggle document_diagnostics<cr>")
-keymap.set("n", "<leader>tl", "<cmd>TroubleToggle loclist<cr>")
-keymap.set("n", "<leader>tq", "<cmd>TroubleToggle quickfix<cr>")
-keymap.set("n", "<leader>d", "<cmd>TroubleToggle lsp_definitions<cr>")
-keymap.set("n", "<leader>r", "<cmd>TroubleToggle lsp_references<cr>")
-keymap.set("n", "<leader>tn", function()
-	require("trouble").next({ skip_groups = true, jump = true })
-end)
-keymap.set("n", "<leader>tp", function()
-	require("trouble").previous({ skip_groups = true, jump = true })
-end)
-keymap.set("n", "<leader>h", vim.lsp.buf.hover)
-keymap.set("n", "<leader>i", vim.lsp.buf.implementation)
-keymap.set("n", "<leader>s", vim.lsp.buf.document_symbol)
-keymap.set("n", "<leader>ws", vim.lsp.buf.workspace_symbol)
-keymap.set("n", "<leader>sh", vim.lsp.buf.signature_help)
-keymap.set("n", "<leader>rn", vim.lsp.buf.rename)
-keymap.set("n", "<leader>f", function()
-	require("conform").format({ lsp_fallback = true, async = false, timeout_ms = 3000 })
-end)
-keymap.set("n", "<leader>a", vim.lsp.buf.code_action)
+map("v", "J", ":m '>+1<CR>gv=gv")
+map("v", "K", ":m '<-2<CR>gv=gv")
 
--- gitsigns
-local gitsigns = require("gitsigns")
-keymap.set("n", "<leader>nh", gitsigns.next_hunk)
-keymap.set("n", "<leader>ph", gitsigns.preview_hunk)
-keymap.set("n", "<leader>prh", gitsigns.prev_hunk)
-keymap.set("n", "<leader>rh", gitsigns.reset_hunk)
-keymap.set("n", "<leader>gh", gitsigns.select_hunk)
-keymap.set("n", "<leader>lb", gitsigns.toggle_current_line_blame)
+map("n", "<leader>noh", ":nohl<CR>", { desc = "Clear highlight" })
+map("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })
+map("n", "<leader>ss", "<C-w>s", { desc = "Split window horizontal" })
+map("n", "<leader>se", "<C-w>=", { desc = "Make split equal width" })
+map("n", "<leader>sx", ":close<CR>", { desc = "Close current split" })
+map("n", "<leader>cf", "<cmd>edit $MYVIMRC<CR>", { desc = "open init.lua" })
 
--- flash
+local tree = require("nvim-tree.api")
+local trouble = require("trouble")
+local trtoggle = trouble.toggle
+local cf = require("conform")
+local gs = require("gitsigns")
 local flash = require("flash")
-keymap.set({"n", "x", "o"}, "s", flash.jump)
-keymap.set({"n", "x", "o"}, "S", flash.treesitter)
-
--- telescope
 local tb = require("telescope.builtin")
-keymap.set("n", "<leader>?", tb.oldfiles)
-keymap.set("n", "<leader>ff", tb.find_files)
-keymap.set("n", "<leader>lg", tb.live_grep)
-keymap.set("n", "<leader>gr", tb.grep_string)
-keymap.set("n", "<leader>fb", tb.buffers)
-keymap.set("n", "<leader>ht", tb.help_tags)
-keymap.set("n", "<leader>fda", tb.diagnostics)
-keymap.set("n", "<leader>gc", tb.git_commits)
-keymap.set("n", "<leader>gb", tb.git_branches)
-keymap.set("n", "<leader>gs", tb.git_status)
-keymap.set("n", "<leader>co", tb.commands)
-keymap.set("n", "<leader>ts", tb.treesitter)
-keymap.set("n", "<leader>gf", tb.git_files)
-keymap.set("n", "<leader>mc", require("telescope").extensions.metals.commands)
-keymap.set("n", "<leader>cs", function()
+local tel = require("telescope")
+local oil = require("oil")
+
+map("n", "<leader>tr", tree.tree.toggle, { desc = "Toggle nvim tree" })
+
+map("n", "<leader>tt", trtoggle, { desc = "Toggle trouble" })
+
+map("n", "<leader>tw", function()
+	trtoggle("workspace_diagnostics")
+end, { desc = "Trouble work diagnostics" })
+
+map("n", "<leader>td", function()
+	trtoggle("document_diagnostics")
+end, { desc = "Trouble document diagnostics" })
+
+map("n", "<leader>tl", function()
+	trtoggle("loclist")
+end, { desc = "Trouble loclist" })
+
+map("n", "<leader>tq", function()
+	trtoggle("quickfix")
+end, { desc = "Trouble quickfix" })
+
+map("n", "<leader>d", function()
+	trtoggle("lsp_definitions")
+end, { desc = "Trouble lsp definitions" })
+
+map("n", "<leader>r", function()
+	trtoggle("lsp_references")
+end, { desc = "Trouble lsp references" })
+
+map("n", "<leader>tn", function()
+	trouble.next({ skip_groups = true, jump = true })
+end, { desc = "Trouble next" })
+
+map("n", "<leader>tp", function()
+	trouble.previous({ skip_groups = true, jump = true })
+end, { desc = "Trouble previous" })
+
+map("n", "<leader>h", vim.lsp.buf.hover, { desc = "Lsp hover" })
+
+map("n", "<leader>i", vim.lsp.buf.implementation, { desc = "Lsp implementation" })
+
+map("n", "<leader>s", vim.lsp.buf.document_symbol, { desc = "Lsp document symbol" })
+
+map("n", "<leader>ws", vim.lsp.buf.workspace_symbol, { desc = "Lsp workspace symbol" })
+
+map("n", "<leader>sh", vim.lsp.buf.signature_help, { desc = "Lsp signature help" })
+
+map("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Lsp rename" })
+
+map("n", "<leader>f", function()
+	cf.format({ lsp_fallback = true, async = false, timeout_ms = 3000 })
+end, { desc = "Conform / LSP format" })
+
+map("n", "<leader>a", vim.lsp.buf.code_action, { desc = "Lsp code action" })
+
+map("n", "<leader>nh", gs.next_hunk, { desc = "Gitsigns next hunk" })
+
+map("n", "<leader>ph", gs.preview_hunk, { desc = "Gitsigns preview hunk" })
+
+map("n", "<leader>prh", gs.prev_hunk, { desc = "Gitsigns previous hunk" })
+
+map("n", "<leader>rh", gs.reset_hunk, { desc = "Gitsigns reset hunk" })
+
+map("n", "<leader>gh", gs.select_hunk, { desc = "Gitsigns select hunk" })
+
+map("n", "<leader>lb", gs.toggle_current_line_blame, { desc = "Gitsigns toggle current blame" })
+
+map({ "n", "x", "o" }, "s", flash.jump, { desc = "Flash jump" })
+
+map({ "n", "x", "o" }, "S", flash.treesitter, { desc = "Flash treesitter search" })
+
+map("n", "<leader>?", tb.oldfiles, { desc = "Telescope old files" })
+
+map("n", "<leader>ff", tb.find_files, { desc = "Telescope find files" })
+
+map("n", "<leader>lg", tb.live_grep, { desc = "Telescope live grep" })
+
+map("n", "<leader>gr", tb.grep_string, { desc = "Telescope grep string" })
+
+map("n", "<leader>fb", tb.buffers, { desc = "Telescope buffers" })
+
+map("n", "<leader>ht", tb.help_tags, { desc = "Telescope help tags" })
+
+map("n", "<leader>fda", tb.diagnostics, { desc = "Telescope diagnostics" })
+
+map("n", "<leader>gc", tb.git_commits, { desc = "Telescope git commits" })
+
+map("n", "<leader>gb", tb.git_branches, { desc = "Telescope git branches" })
+
+map("n", "<leader>gs", tb.git_status, { desc = "Telescope git status" })
+
+map("n", "<leader>co", tb.commands, { desc = "Telescope commands" })
+
+map("n", "<leader>gf", tb.git_files, { desc = "Telescope git files" })
+
+map("n", "<leader>mc", tel.extensions.metals.commands, { desc = "Metals commands" })
+
+map("n", "<leader>cs", function()
 	tb.colorscheme({ enable_preview = true })
-end)
-vim.api.nvim_set_keymap("n", "<leader>bb", ":Telescope file_browser<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>em", ":Telescope emoji<CR>", { noremap = true })
+end, { desc = "Select colorscheme" })
 
--- diagnostic in a float
-keymap.set("n", "<leader>fd", function()
-	vim.diagnostic.open_float()
-end)
+map("n", "<leader>fd", vim.diagnostic.open_float, { desc = "Diagnostic open float" })
 
--- todo
-keymap.set("n", "<leader>to", "<cmd>TodoTelescope<cr>", { silent = true, noremap = true })
+map("n", "-", oil.open, { desc = "Browse parent directory" })
 
--- oil nvim
-keymap.set("n", "-", require("oil").open)
+--TODO: use lua
+map("n", "<leader>dv", ":DiffviewOpen<SPACE>", { noremap = true }, { desc = "" })
 
--- diff view
-vim.api.nvim_set_keymap("n", "<leader>dv", ":DiffviewOpen<SPACE>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>dvx", ":DiffviewClose<CR>", { noremap = true })
+map("n", "<leader>dvx", ":DiffviewClose<CR>", { noremap = true }, { desc = "" })
 
 -- VIM OPTIONS
-local opt = vim.opt -- for conciseness
--- line numbers
 opt.relativenumber = true
 opt.number = true
--- use Xj to navigate relatively
--- tabs and indentation
 opt.tabstop = 2
 opt.shiftwidth = 2
 opt.expandtab = true
 opt.autoindent = true
--- line wrapping
 opt.wrap = false
--- search settings
 opt.ignorecase = true
 opt.smartcase = true
--- cursor line
 opt.cursorline = true
--- appearance
 opt.termguicolors = true
 opt.background = "dark"
 opt.signcolumn = "yes"
--- backspace
 opt.backspace = "indent,eol,start"
--- clipboard
 opt.clipboard:append("unnamedplus")
--- split windows
 opt.splitright = true -- vertical split
 opt.splitbelow = true -- horizontal split
 opt.swapfile = false
-
 vim.cmd("colorscheme tokyonight-storm")
