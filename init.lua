@@ -1,7 +1,37 @@
 vim.g.mapleader = " " -- space leader keymap
 
-local map = vim.keymap.set
 local opt = vim.opt
+
+opt.relativenumber = true
+opt.number = true
+opt.tabstop = 2
+opt.shiftwidth = 2
+opt.expandtab = true
+opt.autoindent = true
+opt.wrap = false
+opt.ignorecase = true
+opt.smartcase = true
+opt.cursorline = true
+opt.termguicolors = true
+opt.background = "dark"
+opt.signcolumn = "yes"
+opt.backspace = "indent,eol,start"
+opt.clipboard:append("unnamedplus")
+opt.splitright = true -- vertical split
+opt.splitbelow = true -- horizontal split
+opt.swapfile = false
+vim.cmd("colorscheme tokyonight-storm")
+
+local map = vim.keymap.set
+local tree = require("nvim-tree.api")
+local trouble = require("trouble")
+local trtoggle = trouble.toggle
+local cf = require("conform")
+local gs = require("gitsigns")
+local flash = require("flash")
+local tb = require("telescope.builtin")
+local tel = require("telescope")
+local oil = require("oil")
 
 map("i", "jk", "<ESC>", { desc = "Insert to Visual mode" })
 map("i", "jj", "<ESC>", { desc = "Insert to Visual mode" })
@@ -16,16 +46,6 @@ map("n", "<leader>ss", "<C-w>s", { desc = "Split window horizontal" })
 map("n", "<leader>se", "<C-w>=", { desc = "Make split equal width" })
 map("n", "<leader>sx", ":close<CR>", { desc = "Close current split" })
 map("n", "<leader>cf", "<cmd>edit $MYVIMRC<CR>", { desc = "open init.lua" })
-
-local tree = require("nvim-tree.api")
-local trouble = require("trouble")
-local trtoggle = trouble.toggle
-local cf = require("conform")
-local gs = require("gitsigns")
-local flash = require("flash")
-local tb = require("telescope.builtin")
-local tel = require("telescope")
-local oil = require("oil")
 
 map("n", "<leader>tr", tree.tree.toggle, { desc = "Toggle nvim tree" })
 
@@ -136,23 +156,4 @@ map("n", "<leader>dv", ":DiffviewOpen<SPACE>", { noremap = true }, { desc = "" }
 
 map("n", "<leader>dvx", ":DiffviewClose<CR>", { noremap = true }, { desc = "" })
 
--- VIM OPTIONS
-opt.relativenumber = true
-opt.number = true
-opt.tabstop = 2
-opt.shiftwidth = 2
-opt.expandtab = true
-opt.autoindent = true
-opt.wrap = false
-opt.ignorecase = true
-opt.smartcase = true
-opt.cursorline = true
-opt.termguicolors = true
-opt.background = "dark"
-opt.signcolumn = "yes"
-opt.backspace = "indent,eol,start"
-opt.clipboard:append("unnamedplus")
-opt.splitright = true -- vertical split
-opt.splitbelow = true -- horizontal split
-opt.swapfile = false
-vim.cmd("colorscheme tokyonight-storm")
+
