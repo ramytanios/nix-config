@@ -10,7 +10,10 @@
     metals = {
         plugin = pkgs.vimPlugins.nvim-metals;
         type = "lua";
-        config = builtins.readFile ./plugins/metals.lua;
+        config = ''
+        local metalsBinary = "${pkgs.metals}/bin/metals"
+        ${builtins.readFile ./plugins/metals.lua}
+        '';
      };
 
     oil = {
