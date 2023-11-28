@@ -212,13 +212,15 @@
     
     extraPackages = with pkgs; [
       # LSPs
-      lua-language-server
-      nil
-      nodePackages.bash-language-server
-      nodePackages.typescript-language-server
+      lua-language-server # lua LSP
+      nil # nix LSP
+      ruff-lsp # python LSP
+      nodePackages.bash-language-server # bash LSP
+      nodePackages.typescript-language-server # js/ts LSP
 
       # Formatters and linters
       stylua
+      ruff
     ];
 
     extraLuaConfig = builtins.readFile ./init.lua;

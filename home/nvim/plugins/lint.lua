@@ -1,6 +1,6 @@
 local lint = require("lint")
 lint.linters_by_ft = {
-	python = { "pylint" },
+	python = { "ruff" },
 	cpp = { "cpplint" },
 	typescript = { "eslint_d" },
 	javascript = { "eslint_d" },

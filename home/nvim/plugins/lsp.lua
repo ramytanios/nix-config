@@ -14,7 +14,7 @@ lsp_config.util.default_config =
 lsp_config.bashls.setup({})
 lsp_config.gopls.setup({})
 lsp_config.html.setup({})
-lsp_config.pylsp.setup({})
+lsp_config.ruff.setup({})
 lsp_config.smithy_ls.setup({})
 lsp_config.tsserver.setup({})
 
