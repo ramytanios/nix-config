@@ -26,7 +26,7 @@
     tokyonight = {
         plugin = pkgs.vimPlugins.tokyonight-nvim;
         type = "lua"; 
-        config = builtins.readFile ./plugins/tokyonight.lua;
+        config = builtins.readFile ./plugins/tokyonight.lua; 
      };
 
     comment = {
@@ -214,7 +214,7 @@
       nodePackages.bash-language-server
       nodePackages.typescript-language-server
 
-      # Formatters
+      # Formatters and linters
       stylua
     ];
 

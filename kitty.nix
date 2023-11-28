@@ -7,7 +7,7 @@
     extraConfig = ''
       cursor_shape  block
       shell_integration no-cursor
-      hide-window-decoration yes
+      hide-window-decorations yes
     '';
     theme = "Tokyo Night Storm";
   };

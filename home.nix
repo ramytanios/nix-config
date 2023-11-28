@@ -4,7 +4,7 @@
   # me 
   imports = [
     ./fish.nix
-    ./tmux.nix
+    ./tmux/tmux.nix
     ./kitty.nix
     ./nvim.nix
   ];

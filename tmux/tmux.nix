@@ -6,7 +6,7 @@
     keyMode = "vi";
     shell="${pkgs.fish}/bin/fish";
     clock24 = true; 
-    terminal = "screen-256color";
+    terminal = "tmux-256color";
     plugins = with pkgs.tmuxPlugins; [
         vim-tmux-navigator
         {
