@@ -4,7 +4,7 @@ local metals_config = require("metals").bare_config()
 
 metals_config.init_options.statusBarProvider = "on"
 
-metals_config.settings {
+metals_config.settings = {
   useGlobalExecutable = true, 
   metalsBinaryPath = metalsBinary, -- defined in nvim.nix
 }
