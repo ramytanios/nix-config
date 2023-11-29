@@ -9,7 +9,7 @@
     terminal = "tmux-256color";
     plugins = with pkgs.tmuxPlugins; [
         vim-tmux-navigator
-        prefix-highlight
+        # prefix-highlight
         {
           plugin = resurrect;
           extraConfig = ''
