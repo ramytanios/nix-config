@@ -2,12 +2,8 @@
 
 {
   # me 
-  imports = [
-    ./fish/fish.nix
-    ./tmux/tmux.nix
-    ./kitty/kitty.nix
-    ./nvim/nvim.nix
-  ];
+  imports =
+    [ ./fish/fish.nix ./tmux/tmux.nix ./kitty/kitty.nix ./nvim/nvim.nix ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "ramy";

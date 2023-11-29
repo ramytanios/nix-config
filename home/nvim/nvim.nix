@@ -1,134 +1,130 @@
 { pkgs, ... }: {
 
   programs.neovim = {
-    enable = true; 
+    enable = true;
     viAlias = true;
-    vimAlias = true; 
+    vimAlias = true;
     defaultEditor = true;
-    plugins = let 
-  
-    metals = {
+    plugins = let
+
+      metals = {
         plugin = pkgs.vimPlugins.nvim-metals;
         type = "lua";
         config = ''
-        local metalsBinary = "${pkgs.metals}/bin/metals"
-        ${builtins.readFile ./plugins/metals.lua}
+          local metalsBinary = "${pkgs.metals}/bin/metals"
+          ${builtins.readFile ./plugins/metals.lua}
         '';
-     };
+      };
 
-    oil = {
-        plugin = pkgs.vimPlugins.oil-nvim; 
+      oil = {
+        plugin = pkgs.vimPlugins.oil-nvim;
         type = "lua";
         config = builtins.readFile ./plugins/oil.lua;
-     };
+      };
 
-    todo-comments = {
-        plugin = pkgs.vimPlugins.todo-comments-nvim; 
-     };
+      todo-comments = { plugin = pkgs.vimPlugins.todo-comments-nvim; };
 
-    tokyonight = {
+      tokyonight = {
         plugin = pkgs.vimPlugins.tokyonight-nvim;
-        type = "lua"; 
-        config = builtins.readFile ./plugins/tokyonight.lua; 
-     };
+        type = "lua";
+        config = builtins.readFile ./plugins/tokyonight.lua;
+      };
 
-    comment = {
+      comment = {
         plugin = pkgs.vimPlugins.comment-nvim;
-        type = "lua"; 
+        type = "lua";
         config = ''
           require("Comment").setup({})
         '';
-     };
+      };
 
-    plenary = {
+      plenary = {
         plugin = pkgs.vimPlugins.plenary-nvim;
-        type = "lua"; 
-     };
+        type = "lua";
+      };
 
-    telescope = [
-     { plugin = pkgs.vimPlugins.telescope-ui-select-nvim; }
-     { plugin = pkgs.vimPlugins.telescope-fzf-native-nvim; }
-     {
-        plugin = pkgs.vimPlugins.telescope-nvim;
-        type = "lua"; 
-        config = builtins.readFile ./plugins/telescope.lua;
-     }
-    ];
+      telescope = [
+        { plugin = pkgs.vimPlugins.telescope-ui-select-nvim; }
+        { plugin = pkgs.vimPlugins.telescope-fzf-native-nvim; }
+        {
+          plugin = pkgs.vimPlugins.telescope-nvim;
+          type = "lua";
+          config = builtins.readFile ./plugins/telescope.lua;
+        }
+      ];
 
-    treesitter = {
+      treesitter = {
         plugin = pkgs.vimPlugins.nvim-treesitter.withAllGrammars;
-        type = "lua"; 
+        type = "lua";
         config = builtins.readFile ./plugins/treesitter.lua;
-     };
+      };
 
-    lualine = {
+      lualine = {
         plugin = pkgs.vimPlugins.lualine-nvim;
-        type = "lua"; 
+        type = "lua";
         config = builtins.readFile ./plugins/lualine.lua;
-     };
+      };
 
-    diffview = {
-        plugin = pkgs.vimPlugins.diffview-nvim;
-     };
+      diffview = { plugin = pkgs.vimPlugins.diffview-nvim; };
 
-    gitsigns = {
+      gitsigns = {
         plugin = pkgs.vimPlugins.gitsigns-nvim;
-        type = "lua"; 
+        type = "lua";
         config = builtins.readFile ./plugins/gitsigns.lua;
-     };
+      };
 
-    conform = {
+      conform = {
         plugin = pkgs.vimPlugins.conform-nvim;
-        type = "lua"; 
+        type = "lua";
         config = builtins.readFile ./plugins/conform.lua;
-     };
+      };
 
-    lint = {
+      lint = {
         plugin = pkgs.vimPlugins.nvim-lint;
-        type = "lua"; 
+        type = "lua";
         config = builtins.readFile ./plugins/lint.lua;
-     };
+      };
 
-    flash = {
+      flash = {
         plugin = pkgs.vimPlugins.flash-nvim;
-        type = "lua"; 
+        type = "lua";
         config = builtins.readFile ./plugins/flash.lua;
-     };
+      };
 
-    tree = {
+      tree = {
         plugin = pkgs.vimPlugins.nvim-tree-lua;
-        type = "lua"; 
+        type = "lua";
         config = ''
           require("nvim-tree").setup({})
         '';
-     };
+      };
 
-    notify = {
+      notify = {
         plugin = pkgs.vimPlugins.nvim-notify;
-        type = "lua"; 
+        type = "lua";
         config = ''
           vim.notify = require("notify")
         '';
-     };
+      };
 
-    indent = {
+      indent = {
         plugin = pkgs.vimPlugins.indent-blankline-nvim;
-        type = "lua"; 
+        type = "lua";
         config = builtins.readFile ./plugins/indent.lua;
-     };
-     
-    dressing = { plugin = pkgs.vimPlugins.dressing-nvim; };
+      };
 
-    web-devicons = { plugin = pkgs.vimPlugins.nvim-web-devicons; };
+      dressing = { plugin = pkgs.vimPlugins.dressing-nvim; };
 
-    vim-tmux = { plugin = pkgs.vimPlugins.vim-tmux-navigator; };
+      web-devicons = { plugin = pkgs.vimPlugins.nvim-web-devicons; };
 
-    fugitive = { plugin = pkgs.vimPlugins.vim-fugitive; };
+      vim-tmux = { plugin = pkgs.vimPlugins.vim-tmux-navigator; };
 
-    lspkind = { plugin = pkgs.vimPlugins.lspkind-nvim; };
+      fugitive = { plugin = pkgs.vimPlugins.vim-fugitive; };
 
-    cmp =  with pkgs.vimPlugins; [
-        { 
+      lspkind = { plugin = pkgs.vimPlugins.lspkind-nvim; };
+
+      cmp = with pkgs.vimPlugins; [
+        {
           plugin = nvim-cmp;
           type = "lua";
           config = builtins.readFile ./plugins/cmp.lua;
@@ -137,91 +133,90 @@
         { plugin = cmp-buffer; }
         { plugin = cmp_luasnip; }
         { plugin = cmp-nvim-lsp; }
-    ];
+      ];
 
-    trouble = { 
-        plugin = pkgs.vimPlugins.trouble-nvim; 
+      trouble = {
+        plugin = pkgs.vimPlugins.trouble-nvim;
         type = "lua";
         config = ''
           require("trouble").setup({})
         '';
-    };
+      };
 
-    neoscroll = { 
+      neoscroll = {
         plugin = pkgs.vimPlugins.neoscroll-nvim;
         type = "lua";
         config = ''
           require("neoscroll").setup({})
         '';
-    };
+      };
 
-    surround = { 
-        plugin = pkgs.vimPlugins.nvim-surround; 
+      surround = {
+        plugin = pkgs.vimPlugins.nvim-surround;
         type = "lua";
         config = ''
           require("nvim-surround").setup({})
         '';
-    };
+      };
 
-    lsp = {
-      plugin = pkgs.vimPlugins.nvim-lspconfig;
-      type = "lua"; 
-      config = builtins.readFile ./plugins/lsp.lua;
-    };
+      lsp = {
+        plugin = pkgs.vimPlugins.nvim-lspconfig;
+        type = "lua";
+        config = builtins.readFile ./plugins/lsp.lua;
+      };
 
-    lsp-signature = {
-      plugin = pkgs.vimPlugins.lsp_signature-nvim;
-      type = "lua";
-      config = ''
-        require("lsp_signature").setup({})
-      '';
-    };
+      lsp-signature = {
+        plugin = pkgs.vimPlugins.lsp_signature-nvim;
+        type = "lua";
+        config = ''
+          require("lsp_signature").setup({})
+        '';
+      };
 
-
-   
-   in pkgs.lib.lists.flatten [
+    in pkgs.lib.lists.flatten [
       lsp
       lsp-signature
       trouble
-      neoscroll 
+      neoscroll
       surround
-      cmp 
-      lspkind 
+      cmp
+      lspkind
       fugitive
       vim-tmux
       web-devicons
-      dressing 
-      indent 
+      dressing
+      indent
       notify
       tree
-      flash 
-      lint 
+      flash
+      lint
       conform
-      gitsigns 
-      diffview 
+      gitsigns
+      diffview
       lualine
-      treesitter 
-      telescope 
+      treesitter
+      telescope
       plenary
-      comment 
-      tokyonight 
+      comment
+      tokyonight
       todo-comments
-      metals 
+      metals
       oil
-   ];
-    
+    ];
+
     extraPackages = with pkgs; [
       # LSPs
-      lua-language-server  
+      lua-language-server
       nil
       ruff-lsp
       nodePackages.bash-language-server
       nodePackages.typescript-language-server
 
       # Formatters and linters
-      stylua 
-      ruff 
+      stylua
+      ruff
       statix
+      nixfmt
     ];
 
     extraLuaConfig = builtins.readFile ./init.lua;

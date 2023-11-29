@@ -1,7 +1,7 @@
 { pkgs, ... }: {
 
   programs.kitty = {
-    enable = true; 
+    enable = true;
     font.name = "FiraCode Nerd Font";
     font.size = 11.0;
     extraConfig = ''

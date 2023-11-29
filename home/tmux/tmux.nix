@@ -1,28 +1,28 @@
 { pkgs, ... }: {
 
   programs.tmux = {
-    enable = true; 
+    enable = true;
     prefix = "C-a";
     keyMode = "vi";
-    shell="${pkgs.fish}/bin/fish";
-    clock24 = true; 
+    shell = "${pkgs.fish}/bin/fish";
+    clock24 = true;
     terminal = "tmux-256color";
     plugins = with pkgs.tmuxPlugins; [
-        vim-tmux-navigator
-        # prefix-highlight
-        {
-          plugin = resurrect;
-          extraConfig = ''
-            set -g @resurrect-capture-pane-contents 'on';
-            set -g @resurrect-strategy-nvim 'session';
-          '';
-        }
-        {
-          plugin = continuum;
-          extraConfig = ''
-            set -g @continuum-restore 'on'
-          '';
-        }
+      vim-tmux-navigator
+      # prefix-highlight
+      {
+        plugin = resurrect;
+        extraConfig = ''
+          set -g @resurrect-capture-pane-contents 'on';
+          set -g @resurrect-strategy-nvim 'session';
+        '';
+      }
+      {
+        plugin = continuum;
+        extraConfig = ''
+          set -g @continuum-restore 'on'
+        '';
+      }
     ];
     extraConfig = ''
       bind -r j resize-pane -D 5
