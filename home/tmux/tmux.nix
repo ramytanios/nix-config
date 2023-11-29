@@ -9,6 +9,7 @@
     terminal = "tmux-256color";
     plugins = with pkgs.tmuxPlugins; [
         vim-tmux-navigator
+        prefix-highlight
         {
           plugin = resurrect;
           extraConfig = ''
@@ -34,6 +35,7 @@
       unbind %
       bind | split-window -h
       set -g mouse on
+      ${builtins.readFile ./theme.conf}
     '';
   };
 
