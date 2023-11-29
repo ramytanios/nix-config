@@ -78,4 +78,6 @@
 
   programs.gh.enable = true;
 
+  programs.zsh.enable = true; # also does the config automatically
+
 }
