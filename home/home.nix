@@ -6,8 +6,8 @@
     [ ./fish/fish.nix ./tmux/tmux.nix ./kitty/kitty.nix ./nvim/nvim.nix ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "ramy";
-  home.homeDirectory = "/home/ramy";
+  home.username = "ramyt";
+  home.homeDirectory = "/home/ramyt";
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -41,6 +41,7 @@
     pkgs.coursier
     pkgs.metals
     pkgs.eza
+    pkgs.ripgrep
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -75,6 +76,13 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+	programs.git = {
+enable = true; 
+userEmail = "ramy.tanios@gmail.com";
+userName = "Ramy Tanios";
+diff-so-fancy.enable=true;
+};
 
   programs.gh.enable = true;
 
