@@ -124,6 +124,7 @@
       lspkind = { plugin = pkgs.vimPlugins.lspkind-nvim; };
 
       cmp = with pkgs.vimPlugins; [
+        { plugin = cmp_luasnip; }
         {
           plugin = nvim-cmp;
           type = "lua";
@@ -131,7 +132,6 @@
         }
         { plugin = cmp-path; }
         { plugin = cmp-buffer; }
-        { plugin = cmp_luasnip; }
         { plugin = cmp-nvim-lsp; }
       ];
 
