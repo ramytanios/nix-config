@@ -211,6 +211,7 @@
       ruff-lsp
       nodePackages.bash-language-server
       nodePackages.typescript-language-server
+      smithy-language-server
 
       # Formatters and linters
       stylua

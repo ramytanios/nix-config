@@ -22,7 +22,7 @@
 
     # The home.packages option allows you to install Nix packages into your
     # environment.
-    packages = [
+    packages = with pkgs; [
       # # Adds the 'hello' command to your environment. It prints a friendly
       # # "Hello, world!" when run.
       # pkgs.hello
@@ -39,11 +39,16 @@
       # (pkgs.writeShellScriptBin "my-hello" ''
       #   echo "Hello, ${config.home.username}!"
       # '')
-      pkgs.ncdu
-      pkgs.coursier
-      pkgs.metals
-      pkgs.eza
-      pkgs.ripgrep
+      ncdu
+      scala-cli
+      coursier
+      metals
+      eza
+      podman
+      ripgrep
+      tree 
+      smithy-cli 
+      smithy4s-codegen-cli
     ];
 
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
