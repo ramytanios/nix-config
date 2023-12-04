@@ -19,25 +19,19 @@
       defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux;
       defaultPackage.x86_64-darwin = home-manager.defaultPackage.x86_64-darwin;
 
-      # NixOS configuration entrypoint
-      # Available through 'nixos-rebuild --flake .#your-hostname'
+      # NixOS configuration entry point
       nixosConfigurations = {
-        # FIXME replace with your hostname
         nixos = nixpkgs.lib.nixosSystem {
           # specialArgs = {inherit inputs outputs;};
           # > Our main nixos configuration file <
           modules = [ ./system/configuration.nix ];
         };
       };
-
+      # Home manager entry point
       homeConfigurations."ramyt@nixos" =
         home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-
-          # Specify your home configuration modules here, for example,
-          # the path to your home.nix.
           modules = [ ./home/home.nix ];
-
           # Optionally use extraSpecialArgs
           # to pass through arguments to home.nix
         };

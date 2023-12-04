@@ -14,7 +14,7 @@ local oil = require("oil")
 map("i", "jk", "<ESC>", { desc = "Insert to Visual mode" })
 map("i", "jj", "<ESC>", { desc = "Insert to Visual mode" })
 map("i", "kj", "<ESC>", { desc = "Insert to Visual mode" })
- 
+
 map("v", "J", ":m '>+1<CR>gv=gv")
 map("v", "K", ":m '<-2<CR>gv=gv")
 
