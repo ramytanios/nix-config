@@ -1,5 +1,6 @@
 local cmp = require("cmp")
 local lspkind = require("lspkind")
+--TODO: add back luasnip (check dotfiles repo)
 
 cmp.setup({
 	mapping = cmp.mapping.preset.insert({
