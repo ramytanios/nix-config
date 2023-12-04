@@ -10,7 +10,6 @@ require("conform").setup({
 		json = { "prettier" },
 		html = { "prettier" },
 		xml = { "xmlformatter" },
-    nix = { "nixfmt "}
 	},
 	-- format_on_save = {
 	-- 	lsp_fallback = true,

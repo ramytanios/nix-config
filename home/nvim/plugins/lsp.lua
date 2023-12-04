@@ -12,7 +12,6 @@ lsp_config.util.default_config =
 -- lsp_config.metals.setup {}
 
 lsp_config.bashls.setup({})
-lsp_config.gopls.setup({})
 lsp_config.html.setup({})
 lsp_config.ruff_lsp.setup({})
 lsp_config.smithy_ls.setup({})

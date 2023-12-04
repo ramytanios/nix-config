@@ -6,12 +6,11 @@
 
 {
 
-nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -78,7 +77,7 @@ nix.settings.experimental-features = ["nix-command" "flakes"];
       firefox
       whatsapp-for-linux
       discord
-    #  thunderbird
+      #  thunderbird
     ];
   };
 
@@ -88,24 +87,25 @@ nix.settings.experimental-features = ["nix-command" "flakes"];
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-wl-clipboard
+    wl-clipboard
     gnomeExtensions.just-perfection
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
+    #  wget
   ];
 
-# Shells
-#programs.zsh.enable = true;
-#programs.fish.enable = true;
-programs.git.enable = true;
+  # Shells
+  #programs.zsh.enable = true;
+  #programs.fish.enable = true;
+  programs.git.enable = true;
 
-# Fonts 
-fonts.fontDir.enable = true;
-fonts.packages = with pkgs; [
-(nerdfonts.override {
-fonts = ["FiraCode" "JetBrainsMono" "DroidSansMono"];
-}
-)];
+  # Fonts 
+  fonts.fontDir.enable = true;
+  fonts.packages = with pkgs;
+    [
+      (nerdfonts.override {
+        fonts = [ "FiraCode" "JetBrainsMono" "DroidSansMono" ];
+      })
+    ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

@@ -77,12 +77,12 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-	programs.git = {
-enable = true; 
-userEmail = "ramy.tanios@gmail.com";
-userName = "Ramy Tanios";
-diff-so-fancy.enable=true;
-};
+  programs.git = {
+    enable = true;
+    userEmail = "ramy.tanios@gmail.com";
+    userName = "Ramy Tanios";
+    diff-so-fancy.enable = true;
+  };
 
   programs.gh.enable = true;
 

@@ -2,7 +2,7 @@
 
   programs.kitty = {
     enable = true;
-    font.name = "FiraCode Nerd Font";
+    font.name = "JetBrainsMono Nerd Font Mono";
     font.size = 11.0;
     extraConfig = ''
       cursor_shape  block

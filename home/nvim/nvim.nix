@@ -128,7 +128,7 @@
         {
           plugin = nvim-cmp;
           type = "lua";
-         # config = builtins.readFile ./plugins/cmp.lua;
+          # config = builtins.readFile ./plugins/cmp.lua;
         }
         { plugin = cmp-path; }
         { plugin = cmp-buffer; }
