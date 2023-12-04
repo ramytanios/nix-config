@@ -28,7 +28,7 @@
         };
       };
 
-      # Home manager entry point
+      # Home manager configuration entry point
       homeConfigurations."ramyt@nixos" =
         home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
