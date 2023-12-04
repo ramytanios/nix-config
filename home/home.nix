@@ -42,13 +42,14 @@
       ncdu
       scala-cli
       coursier
+      sbt
       metals
       eza
       podman
       ripgrep
       tree 
-      smithy-cli 
-      smithy4s-codegen-cli
+      # smithy-cli 
+      # smithy4s-codegen-cli
     ];
 
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
