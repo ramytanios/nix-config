@@ -27,6 +27,7 @@
           modules = [ ./system/configuration.nix ];
         };
       };
+
       # Home manager entry point
       homeConfigurations."ramyt@nixos" =
         home-manager.lib.homeManagerConfiguration {
