@@ -13,3 +13,5 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
 		lint.try_lint()
 	end,
 })
+
+-- requre("lint").get_running()
