@@ -47,7 +47,7 @@
       eza
       podman
       ripgrep
-      tree 
+      tree
       # smithy-cli 
       # smithy4s-codegen-cli
     ];
