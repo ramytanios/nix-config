@@ -86,13 +86,19 @@
   # Let Home Manager install and manage itself.
   programs = {
     home-manager.enable = true;
+
     git = {
       enable = true;
       userEmail = "ramy.tanios@gmail.com";
       userName = "Ramy Tanios";
       diff-so-fancy.enable = true;
     };
-    gh.enable = true;
+
+    gh = {
+      enable = true;
+      settings.git_protocol = "https";
+    };
+
     zsh.enable = true; # also does the config automatically
   };
 }
