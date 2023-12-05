@@ -107,6 +107,10 @@
       })
     ];
 
+  services.xserver.displayManager.sessionCommands = ''
+    ${pkgs.xlibs.xset}/bin/xset r rate 200 40
+  '';
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
