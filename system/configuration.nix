@@ -107,9 +107,8 @@
       })
     ];
 
-  services.xserver.displayManager.sessionCommands = ''
-    ${pkgs.xlibs.xset}/bin/xset r rate 200 40
-  '';
+  services.xserver.autoRepeatDelay = 200;
+  services.xserver.autoRepeatInterval = 25;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
