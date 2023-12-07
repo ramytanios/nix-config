@@ -174,6 +174,14 @@
         '';
       };
 
+      lua-dev = {
+        plugin = pkgs.vimPlugins.neodev-nvim;
+        type = "lua";
+        config = ''
+          require("neodev").setup({})
+        '';
+      };
+
     in pkgs.lib.lists.flatten [
       lsp
       lsp-signature
@@ -203,6 +211,7 @@
       todo-comments
       metals
       oil
+      lua-dev
     ];
 
     extraPackages = with pkgs; [
