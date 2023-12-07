@@ -18,7 +18,7 @@ map("i", "kj", "<ESC>", { desc = "Insert to Visual mode" })
 map("v", "J", ":m '>+1<CR>gv=gv")
 map("v", "K", ":m '<-2<CR>gv=gv")
 map("n", "vy", "viwy", { desc = "Yank inner word" })
-map("n", "vp", "viwp", { desc = "Paste yanked word in place of current inner word" })
+map("n", "vp", "viwP", { desc = "Paste yanked word in place of current inner word, multiple times (P)" })
 
 map("n", "<leader>noh", ":nohl<CR>", { desc = "Clear highlight" })
 map("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })
