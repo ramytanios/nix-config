@@ -48,6 +48,7 @@
       podman
       ripgrep
       tree
+      gnumake
       # smithy-cli 
       # smithy4s-codegen-cli
     ];
