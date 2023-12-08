@@ -151,8 +151,8 @@ opt.background = "dark"
 opt.signcolumn = "yes"
 opt.backspace = "indent,eol,start"
 opt.clipboard:append("unnamedplus")
-opt.splitright = true -- vertical split
-opt.splitbelow = true -- horizontal split
+opt.splitright = true 
+opt.splitbelow = true
 opt.swapfile = false
 
 vim.cmd("colorscheme tokyonight-storm")
