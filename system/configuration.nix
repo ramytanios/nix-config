@@ -38,14 +38,8 @@
   # Enable the GNOME Desktop Environment.
   # services.xserver.displayManager.gdm.enable = true;
   # services.xserver.desktopManager.gnome.enable = true;
-
-  services.xserver = {
-    desktopManager = {
-      xterm.enable = false;
-      xfce.enable = true;
-    };
-    displayManager.defaultSession = "xfce";
-  };
+services.xserver.desktopManager.budgie.enable = true;
+services.xserver.displayManager.lightdm.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
@@ -115,7 +109,7 @@
       })
     ];
 
-  services.xserver.autoRepeatDelay = 200;
+  services.xserver.autoRepeatDelay = 220;
   services.xserver.autoRepeatInterval = 25;
 
   # Some programs need SUID wrappers, can be configured further or are

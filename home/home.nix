@@ -102,6 +102,6 @@
     zsh.enable = true; # also does the config automatically
   };
 
-  services.ssh-agent.enable = true;
+  # services.ssh-agent.enable = true;
 
 }
