@@ -10,6 +10,7 @@ local flash = require("flash")
 local tb = require("telescope.builtin")
 local tel = require("telescope")
 local oil = require("oil")
+local foo = require("diffview.config").
 
 map("i", "jk", "<ESC>", { desc = "Insert to Visual mode" })
 map("i", "jj", "<ESC>", { desc = "Insert to Visual mode" })
@@ -134,6 +135,7 @@ map("n", "-", oil.open, { desc = "Browse parent directory" })
 --TODO: use lua
 map("n", "<leader>dv", ":DiffviewOpen<SPACE>", { noremap = true, desc = "" })
 map("n", "<leader>dvx", ":DiffviewClose<CR>", { noremap = true, desc = "" })
+map("n", "<leader>fh", ":DiffviewFileHistory %<CR>", { noremap = true, desc = "" })
 
 local opt = vim.opt
 opt.relativenumber = true
@@ -151,7 +153,7 @@ opt.background = "dark"
 opt.signcolumn = "yes"
 opt.backspace = "indent,eol,start"
 opt.clipboard:append("unnamedplus")
-opt.splitright = true 
+opt.splitright = true
 opt.splitbelow = true
 opt.swapfile = false
 
