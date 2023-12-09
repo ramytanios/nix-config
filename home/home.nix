@@ -100,6 +100,7 @@
     };
 
     zsh.enable = true;
+    ssh.enable = true;
   };
 
   services.ssh-agent.enable = true;
