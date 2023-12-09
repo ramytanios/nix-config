@@ -95,6 +95,17 @@
         theme = "robbyrussell";
         plugins = [ "sbt" ];
       };
+      initExtra = ''
+        function _tmux()
+        {
+          if [[ $# == 0 ]] && command tmux ls >& /dev/null; then
+            command tmux attach \; choose-tree -s 
+          else 
+            command tmux "$@"
+          fi
+        }
+      '';
+      shellAliases = { tmux = "_tmux"; };
     };
 
     bash = { enable = true; };
