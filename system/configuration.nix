@@ -94,9 +94,10 @@
   ];
 
   # Shells
-  #programs.zsh.enable = true;
-  #programs.fish.enable = true;
+  programs.zsh.enable = true;
   programs.git.enable = true;
+
+  users.defaultUserShell = pkgs.zsh;
 
   # Fonts 
   fonts.fontDir.enable = true;

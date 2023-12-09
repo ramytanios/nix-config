@@ -88,7 +88,10 @@
   programs = {
     home-manager.enable = true;
 
+    zsh = { enable = true; };
     bash = { enable = true; };
+    gh = { enable = true; };
+    ssh = { enable = true; };
 
     git = {
       enable = true;
@@ -96,12 +99,6 @@
       userName = "Ramy Tanios";
       diff-so-fancy.enable = true;
     };
-
-    gh = { enable = true; };
-
-    zsh = { enable = true; };
-
-    ssh = { enable = true; };
 
     keychain = {
       enable = true;
