@@ -88,6 +88,8 @@
   programs = {
     home-manager.enable = true;
 
+    bash = { enable = true; };
+
     git = {
       enable = true;
       userEmail = "ramy.tanios@gmail.com";
@@ -95,12 +97,21 @@
       diff-so-fancy.enable = true;
     };
 
-    gh = {
+    gh = { enable = true; };
+
+    zsh = { enable = true; };
+
+    ssh = { enable = true; };
+
+    keychain = {
       enable = true;
+      enableFishIntegration = true;
+      enableBashIntegration = true;
+      enableZshIntegration = true;
+      agents = [ "ssh" ];
+      extraFlags = [ "--ignore-missing" "--quiet" ];
     };
 
-    zsh.enable = true;
-    ssh.enable = true;
   };
 
   services.ssh-agent.enable = true;
