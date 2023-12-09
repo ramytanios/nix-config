@@ -92,7 +92,7 @@
       enable = true;
       oh-my-zsh = {
         enable = true;
-        theme = "robbyrussel";
+        theme = "robbyrussell";
         plugins = [ "sbt" ];
       };
     };
