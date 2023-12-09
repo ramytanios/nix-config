@@ -99,9 +99,9 @@
       enable = true;
     };
 
-    zsh.enable = true; # also does the config automatically
+    zsh.enable = true;
   };
 
-  # services.ssh-agent.enable = true;
+  services.ssh-agent.enable = true;
 
 }

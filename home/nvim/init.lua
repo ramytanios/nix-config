@@ -10,7 +10,6 @@ local flash = require("flash")
 local tb = require("telescope.builtin")
 local tel = require("telescope")
 local oil = require("oil")
-local foo = require("diffview.config").
 
 map("i", "jk", "<ESC>", { desc = "Insert to Visual mode" })
 map("i", "jj", "<ESC>", { desc = "Insert to Visual mode" })
