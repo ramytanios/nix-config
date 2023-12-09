@@ -88,9 +88,19 @@
   programs = {
     home-manager.enable = true;
 
-    zsh = { enable = true; };
+    zsh = {
+      enable = true;
+      oh-my-zsh = {
+        enable = true;
+        theme = "robbyrussel";
+        plugins = [ "sbt" ];
+      };
+    };
+
     bash = { enable = true; };
+
     gh = { enable = true; };
+
     ssh = { enable = true; };
 
     git = {
