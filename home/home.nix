@@ -121,7 +121,10 @@
 
     gh = { enable = true; };
 
-    ssh = { enable = true; };
+    ssh = {
+      enable = true;
+      startAgent = true;
+    };
 
     git = {
       enable = true;
@@ -130,17 +133,17 @@
       diff-so-fancy.enable = true;
     };
 
-    keychain = {
-      enable = true;
-      enableFishIntegration = true;
-      enableBashIntegration = true;
-      enableZshIntegration = true;
-      agents = [ "ssh" ];
-      extraFlags = [ "--ignore-missing" "--quiet" ];
-    };
+    # keychain = {
+    #   enable = true;
+    #   enableFishIntegration = true;
+    #   enableBashIntegration = true;
+    #   enableZshIntegration = true;
+    #   agents = [ "ssh" ];
+    #   extraFlags = [ "--ignore-missing" "--quiet" ];
+    # };
 
   };
 
-  services.ssh-agent.enable = true;
+  # services.ssh-agent.enable = true;
 
 }
