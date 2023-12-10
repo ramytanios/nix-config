@@ -58,6 +58,7 @@
       nodejs
       jdk
       bat
+      killall
       # smithy-cli 
       # smithy4s-codegen-cli
     ];
