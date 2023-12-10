@@ -130,6 +130,8 @@
       diff-so-fancy.enable = true;
     };
 
+    java = { enable = true; };
+
     # keychain = {
     #   enable = true;
     #   enableFishIntegration = true;

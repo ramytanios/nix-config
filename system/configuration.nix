@@ -77,7 +77,10 @@
       firefox
       whatsapp-for-linux
       discord
-      #  thunderbird
+      thunderbird
+      brave
+      keepassxc
+      telegram-desktop
     ];
   };
 
