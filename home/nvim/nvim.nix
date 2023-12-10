@@ -24,11 +24,7 @@
 
       todo-comments = { plugin = pkgs.vimPlugins.todo-comments-nvim; };
 
-      tokyonight = {
-        plugin = pkgs.vimPlugins.tokyonight-nvim;
-        type = "lua";
-        config = builtins.readFile ./plugins/tokyonight.lua;
-      };
+      tokyonight = { plugin = pkgs.vimPlugins.tokyonight-nvim; };
 
       comment = {
         plugin = pkgs.vimPlugins.comment-nvim;
