@@ -56,7 +56,7 @@
       tree
       gnumake
       nodejs
-      jdk 
+      jdk
       bat
       # smithy-cli 
       # smithy4s-codegen-cli
