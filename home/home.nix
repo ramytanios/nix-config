@@ -108,7 +108,14 @@
         theme = "robbyrussell";
         plugins = [ "sbt" ];
       };
-      shellAliases = { t = "tmux attach -t HOME \; choose-tree -s"; };
+      initExtra = ''
+        function _tmux()
+        {
+          # assumes there a session called `HOME` exists
+          command tmux attach -t HOME \; choose-tree -s
+        }
+      '';
+      shellAliases = { t = "_tmux"; };
     };
 
     bash = { enable = true; };
