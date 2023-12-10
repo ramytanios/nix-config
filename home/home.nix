@@ -22,7 +22,12 @@
 
     # The home.packages option allows you to install Nix packages into your
     # environment.
-    packages = with pkgs; [
+    packages = let
+      dummyCommand = pkgs.writeShellScriptBin "hello-world" ''
+        echo "Hello world, I am ${config.home.username}"
+      '';
+
+    in with pkgs; [
       # # Adds the 'hello' command to your environment. It prints a friendly
       # # "Hello, world!" when run.
       # pkgs.hello
@@ -39,6 +44,7 @@
       # (pkgs.writeShellScriptBin "my-hello" ''
       #   echo "Hello, ${config.home.username}!"
       # '')
+      dummyCommand
       ncdu
       scala-cli
       coursier
@@ -49,6 +55,9 @@
       ripgrep
       tree
       gnumake
+      nodejs
+      jdk 
+      bat
       # smithy-cli 
       # smithy4s-codegen-cli
     ];
