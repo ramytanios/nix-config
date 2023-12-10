@@ -11,6 +11,10 @@
       fish_vi_key_bindings
     '';
 
+    shellInit = ''
+      set pure_color_mute yellow
+    '';
+
     shellAliases = {
       # vim aliases
       vi = "nvim";
