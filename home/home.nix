@@ -59,6 +59,9 @@
       jdk
       bat
       killall
+      httpie
+      fzf
+      just
       # smithy-cli 
       # smithy4s-codegen-cli
     ];
