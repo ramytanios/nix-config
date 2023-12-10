@@ -23,7 +23,7 @@
     # The home.packages option allows you to install Nix packages into your
     # environment.
     packages = let
-      dummyCommand = pkgs.writeShellScriptBin "hello-world" ''
+      hello-world = pkgs.writeShellScriptBin "hello-world" ''
         echo "Hello world, I am ${config.home.username}"
       '';
 
@@ -44,7 +44,7 @@
       # (pkgs.writeShellScriptBin "my-hello" ''
       #   echo "Hello, ${config.home.username}!"
       # '')
-      dummyCommand
+      hello-world
       ncdu
       scala-cli
       coursier
