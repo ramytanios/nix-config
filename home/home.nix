@@ -121,10 +121,7 @@
 
     gh = { enable = true; };
 
-    ssh = {
-      enable = true;
-      startAgent = true;
-    };
+    ssh = { enable = true; };
 
     git = {
       enable = true;
