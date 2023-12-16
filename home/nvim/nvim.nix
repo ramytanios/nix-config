@@ -40,7 +40,7 @@
       };
 
       telescope = [
-        { plugin = pkgs.vimPlugins.telescope-ui-select-nvim; }
+        # { plugin = pkgs.vimPlugins.telescope-ui-select-nvim; }
         { plugin = pkgs.vimPlugins.telescope-fzf-native-nvim; }
         {
           plugin = pkgs.vimPlugins.telescope-nvim;
