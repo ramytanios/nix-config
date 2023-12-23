@@ -6,24 +6,14 @@
     keyMode = "vi";
     shell = "${pkgs.fish}/bin/fish";
     clock24 = true;
+    mouse = true;
+    sensibleOnTop = false;
     terminal = "tmux-256color";
-    plugins = with pkgs.tmuxPlugins; [
-      vim-tmux-navigator
-      {
-        plugin = resurrect;
-        extraConfig = ''
-          set -g @resurrect-capture-pane-contents 'on';
-          set -g @resurrect-strategy-nvim 'session';
-        '';
-      }
-      {
-        plugin = continuum;
-        extraConfig = ''
-          set -g @continuum-restore 'on'
-        '';
-      }
-    ];
+    plugins = with pkgs.tmuxPlugins; [ vim-tmux-navigator resurrect continuum ];
     extraConfig = ''
+      set -g @resurrect-capture-pane-contents 'on';
+      set -g @resurrect-strategy-nvim 'session';
+      set -g @continuum-restore 'on'
       bind -r j resize-pane -D 5
       bind -r k resize-pane -U 5
       bind -r l resize-pane -R 5
