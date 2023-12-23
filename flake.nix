@@ -9,11 +9,13 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    kauz.url = "github:buntec/kauz";
   };
 
-  outputs = { nixpkgs, home-manager, flake-utils, ... }:
+  outputs = { nixpkgs, home-manager, flake-utils, kauz, ... }:
 
     let
+
       nuc = {
         name = "nuc";
         os = "nixos";
@@ -28,12 +30,9 @@
         system = flake-utils.lib.system.aarch64-darwin;
       };
 
-      system = builtins.currentSystem;
-      pkgs = nixpkgs.legacyPackages.${system};
+      overlays = [ kauz.overlays.default ];
+
     in {
-      defaultPackage = { inherit (home-manager.defaultPackage) x86_64-linux; };
-      defaultPackage = { inherit (home-manager.defaultPackage) x86_64-darwin; };
-      defaultPackage = { inherit (home-manager.defaultPackage) aarch64-darwin; };
 
       # NixOS configuration entry point
       nixosConfigurations = {
@@ -45,34 +44,44 @@
       };
 
       # Home manager configuration entry point
-      homeConfigurations.${nuc.name} =
-        home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [
-            {
-              home.username = nuc.user;
-              home.homeDirectory = "/home/${nuc.user}";
-            }
-            ./home/home.nix
-            ./home/home-${nuc.os}.nix
-          ];
-          # Optionally use extraSpecialArgs
-          # to pass through arguments to home.nix
+      homeConfigurations.${nuc.name} = let
+        pkgs = import nixpkgs {
+          inherit (nuc) system;
+          inherit overlays;
+          config = { allowUnfree = true; };
         };
+      in home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [
+          {
+            home.username = nuc.user;
+            home.homeDirectory = "/home/${nuc.user}";
+          }
+          ./home/home.nix
+          ./home/home-${nuc.os}.nix
+        ];
+        # Optionally use extraSpecialArgs
+        # to pass through arguments to home.nix
+      };
 
-      homeConfigurations.${macbook.name} =
-        home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [
-            {
-              home.username = macbook.user;
-              home.homeDirectory = "/Users/${macbook.user}";
-            }
-            ./home/home.nix
-            ./home/home-${macbook.os}.nix
-          ];
-          # Optionally use extraSpecialArgs
-          # to pass through arguments to home.nix
+      homeConfigurations.${macbook.name} = let
+        pkgs = import nixpkgs {
+          inherit (macbook) system;
+          inherit overlays;
+          config = { allowUnfree = true; };
         };
+      in home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [
+          {
+            home.username = macbook.user;
+            home.homeDirectory = "/Users/${macbook.user}";
+          }
+          ./home/home.nix
+          ./home/home-${macbook.os}.nix
+        ];
+        # Optionally use extraSpecialArgs
+        # to pass through arguments to home.nix
+      };
     };
 }
