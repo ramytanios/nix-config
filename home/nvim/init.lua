@@ -131,7 +131,6 @@ map("n", "<leader>fd", vim.diagnostic.open_float, { desc = "Diagnostic open floa
 
 map("n", "-", oil.open, { desc = "Browse parent directory" })
 
---TODO: use lua
 map("n", "<leader>dv", ":DiffviewOpen<SPACE>", { noremap = true, desc = "" })
 map("n", "<leader>dvx", ":DiffviewClose<CR>", { noremap = true, desc = "" })
 map("n", "<leader>fh", ":DiffviewFileHistory %<CR>", { noremap = true, desc = "" })
@@ -156,4 +155,4 @@ opt.splitright = true
 opt.splitbelow = true
 opt.swapfile = false
 
-vim.cmd("colorscheme tokyonight-storm")
+vim.cmd("colorscheme kauz")

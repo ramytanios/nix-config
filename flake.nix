@@ -12,24 +12,31 @@
     kauz.url = "github:buntec/kauz";
   };
 
-  outputs = { nixpkgs, home-manager, flake-utils, kauz, ... }:
+  outputs = inputs@{ self, nixpkgs, home-manager, flake-utils, kauz, ... }:
 
     let
 
-      nuc = {
-        name = "nuc";
-        os = "nixos";
-        user = "ramyt";
-        system = flake-utils.lib.system.x86_64-linux;
-      };
+      machines = [
 
-      macbook = {
-        name = "macbook-air-m2";
-        os = "macos";
-        user = "ramytanios";
-        system = flake-utils.lib.system.aarch64-darwin;
-      };
+        {
+          name = "nuc";
+          os = "nixos";
+          user = "ramyt";
+          system = flake-utils.lib.system.x86_64-linux;
+        }
 
+        {
+          name = "macbook-air-m2";
+          os = "macos";
+          user = "ramytanios";
+          system = flake-utils.lib.system.aarch64-darwin;
+        }
+
+      ];
+
+      isMacos = machine: machine.os == "macos";
+
+      # Add here overlays
       overlays = [ kauz.overlays.default ];
 
     in {
@@ -44,44 +51,32 @@
       };
 
       # Home manager configuration entry point
-      homeConfigurations.${nuc.name} = let
-        pkgs = import nixpkgs {
-          inherit (nuc) system;
-          inherit overlays;
-          config = { allowUnfree = true; };
-        };
-      in home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [
-          {
-            home.username = nuc.user;
-            home.homeDirectory = "/home/${nuc.user}";
-          }
-          ./home/home.nix
-          ./home/home-${nuc.os}.nix
-        ];
-        # Optionally use extraSpecialArgs
-        # to pass through arguments to home.nix
-      };
+      homeConfigurations = builtins.listToAttrs (builtins.map (machine:
+        let
+          pkgs = import nixpkgs {
+            inherit (machine) system;
+            inherit overlays;
+            config = { allowUnfree = true; };
+          };
 
-      homeConfigurations.${macbook.name} = let
-        pkgs = import nixpkgs {
-          inherit (macbook) system;
-          inherit overlays;
-          config = { allowUnfree = true; };
-        };
-      in home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [
-          {
-            home.username = macbook.user;
-            home.homeDirectory = "/Users/${macbook.user}";
-          }
-          ./home/home.nix
-          ./home/home-${macbook.os}.nix
-        ];
-        # Optionally use extraSpecialArgs
-        # to pass through arguments to home.nix
-      };
+        in {
+          inherit (machine) name;
+          value = home-manager.lib.homeManagerConfiguration {
+            inherit pkgs;
+            extraSpecialArgs = { inherit inputs; };
+            modules = [
+              {
+                home.username = machine.user;
+                home.homeDirectory = if (isMacos machine) then
+                  "/Users/${machine.user}"
+                else
+                  "/home/${machine.user}";
+              }
+              ./home/home.nix
+              ./home/home-${machine.os}.nix
+            ];
+          };
+        }) machines);
+
     };
 }

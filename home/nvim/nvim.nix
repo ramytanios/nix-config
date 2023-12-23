@@ -218,7 +218,6 @@
       nodePackages.bash-language-server
       nodePackages.typescript-language-server
       texlab
-      # smithy-language-server
 
       # Formatters and linters
       stylua

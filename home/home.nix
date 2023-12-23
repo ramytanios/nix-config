@@ -58,8 +58,6 @@
       httpie
       fzf
       just
-      # smithy-cli 
-      # smithy4s-codegen-cli
     ];
 
     # Home Manager is pretty good at managing dotfiles. The primary way to manage

@@ -1,3 +1,4 @@
+# Should be added to the flake (assumes make is not available)
 hm-nuc: 
 	nix run home-manager -- switch --flake .#nuc
 
