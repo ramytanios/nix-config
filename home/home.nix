@@ -6,10 +6,6 @@
     [ ./fish/fish.nix ./tmux/tmux.nix ./kitty/kitty.nix ./nvim/nvim.nix ];
 
   home = {
-    # Home Manager needs a bit of information about you and the paths it should
-    # manage.
-    username = "ramyt";
-    homeDirectory = "/home/ramyt";
 
     # This value determines the Home Manager release that your configuration is
     # compatible with. This helps avoid breakage when a new Home Manager release
