@@ -31,6 +31,7 @@
         }
       ];
 
+      machinesBySystem = builtins.groupBy (machine: machine.system) machines;
       isMacos = machine: machine.os == "macos";
 
       # Add here overlays
@@ -75,21 +76,21 @@
           };
         }) machines);
 
-      apps = builtins.listToAttrs (builtins.map (machine:
-        let
-          pkgs = import nixpkgs { inherit (machine) system; };
-          hmScript = pkgs.writeShellScript "hm-switch-${machine.os}" "${
-              inputs.home-manager.packages.${machine.system}.home-manager
-            }/bin/home-manager -- switch --flake ${self}#${machine.name}";
-        in {
-          name = machine.system;
-          value = {
+      # nix run .#hm-switch-macos
+      # nix run .#hm-nuc
+      apps = builtins.mapAttrs (system: machines:
+        builtins.listToAttrs (builtins.map (machine:
+          let
+            pkgs = import nixpkgs { inherit (machine) system; };
+            hmScript = pkgs.writeShellScript "hm-switch-${machine.os}" "${
+                inputs.home-manager.packages.${machine.system}.home-manager
+              }/bin/home-manager switch --flake ${self}#${machine.name}";
+          in {
             name = "hm-switch-${machine.os}";
             value = {
               type = "app";
               program = "${hmScript}";
             };
-          };
-        }) machines);
+          }) machines)) machinesBySystem;
     };
 }
