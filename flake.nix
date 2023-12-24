@@ -10,9 +10,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     kauz.url = "github:buntec/kauz";
+    tokyonight.url = "github:ramytanios/tokyonight.nvim";
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, flake-utils, kauz, ... }:
+  outputs =
+    inputs@{ self, nixpkgs, home-manager, flake-utils, kauz, tokyonight, ... }:
 
     let
 
@@ -35,7 +37,7 @@
       isMacos = machine: machine.os == "macos";
 
       # Add here overlays
-      overlays = [ kauz.overlays.default ];
+      overlays = [ kauz.overlays.default tokyonight.overlays.default ];
 
     in {
 
