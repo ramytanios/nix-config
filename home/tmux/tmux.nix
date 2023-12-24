@@ -9,11 +9,10 @@
     mouse = true;
     sensibleOnTop = false;
     terminal = "tmux-256color";
-    plugins = with pkgs.tmuxPlugins; [ vim-tmux-navigator resurrect continuum ];
+    plugins = with pkgs.tmuxPlugins; [ vim-tmux-navigator resurrect];
     extraConfig = ''
       set -g @resurrect-capture-pane-contents 'on';
       set -g @resurrect-strategy-nvim 'session';
-      set -g @continuum-restore 'on'
       bind -r j resize-pane -D 5
       bind -r k resize-pane -U 5
       bind -r l resize-pane -R 5
