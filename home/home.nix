@@ -114,7 +114,14 @@
 
     bash = { enable = true; };
 
-    gh = { enable = true; };
+    gh = {
+      enable = true;
+      settings = {
+        git_protocol = "ssh";
+        prompt = "enabled";
+        aliases = { };
+      };
+    };
 
     ssh = { enable = true; };
 
