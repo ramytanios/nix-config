@@ -77,7 +77,7 @@
         }) machines);
 
       # nix run .#hm-switch-macos
-      # nix run .#hm-nuc
+      # nix run .#hm-switch-nixos
       apps = builtins.mapAttrs (system: machines:
         builtins.listToAttrs (builtins.map (machine:
           let
