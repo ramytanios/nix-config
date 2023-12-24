@@ -17,21 +17,18 @@
     let
 
       machines = [
-
         {
           name = "nuc";
           os = "nixos";
           user = "ramyt";
           system = flake-utils.lib.system.x86_64-linux;
         }
-
         {
           name = "macbook-air-m2";
           os = "macos";
           user = "ramytanios";
           system = flake-utils.lib.system.aarch64-darwin;
         }
-
       ];
 
       isMacos = machine: machine.os == "macos";
@@ -78,5 +75,21 @@
           };
         }) machines);
 
+      apps = builtins.listToAttrs (builtins.map (machine:
+        let
+          pkgs = import nixpkgs { inherit (machine) system; };
+          hmScript = pkgs.writeShellScript "hm-switch-${machine.os}" "${
+              inputs.home-manager.packages.${machine.system}.home-manager
+            }/bin/home-manager -- switch --flake ${self}#${machine.name}";
+        in {
+          name = machine.system;
+          value = {
+            name = "hm-switch-${machine.os}";
+            value = {
+              type = "app";
+              program = "${hmScript}";
+            };
+          };
+        }) machines);
     };
 }
