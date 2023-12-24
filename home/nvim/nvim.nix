@@ -24,8 +24,6 @@
 
       todo-comments = { plugin = pkgs.vimPlugins.todo-comments-nvim; };
 
-      tokyonight = { plugin = pkgs.vimPlugins.tokyonight-nvim; };
-
       comment = {
         plugin = pkgs.vimPlugins.comment-nvim;
         type = "lua";
@@ -203,7 +201,6 @@
       telescope
       plenary
       comment
-      tokyonight
       todo-comments
       metals
       oil
