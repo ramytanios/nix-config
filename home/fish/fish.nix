@@ -9,6 +9,7 @@
 
     interactiveShellInit = ''
       fish_vi_key_bindings
+      ${pkgs.thefuck}/bin/thefuck --alias | source
     '';
 
     shellInit = ''
