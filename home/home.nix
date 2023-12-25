@@ -94,7 +94,30 @@
   };
 
   # Let Home Manager install and manage itself.
-  programs = {
+  programs = let
+    shellAliases = {
+      # vim aliases
+      vi = "nvim";
+      vim = "nvim";
+      v = "nvim";
+
+      # git aliases
+      gs = "git status";
+      ga = "git add";
+      gc = "git commit";
+      gps = "git push";
+      gl = "git log";
+
+      # ls 
+      la = "eza -la --git --icons";
+      l = "eza -l --git --icons";
+
+      cdr = "cd (git rev-parse --show-toplevel)";
+
+      cat = "${pkgs.bat}/bin/bat";
+
+    };
+  in {
     home-manager.enable = true;
 
     zsh = {
@@ -111,10 +134,13 @@
           command tmux attach -t HOME \; choose-tree -s
         }
       '';
-      shellAliases = { t = "_tmux"; };
+      shellAliases = { t = "_tmux"; } // shellAliases;
     };
 
-    bash = { enable = true; };
+    bash = {
+      enable = true;
+      inherit shellAliases;
+    };
 
     gh = {
       enable = true;
@@ -138,17 +164,6 @@
 
     java = { enable = true; };
 
-    # keychain = {
-    #   enable = true;
-    #   enableFishIntegration = true;
-    #   enableBashIntegration = true;
-    #   enableZshIntegration = true;
-    #   agents = [ "ssh" ];
-    #   extraFlags = [ "--ignore-missing" "--quiet" ];
-    # };
-
   };
-
-  # services.ssh-agent.enable = true;
 
 }
