@@ -203,7 +203,6 @@
       telescope
       plenary
       comment
-      tokyonight
       todo-comments
       metals
       oil

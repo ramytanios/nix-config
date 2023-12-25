@@ -9,7 +9,6 @@
       shell_integration no-cursor
       hide_window_decorations no
     '';
-    theme = "Tokyo Night Storm";
   };
 
 }
