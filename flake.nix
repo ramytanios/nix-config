@@ -10,6 +10,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     kauz.url = "github:buntec/kauz";
+    tokyonight.url = "github:ramytanios/tokyonight-colorscheme-nix-flake";
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, flake-utils, kauz, ... }:
@@ -35,7 +36,7 @@
       isMacos = machine: machine.os == "macos";
 
       # Add here overlays
-      overlays = [ kauz.overlays.default ];
+      overlays = [ kauz.overlays.default];
 
     in {
 
