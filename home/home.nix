@@ -1,9 +1,37 @@
 { config, pkgs, ... }:
+let
 
-{
-  # me 
+  shellAliases = {
+    vi = "nvim";
+    vim = "nvim";
+    v = "nvim";
+
+    gs = "git status";
+    ga = "git add";
+    gc = "git commit";
+    gps = "git push";
+    gl = "git log";
+    gd = "git diff";
+
+    la = "eza -la --git --icons";
+    l = "eza -l --git --icons";
+
+    cdr = "cd (git rev-parse --show-toplevel)";
+    cat = "${pkgs.bat}/bin/bat";
+  };
+
+  initExtra = ''
+    function _tmux()
+    {
+      # assumes there a session called `HOME` exists
+      command tmux attach -t HOME \; choose-tree -s
+    }
+  '';
+
+in {
+
   imports =
-    [ ./fish/fish.nix ./tmux/tmux.nix ./kitty/kitty.nix ./nvim/nvim.nix ];
+    [ ./tmux/tmux.nix ./kitty/kitty.nix ./nvim/nvim.nix ./fish/fish.nix ];
 
   home = {
 
@@ -61,7 +89,7 @@
       thefuck
       fd
       stow
-      zip 
+      zip
       unzip
       figlet
       glow
@@ -102,31 +130,7 @@
   };
 
   # Let Home Manager install and manage itself.
-  programs = let
-    shellAliases = {
-      # vim aliases
-      vi = "nvim";
-      vim = "nvim";
-      v = "nvim";
-
-      # git aliases
-      gs = "git status";
-      ga = "git add";
-      gc = "git commit";
-      gps = "git push";
-      gl = "git log";
-      gd = "git diff";
-
-      # ls 
-      la = "eza -la --git --icons";
-      l = "eza -l --git --icons";
-
-      cdr = "cd (git rev-parse --show-toplevel)";
-
-      cat = "${pkgs.bat}/bin/bat";
-
-    };
-  in {
+  programs = {
     home-manager.enable = true;
 
     zsh = {
@@ -136,20 +140,17 @@
         theme = "robbyrussell";
         plugins = [ "sbt" ];
       };
-      initExtra = ''
-        function _tmux()
-        {
-          # assumes there a session called `HOME` exists
-          command tmux attach -t HOME \; choose-tree -s
-        }
-      '';
-      shellAliases = { t = "_tmux"; } // shellAliases;
+      shellAliases = shellAliases // { t = "_tmux"; };
+      inherit initExtra;
     };
 
     bash = {
       enable = true;
       inherit shellAliases;
+      inherit initExtra;
     };
+
+    fish = { inherit shellAliases; };
 
     gh = {
       enable = true;
@@ -162,8 +163,6 @@
       };
     };
 
-    ssh = { enable = true; };
-
     git = {
       enable = true;
       userEmail = "ramy.tanios@gmail.com";
@@ -171,7 +170,9 @@
       diff-so-fancy.enable = true;
     };
 
-    java = { enable = true; };
+    java.enable = true;
+
+    ssh.enable = true;
 
   };
 

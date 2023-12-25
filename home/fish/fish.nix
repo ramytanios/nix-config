@@ -16,28 +16,6 @@
       set pure_color_mute yellow
     '';
 
-    shellAliases = {
-      # vim aliases
-      vi = "nvim";
-      vim = "nvim";
-      v = "nvim";
-
-      # git aliases
-      gs = "git status";
-      ga = "git add";
-      gc = "git commit";
-      gps = "git push";
-      gl = "git log";
-
-      # ls 
-      la = "eza -la --git --icons";
-      l = "eza -l --git --icons";
-
-      cdr = "cd (git rev-parse --show-toplevel)";
-
-      cat = "${pkgs.bat}/bin/bat";
-
-    };
   };
 
 }
