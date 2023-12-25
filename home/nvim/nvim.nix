@@ -24,7 +24,7 @@
 
       todo-comments = { plugin = pkgs.vimPlugins.todo-comments-nvim; };
 
-      tokyonight = { plugin = pkgs.vimPlugins.tokyonight-nvim; };
+      # tokyonight = { plugin = pkgs.vimPlugins.tokyonight-nvim; };
 
       comment = {
         plugin = pkgs.vimPlugins.comment-nvim;
