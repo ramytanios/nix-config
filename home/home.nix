@@ -123,6 +123,7 @@
         prompt = "enabled";
         aliases = { };
         editor = "nvim";
+        version = 1; # see issue https://github.com/cli/cli/issues/8462
       };
     };
 
