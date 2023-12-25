@@ -121,6 +121,7 @@
         git_protocol = "ssh";
         prompt = "enabled";
         aliases = { };
+        editor = "nvim";
       };
     };
 
