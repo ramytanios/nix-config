@@ -61,6 +61,13 @@
       thefuck
       fd
       stow
+      zip 
+      unzip
+      figlet
+      glow
+      fx
+      gum
+      duf
     ];
 
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -108,6 +115,7 @@
       gc = "git commit";
       gps = "git push";
       gl = "git log";
+      gd = "git diff";
 
       # ls 
       la = "eza -la --git --icons";
