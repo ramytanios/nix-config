@@ -35,6 +35,8 @@
 
       cdr = "cd (git rev-parse --show-toplevel)";
 
+      cat = "${pkgs.bat}/bin/bat";
+
     };
   };
 
