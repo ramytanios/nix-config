@@ -51,6 +51,18 @@ in {
         echo "Hello world, I am ${config.home.username}"
       '';
 
+      python-packages = ps:
+        with ps; [
+          requests
+          pandas
+          numpy
+          scipy
+          matplotlib
+          ipython
+        ];
+
+      python-with-packages = pkgs.python3.withPackages python-packages;
+
     in with pkgs; [
       # # Adds the 'hello' command to your environment. It prints a friendly
       # # "Hello, world!" when run.
@@ -69,6 +81,7 @@ in {
       #   echo "Hello, ${config.home.username}!"
       # '')
       hello-world
+      python-with-packages
       ncdu
       scala-cli
       coursier
