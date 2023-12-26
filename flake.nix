@@ -16,6 +16,7 @@
   outputs = inputs@{ self, nixpkgs, home-manager, flake-utils, kauz, ... }:
 
     let
+      inherit (nixpkgs) lib;
 
       machines = [
         {
@@ -36,7 +37,7 @@
       isMacos = machine: machine.os == "macos";
 
       # Add here overlays
-      overlays = [ kauz.overlays.default];
+      overlays = [ kauz.overlays.default ];
 
     in {
 
@@ -50,6 +51,7 @@
       };
 
       # Home manager configuration entry point
+      # Attribute set machine name -> home manager configuration
       homeConfigurations = builtins.listToAttrs (builtins.map (machine:
         let
           pkgs = import nixpkgs {
@@ -77,21 +79,32 @@
           };
         }) machines);
 
-      # nix run .#hm-switch-macos
-      # nix run .#hm-switch-nixos
       apps = builtins.mapAttrs (system: machines:
-        builtins.listToAttrs (builtins.map (machine:
+        builtins.listToAttrs (lib.flatten (builtins.map (machine:
           let
             pkgs = import nixpkgs { inherit (machine) system; };
+
             hmScript = pkgs.writeShellScript "hm-switch-${machine.os}" "${
                 inputs.home-manager.packages.${machine.system}.home-manager
               }/bin/home-manager switch --flake ${self}#${machine.name}";
-          in {
-            name = "hm-switch-${machine.os}";
-            value = {
-              type = "app";
-              program = "${hmScript}";
-            };
-          }) machines)) machinesBySystem;
+
+            rebuildScript = pkgs.writeShellScript "rebuild-${machine.os}"
+              "${pkgs.nixos-rebuild}/bin/nixos-rebuild switch --flake ${self}#${machine.name}";
+          in [
+            {
+              name = "switch-${machine.os}";
+              value = {
+                type = "app";
+                program = "${hmScript}";
+              };
+            }
+            {
+              name = "rebuild-${machine.os}";
+              value = {
+                type = "app";
+                program = "${rebuildScript}";
+              };
+            }
+          ]) machines))) machinesBySystem;
     };
 }
