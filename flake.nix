@@ -2,18 +2,22 @@
   description = "Home configuration";
 
   inputs = {
-    # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    darwin = {
+      url = "github:lnl7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     kauz.url = "github:buntec/kauz";
     tokyonight.url = "github:ramytanios/tokyonight-colorscheme-nix-flake";
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, flake-utils, kauz, ... }:
+  outputs =
+    inputs@{ self, nixpkgs, home-manager, darwin, flake-utils, kauz, ... }:
 
     let
       inherit (nixpkgs) lib;
@@ -34,7 +38,9 @@
       ];
 
       machinesBySystem = builtins.groupBy (machine: machine.system) machines;
-      isMacos = machine: machine.os == "macos";
+      isDarwin = machine: machine.os == "macos";
+      darwinMachines = builtins.filter isDarwin machines;
+      nixosMachines = builtins.filter (machine: !isDarwin machine) machines;
 
       # Add here overlays
       overlays = [ kauz.overlays.default ];
@@ -42,13 +48,34 @@
     in {
 
       # NixOS configuration entry point
-      nixosConfigurations = {
-        nixos = nixpkgs.lib.nixosSystem {
+      nixosConfigurations = builtins.listToAttrs (builtins.map (machine: {
+        inherit (machine) name;
+        value = nixpkgs.lib.nixosSystem {
           # specialArgs = {inherit inputs outputs;};
           # > Our main nixos configuration file <
-          modules = [ ./system/configuration.nix ];
+          modules = [
+            {
+              nixpkgs.overlays = overlays;
+              nixpkgs.config.allowUnfree = true;
+            }
+            ./system/configuration.nix
+          ];
         };
-      };
+      }) nixosMachines);
+
+      # Darwin configuration entry point 
+      darwinConfigurations = builtins.listToAttrs (builtins.map (machine: {
+        inherit (machine) name;
+        value = darwin.lib.darwinSystem {
+          modules = [
+            {
+              nixpkgs.overlays = overlays;
+              nixpkgs.config.allowUnfree = true;
+            }
+            ./system/configuration-darwin.nix
+          ];
+        };
+      }) darwinMachines);
 
       # Home manager configuration entry point
       # Attribute set machine name -> home manager configuration
@@ -68,7 +95,7 @@
             modules = [
               {
                 home.username = machine.user;
-                home.homeDirectory = if (isMacos machine) then
+                home.homeDirectory = if (isDarwin machine) then
                   "/Users/${machine.user}"
                 else
                   "/home/${machine.user}";
@@ -89,7 +116,10 @@
               }/bin/home-manager switch --flake ${self}#${machine.name}";
 
             rebuildScript = pkgs.writeShellScript "rebuild-${machine.os}"
-              "${pkgs.nixos-rebuild}/bin/nixos-rebuild switch --flake ${self}#${machine.name}";
+              (if (isDarwin machine) then
+                "${bin/darwin-rebuild} switch --flake ${self}#${machine.name}"
+              else
+                "${pkgs.nixos-rebuild}/bin/nixos-rebuild switch --flake ${self}#${machine.name}");
           in [
             {
               name = "switch-${machine.os}";
