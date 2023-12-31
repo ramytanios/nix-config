@@ -117,7 +117,9 @@
 
             rebuildScript = pkgs.writeShellScript "rebuild-${machine.os}"
               (if (isDarwin machine) then
-                "${bin/darwin-rebuild} switch --flake ${self}#${machine.name}"
+                "${
+                  self.darwinConfigurations.${machine.name}.system
+                }/sw/bin/darwin-rebuild} switch --flake ${self}#${machine.name}"
               else
                 "${pkgs.nixos-rebuild}/bin/nixos-rebuild switch --flake ${self}#${machine.name}");
           in [
