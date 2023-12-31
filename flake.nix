@@ -124,7 +124,7 @@
                 "${pkgs.nixos-rebuild}/bin/nixos-rebuild switch --flake ${self}#${machine.name}");
           in [
             {
-              name = "switch-${machine.os}";
+              name = "hm-switch-${machine.os}";
               value = {
                 type = "app";
                 program = "${hmScript}";
