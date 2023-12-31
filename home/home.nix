@@ -80,35 +80,36 @@ in {
       # (pkgs.writeShellScriptBin "my-hello" ''
       #   echo "Hello, ${config.home.username}!"
       # '')
-      hello-world
-      python-with-packages
-      ncdu
-      scala-cli
-      coursier
-      sbt
-      metals
-      eza
-      podman
-      ripgrep
-      tree
-      gnumake
-      nodejs
-      jdk
       bat
-      killall
-      httpie
-      fzf
-      just
-      thefuck
-      fd
-      stow
-      zip
-      unzip
-      figlet
-      glow
-      fx
-      gum
+      coursier
       duf
+      eza
+      fd
+      figlet
+      fx
+      fzf
+      glow
+      gnumake
+      gum
+      hello-world
+      httpie
+      jdk
+      just
+      killall
+      metals
+      ncdu
+      nodejs
+      podman
+      python-with-packages
+      ripgrep
+      sbt
+      scala-cli
+      stow
+      thefuck
+      tree
+      treefmt
+      unzip
+      zip
     ];
 
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
