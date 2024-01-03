@@ -2,7 +2,9 @@
 
 Nix configuration flake for my personal machines (macOS and NixOS).
 
-❗*I am a complete Nix beginner -- This is work in progress!*
+❗*I am a complete Nix beginner 
+
+⌛*This is work in progress!*
 
 💡Heavily inspired by [buntec](https://github.com/buntec/nix-config)
 
