@@ -2,7 +2,7 @@
 
 Nix configuration flake for my personal machines (macOS and NixOS).
 
-❗*I am a complete Nix beginner -- don't blindly copy paste
+❗*I am a complete Nix beginner -- don't blindly copy paste*
 
 ⌛*This is work in progress!*
 
