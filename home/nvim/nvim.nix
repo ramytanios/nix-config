@@ -24,6 +24,7 @@
 
       todo-comments = { plugin = pkgs.vimPlugins.todo-comments-nvim; };
 
+      # We prefer the colorschemes flake
       # tokyonight = { plugin = pkgs.vimPlugins.tokyonight-nvim; };
 
       comment = {
@@ -42,6 +43,18 @@
       telescope = [
         # { plugin = pkgs.vimPlugins.telescope-ui-select-nvim; }
         { plugin = pkgs.vimPlugins.telescope-fzf-native-nvim; }
+        {
+          plugin = pkgs.vimUtils.buildVimPlugin {
+            name = "telescope-emoji.nvim";
+            src = pkgs.fetchFromGitHub {
+              owner = "xiyaowong";
+              repo = "telescope-emoji.nvim";
+              rev = "86248d97be84a1ce83f0541500ef9edc99ea2aa1";
+              sha256 = "sha256-8V3MTporANLtZkH0RuLviWlgMmR6fay0WmZ3ZOQzpKI=";
+            };
+            meta.homepage = "https://github.com/xiyaowong/telescope-emoji.nvim";
+          };
+        }
         {
           plugin = pkgs.vimPlugins.telescope-nvim;
           type = "lua";

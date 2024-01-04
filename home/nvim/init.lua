@@ -121,6 +121,8 @@ map("n", "<leader>co", tb.commands, { desc = "Telescope commands" })
 
 map("n", "<leader>gf", tb.git_files, { desc = "Telescope git files" })
 
+map("n", "<leader>em", ":Telescope emoji<CR>", { desc = "Telescope emoji" })
+
 map("n", "<leader>mc", tel.extensions.metals.commands, { desc = "Metals commands" })
 
 map("n", "<leader>cs", function()
