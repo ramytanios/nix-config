@@ -149,10 +149,12 @@ in {
 
     zsh = {
       enable = true;
+      enableAutoSuggestions = true;
+      syntaxHighlighting.enable = true;
       oh-my-zsh = {
         enable = true;
         theme = "robbyrussell";
-        plugins = [ "sbt" ];
+        plugins = [ "git" ];
       };
       shellAliases = shellAliases // { t = "_tmux"; };
       inherit initExtra;
