@@ -149,7 +149,7 @@ in {
 
     zsh = {
       enable = true;
-      enableAutoSuggestions = true;
+      enableAutosuggestions = true;
       syntaxHighlighting.enable = true;
       oh-my-zsh = {
         enable = true;
