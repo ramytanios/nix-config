@@ -1,6 +1,6 @@
 { pkgs }:
 
-let shell = import ./aliases.nix { inherit pkgs; };
+let core = import ./aliases.nix { inherit pkgs; };
 
 in {
   programs.zsh = {
@@ -12,7 +12,7 @@ in {
       theme = "robbyrussell";
       plugins = [ "git" ];
     };
-    shellAliases = shell.aliases // { t = "_tmux"; };
-    inherit (shell) initExtra;
+    shellAliases = core.shellAliases // { t = "_tmux"; };
+    inherit (core) initExtra;
   };
 }

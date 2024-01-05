@@ -1,10 +1,10 @@
 { pkgs }:
-let shell = import ./core.nix { inherit pkgs; };
+let core = import ./core.nix { inherit pkgs; };
 in {
   bash = {
     enable = true;
-    shellAliases = shell.aliases;
-    inherit (shell) initExtra;
+    inherit (core) shellAliases;
+    inherit (core) initExtra;
   };
 
 }

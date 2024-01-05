@@ -1,4 +1,4 @@
 { pkgs }:
 
-let shell = import ./core.nix { inherit pkgs; };
-in { fish = { shellAliases = shell.aliases; }; }
+let core = import ./core.nix { inherit pkgs; };
+in { fish = { inherit (core) shellAliases; }; }

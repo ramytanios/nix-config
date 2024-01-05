@@ -1,5 +1,5 @@
 { pkgs, ... }: {
-  aliases = {
+  shellAliases = {
     vi = "nvim";
     vim = "nvim";
     v = "nvim";
