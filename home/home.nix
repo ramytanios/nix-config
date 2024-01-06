@@ -1,37 +1,11 @@
-{ config, pkgs, ... }:
-let
+{ config, pkgs, ... }: {
 
-  shellAliases = {
-    vi = "nvim";
-    vim = "nvim";
-    v = "nvim";
-
-    gs = "git status";
-    ga = "git add";
-    gc = "git commit";
-    gps = "git push";
-    gl = "git log";
-    gd = "git diff";
-
-    la = "eza -la --git --icons";
-    l = "eza -l --git --icons";
-
-    cdr = "cd (git rev-parse --show-toplevel)";
-    cat = "${pkgs.bat}/bin/bat";
-  };
-
-  initExtra = ''
-    function _tmux()
-    {
-      # assumes there a session called `HOME` exists
-      command tmux attach -t HOME \; choose-tree -s
-    }
-  '';
-
-in {
-
-  imports =
-    [ ./tmux/tmux.nix ./kitty/kitty.nix ./nvim/nvim.nix ./fish/fish.nix ];
+  imports = [
+    ./tmux/tmux.nix
+    ./kitty/kitty.nix
+    ./nvim/nvim.nix
+    ./shell/default.nix
+  ];
 
   home = {
 
@@ -147,27 +121,6 @@ in {
   programs = {
     home-manager.enable = true;
 
-    zsh = {
-      enable = true;
-      enableAutoSuggestions = true;
-      syntaxHighlighting.enable = true;
-      oh-my-zsh = {
-        enable = true;
-        theme = "robbyrussell";
-        plugins = [ "git" ];
-      };
-      shellAliases = shellAliases // { t = "_tmux"; };
-      inherit initExtra;
-    };
-
-    bash = {
-      enable = true;
-      inherit shellAliases;
-      inherit initExtra;
-    };
-
-    fish = { inherit shellAliases; };
-
     gh = {
       enable = true;
       settings = {
@@ -191,5 +144,4 @@ in {
     ssh.enable = true;
 
   };
-
 }
