@@ -1,9 +1,7 @@
 { inputs, ... }: {
-  imports = [ inputs.colorscheme.homeModules.default.tokyonight ];
+  imports = [ inputs.colorscheme.homeModules.default.kauz ];
 
-  # Tokyonight colorscheme
-  colorscheme.tokyonight = {
-    style = "storm";
+  colorscheme.kauz = {
     fish.enable = true;
     tmux.enable = true;
     kitty.enable = true;

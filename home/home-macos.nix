@@ -1,8 +1,8 @@
 { inputs, pkgs, ... }: {
-  imports = [ inputs.colorscheme.homeModules.default.kauz ];
+  imports = [ inputs.colorscheme.homeModules.default.tokyonight ];
 
-  # Kauz colorscheme 
-  colorscheme.kauz = {
+  colorscheme.tokyonight = {
+    style = "storm";
     fish.enable = true;
     tmux.enable = true;
     kitty.enable = true;
