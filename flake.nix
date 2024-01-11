@@ -12,12 +12,11 @@
       url = "github:lnl7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    kauz.url = "github:buntec/kauz";
-    tokyonight.url = "github:ramytanios/tokyonight-colorscheme-nix-flake";
+    colorscheme.url = "github:ramytanios/colorschemes-nix-flake";
   };
 
   outputs =
-    inputs@{ self, nixpkgs, home-manager, darwin, flake-utils, kauz, ... }:
+    inputs@{ self, nixpkgs, home-manager, darwin, flake-utils, colorscheme, ... }:
 
     let
       inherit (nixpkgs) lib;
@@ -43,7 +42,7 @@
       nixosMachines = builtins.filter (machine: !isDarwin machine) machines;
 
       # Add here overlays
-      overlays = [ kauz.overlays.default ];
+      overlays = [ colorscheme.overlays.kauz.default ];
 
     in {
 

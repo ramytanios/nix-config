@@ -22,7 +22,13 @@
         config = builtins.readFile ./plugins/oil.lua;
       };
 
-      todo-comments = { plugin = pkgs.vimPlugins.todo-comments-nvim; };
+      todo-comments = {
+        plugin = pkgs.vimPlugins.todo-comments-nvim;
+        type = "lua";
+        config = ''
+          require("todo-comments").setup({})
+        '';
+      };
 
       # We prefer the colorschemes flake
       # tokyonight = { plugin = pkgs.vimPlugins.tokyonight-nvim; };

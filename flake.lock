@@ -1,5 +1,26 @@
 {
   "nodes": {
+    "colorscheme": {
+      "inputs": {
+        "kauz": "kauz",
+        "nightfox": "nightfox",
+        "nixpkgs": "nixpkgs_2",
+        "tokyonight": "tokyonight"
+      },
+      "locked": {
+        "lastModified": 1704984109,
+        "narHash": "sha256-/6bCLa1zKzkq+npmWj7hLdqbc9aFElwXhFwYeX1hhM8=",
+        "owner": "ramytanios",
+        "repo": "colorschemes-nix-flake",
+        "rev": "955ae3415fdcaefba2845622ecaaad3c014ddce7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ramytanios",
+        "repo": "colorschemes-nix-flake",
+        "type": "github"
+      }
+    },
     "darwin": {
       "inputs": {
         "nixpkgs": [
@@ -45,11 +66,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1704311514,
-        "narHash": "sha256-j6JsfCv31bW7LzV06q2L/27QZ4k1Zq7lEq2AR9R150A=",
+        "lastModified": 1704980804,
+        "narHash": "sha256-lPNNKdPqIYcjhhYIVwlajNt/HqVWbMOoSdNnwCvOP04=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "fcbc70a7ee064f2b65dc1fac1717ca2a9813bbe6",
+        "rev": "93e804e7f8a1eb88bde6117cd5046501e66aa4bd",
         "type": "github"
       },
       "original": {
@@ -63,16 +84,32 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1704203983,
-        "narHash": "sha256-DiBv84Ikxjpp7ziltWeQM5rrYLDDlaLqifsxqzQhJGo=",
+        "lastModified": 1704475005,
+        "narHash": "sha256-TcMv7e+6dm3soVXFaOyS097n4LA8vJ1jQJOWkpGWK14=",
         "owner": "buntec",
         "repo": "kauz",
-        "rev": "5cf94d4f3024a55f9230a8dfd4cf3de252fa0d3b",
+        "rev": "0787e60bfc26996b3c943f3ac631b35336ed43e1",
         "type": "github"
       },
       "original": {
         "owner": "buntec",
         "repo": "kauz",
+        "type": "github"
+      }
+    },
+    "nightfox": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1704951965,
+        "narHash": "sha256-u9cWMOrbc/2vkVpDqWLcdXlmH4OyDkGuuN95UthEiFc=",
+        "owner": "EdenEast",
+        "repo": "nightfox.nvim",
+        "rev": "1e650316680a777fb50e4ab35d82ecf32da485b8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "EdenEast",
+        "repo": "nightfox.nvim",
         "type": "github"
       }
     },
@@ -92,11 +129,25 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1704194953,
-        "narHash": "sha256-RtDKd8Mynhe5CFnVT8s0/0yqtWFMM9LmCzXv/YKxnq4=",
+        "lastModified": 1704842529,
+        "narHash": "sha256-OTeQA+F8d/Evad33JMfuXC89VMetQbsU4qcaePchGr4=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "eabe8d3eface69f5bb16c18f8662a702f50c20d5",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "type": "indirect"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
+        "lastModified": 1704722960,
+        "narHash": "sha256-mKGJ3sPsT6//s+Knglai5YflJUF2DGj7Ai6Ynopz0kI=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "bd645e8668ec6612439a9ee7e71f7eac4099d4f6",
+        "rev": "317484b1ead87b9c1b8ac5261a8d2dd748a0492d",
         "type": "github"
       },
       "original": {
@@ -108,12 +159,11 @@
     },
     "root": {
       "inputs": {
+        "colorscheme": "colorscheme",
         "darwin": "darwin",
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
-        "kauz": "kauz",
-        "nixpkgs": "nixpkgs_2",
-        "tokyonight": "tokyonight"
+        "nixpkgs": "nixpkgs_3"
       }
     },
     "systems": {
@@ -132,24 +182,6 @@
       }
     },
     "tokyonight": {
-      "inputs": {
-        "tokyonight": "tokyonight_2"
-      },
-      "locked": {
-        "lastModified": 1704273076,
-        "narHash": "sha256-CmokLfKuq+lBqXe9e8cmrTGBjaYWFDE4gHyj/Euw9OM=",
-        "owner": "ramytanios",
-        "repo": "tokyonight-colorscheme-nix-flake",
-        "rev": "7f9f7f14eb3ac1adcdd13dc20c5b9125991cf9c6",
-        "type": "github"
-      },
-      "original": {
-        "owner": "ramytanios",
-        "repo": "tokyonight-colorscheme-nix-flake",
-        "type": "github"
-      }
-    },
-    "tokyonight_2": {
       "flake": false,
       "locked": {
         "lastModified": 1698229236,
