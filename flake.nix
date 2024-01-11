@@ -17,7 +17,6 @@
 
   outputs = inputs@{ self, nixpkgs, home-manager, darwin, flake-utils
     , colorscheme, ... }:
-
     let
       inherit (nixpkgs) lib;
 
