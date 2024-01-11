@@ -66,6 +66,7 @@
       darwinConfigurations = builtins.listToAttrs (builtins.map (machine: {
         inherit (machine) name;
         value = darwin.lib.darwinSystem {
+          inherit (machine) system;
           modules = [
             {
               nixpkgs.overlays = overlays;
