@@ -40,11 +40,11 @@
       cleanup = "zap";
     };
     casks = [
-      "discord"
+      # "discord"
       "docker"
-      "firefox"
-      "kitty"
-      "mattermost"
+      # "firefox"
+      # "kitty"
+      # "mattermost"
       "telegram"
       "whatsapp"
     ];
