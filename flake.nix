@@ -15,8 +15,8 @@
     colorscheme.url = "github:ramytanios/colorschemes-nix-flake";
   };
 
-  outputs =
-    inputs@{ self, nixpkgs, home-manager, darwin, flake-utils, colorscheme, ... }:
+  outputs = inputs@{ self, nixpkgs, home-manager, darwin, flake-utils
+    , colorscheme, ... }:
 
     let
       inherit (nixpkgs) lib;
@@ -121,6 +121,10 @@
                 }/sw/bin/darwin-rebuild} switch --flake ${self}#${machine.name}"
               else
                 "${pkgs.nixos-rebuild}/bin/nixos-rebuild switch --flake ${self}#${machine.name}");
+
+            cleanScript = pkgs.writeShellScript "clean-${machine.os}"
+              "nix-collect-garbage --delete-older-than 15d";
+
           in [
             {
               name = "hm-switch-${machine.os}";
@@ -134,6 +138,13 @@
               value = {
                 type = "app";
                 program = "${rebuildScript}";
+              };
+            }
+            {
+              name = "clean-${machine.os}";
+              value = {
+                type = "app";
+                program = "${cleanScript}";
               };
             }
           ]) machines))) machinesBySystem;

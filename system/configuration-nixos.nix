@@ -12,6 +12,14 @@
     ./hardware-configuration.nix
   ];
 
+  # automatic garbage collection
+  # https://nixos.wiki/wiki/Storage_optimization
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 15d";
+  };
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
