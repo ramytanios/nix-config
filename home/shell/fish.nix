@@ -1,4 +1,4 @@
-{ pkgs }:
+{ pkgs, ... }:
 
 let core = import ./core.nix { inherit pkgs; };
-in { fish = { inherit (core) shellAliases; }; }
+in { programs.fish = { inherit (core) shellAliases; }; }

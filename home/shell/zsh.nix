@@ -1,6 +1,6 @@
-{ pkgs }:
+{ pkgs, ...}:
 
-let core = import ./aliases.nix { inherit pkgs; };
+let core = import ./core.nix { inherit pkgs; };
 
 in {
   programs.zsh = {

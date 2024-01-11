@@ -1,1 +1,1 @@
-{ pkgs }: { imports = [ ./fish.nix ./zsh.nix ./bash.nix ]; }
+{ pkgs, ... }: { imports = [ ./fish.nix ./zsh.nix ./bash.nix ]; }
