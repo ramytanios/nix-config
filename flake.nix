@@ -119,7 +119,7 @@
               (if (isDarwin machine) then
                 "${
                   self.darwinConfigurations.${machine.name}.system
-                }/sw/bin/darwin-rebuild} switch --flake ${self}#${machine.name}"
+                }/sw/bin/darwin-rebuild switch --flake ${self}#${machine.name}"
               else
                 "${pkgs.nixos-rebuild}/bin/nixos-rebuild switch --flake ${self}#${machine.name}");
 

@@ -18,6 +18,7 @@
     automatic = true;
     dates = "weekly";
     options = "--delete-older-than 15d";
+    user = "ramytanios";
   };
 
   # Bootloader.

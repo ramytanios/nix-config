@@ -33,6 +33,7 @@
       Minute = 0;
     };
     options = "--delete-older-than 30d";
+    user = "ramytanios";
   };
 
   # Fonts 
@@ -43,7 +44,7 @@
         fonts = [ "FiraCode" "JetBrainsMono" "DroidSansMono" ];
       })
     ];
-
+  
   # homebrew 
   homebrew = {
     enable = true;
