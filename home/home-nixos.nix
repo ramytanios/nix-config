@@ -1,9 +1,9 @@
 { inputs, ... }: {
-  imports = [ inputs.tokyonight.homeModules.colorscheme ];
+  imports = [ inputs.colorscheme.homeModules.default.tokyonight ];
 
   # Tokyonight colorscheme
   colorscheme.tokyonight = {
-    variant = "storm";
+    style = "storm";
     fish.enable = true;
     tmux.enable = true;
     kitty.enable = true;

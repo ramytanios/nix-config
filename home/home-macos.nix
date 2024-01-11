@@ -1,8 +1,8 @@
 { inputs, pkgs, ... }: {
-  imports = [ inputs.kauz.homeModules.default ];
+  imports = [ inputs.colorscheme.homeModules.default.kauz ];
 
   # Kauz colorscheme 
-  kauz = {
+  colorscheme.kauz = {
     fish.enable = true;
     tmux.enable = true;
     kitty.enable = true;
