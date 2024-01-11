@@ -7,11 +7,11 @@
         "tokyonight": "tokyonight"
       },
       "locked": {
-        "lastModified": 1704975422,
-        "narHash": "sha256-gzJR0K3lyU8jUnZhiMVy4BzTOIgziFtV2o8MhFZyI+g=",
+        "lastModified": 1704976594,
+        "narHash": "sha256-8xTiMyarORN+OEKBzJW08FRgWTvfZLw6Yw5CzIKQrbY=",
         "owner": "ramytanios",
         "repo": "colorschemes-nix-flake",
-        "rev": "fc4faaf5f14d8977d057992573897a017f32c770",
+        "rev": "05eab5f573dd42394f25e3e0d980bddc886d0669",
         "type": "github"
       },
       "original": {

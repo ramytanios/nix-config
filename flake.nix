@@ -13,6 +13,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     colorscheme.url = "github:ramytanios/colorschemes-nix-flake";
+
   };
 
   outputs =
