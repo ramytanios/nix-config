@@ -1,7 +1,24 @@
-{ config, pkgs, ... }: {
-  nix.extraOptions = ''
-    experimental-features = nix-command flakes
-  '';
+{ pkgs, ... }: {
+
+  nix = {
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+
+    # automatic garbage collection
+    # https://nixos.wiki/wiki/Storage_optimization
+    gc = {
+      automatic = true;
+      interval = {
+        Weekday = 0;
+        Hour = 0;
+        Minute = 0;
+      };
+      options = "--delete-older-than 30d";
+      user = "ramytanios";
+    };
+
+  };
 
   # Make sure the nix daemon always runs
   services.nix-daemon.enable = true;
@@ -23,20 +40,6 @@
       # kitty
     ];
 
-  # automatic garbage collection
-  # https://nixos.wiki/wiki/Storage_optimization
-  nix.gc = {
-    automatic = true;
-    interval = {
-      Weekday = 0;
-      Hour = 0;
-      Minute = 0;
-    };
-    options = "--delete-older-than 30d";
-    user = "ramytanios";
-  };
-
-  # Fonts 
   fonts.fontDir.enable = true;
   fonts.fonts = with pkgs;
     [
@@ -44,7 +47,7 @@
         fonts = [ "FiraCode" "JetBrainsMono" "DroidSansMono" ];
       })
     ];
-  
+
   # homebrew 
   homebrew = {
     enable = true;
@@ -54,10 +57,9 @@
     };
     casks = [
       "discord"
-      "docker"
+      # "docker"
       "firefox"
-      "kitty"
-      "mattermost"
+      # "kitty"
       "telegram"
       "whatsapp"
     ];

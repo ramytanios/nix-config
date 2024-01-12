@@ -2,24 +2,26 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix = {
+    settings.experimental-features = [ "nix-command" "flakes" ];
+
+    # automatic garbage collection
+    # https://nixos.wiki/wiki/Storage_optimization
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 15d";
+      user = "ramytanios";
+    };
+  };
 
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
-
-  # automatic garbage collection
-  # https://nixos.wiki/wiki/Storage_optimization
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 15d";
-    user = "ramytanios";
-  };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -41,17 +43,19 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  services = {
+    # Enable the X11 windowing system.
+    xserver = {
+      enable = true;
 
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+      # Enable the GNOME Desktop Environment.
+      displayManager.gdm.enable = true;
+      desktopManager.gnome.enable = true;
 
-  # Configure keymap in X11
-  services.xserver = {
-    layout = "us";
-    xkbVariant = "";
+      # Configure keymap in X11
+      layout = "us";
+      xkbVariant = "";
+    };
   };
 
   # Enable CUPS to print documents.
