@@ -13,10 +13,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     colorscheme.url = "github:ramytanios/colorschemes-nix-flake";
+    watch = {
+      url = "github:ramytanios/watch";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, darwin, flake-utils
-    , colorscheme, ... }:
+    , colorscheme, watch, ... }:
     let
       inherit (nixpkgs) lib;
 
@@ -41,7 +45,8 @@
       nixosMachines = builtins.filter (machine: !isDarwin machine) machines;
 
       # Add here overlays
-      overlays = [ colorscheme.overlays.kauz.default ];
+      overlays =
+        [ colorscheme.overlays.kauz.default watch.overlays.default ];
 
     in {
 

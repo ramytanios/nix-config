@@ -83,6 +83,7 @@
       tree
       treefmt
       unzip
+      watch
       zip
     ];
 
