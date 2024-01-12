@@ -14,7 +14,7 @@
     la = "eza -la --git --icons";
     l = "eza -l --git --icons";
 
-    cdr = "cd (git rev-parse --show-toplevel)";
+    groot = "cd (git rev-parse --show-toplevel)";
     cat = "${pkgs.bat}/bin/bat";
   };
 
