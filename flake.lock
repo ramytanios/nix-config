@@ -219,11 +219,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1705104164,
-        "narHash": "sha256-pllCu3Hcm1wP/B0SUxgUXvHeEd4w8s2aVrEQRdIL1yo=",
+        "lastModified": 1705169127,
+        "narHash": "sha256-j9OEtNxOIPWZWjbECVMkI1TO17SzlpHMm0LnVWKOR/g=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "0912d26b30332ae6a90e1b321ff88e80492127dd",
+        "rev": "f2942f3385f1b35cc8a1abb03a45e29c9cb4d3c8",
         "type": "github"
       },
       "original": {
@@ -264,11 +264,11 @@
         "typelevel-nix": "typelevel-nix_2"
       },
       "locked": {
-        "lastModified": 1705153048,
-        "narHash": "sha256-fDDlPpl/92ZkpxhOPaSLmfa5kk/rErSO+Q0UR/swyv0=",
+        "lastModified": 1705179754,
+        "narHash": "sha256-YsyufLgJpTqfXX2TSkbnqFjUiKhH6N/70+4I5MAb7A8=",
         "owner": "ramytanios",
         "repo": "fs2-live-server",
-        "rev": "10e804b37f800849b73ac6b2aa2999212815f0e9",
+        "rev": "11b8eb8ea1106ce37aac672e69a30f5678572107",
         "type": "github"
       },
       "original": {
@@ -497,11 +497,11 @@
     },
     "scala-dev": {
       "locked": {
-        "lastModified": 1705062385,
-        "narHash": "sha256-euccFHOefhDiOdjdM7Ea2lkFKA6vToPvHfwVUqSgh+Y=",
+        "lastModified": 1705179344,
+        "narHash": "sha256-m09b8a87TgPouAk9CL04mpOLPrS/2U36jxtlAEt6ah4=",
         "owner": "ramytanios",
         "repo": "nix-lib",
-        "rev": "75dc52581707b47e0bbd15934e02f61b4d18da44",
+        "rev": "b15ad255798f7df5c64f4be63b027becc1f19d95",
         "type": "github"
       },
       "original": {
@@ -512,11 +512,11 @@
     },
     "scala-dev_2": {
       "locked": {
-        "lastModified": 1705062385,
-        "narHash": "sha256-euccFHOefhDiOdjdM7Ea2lkFKA6vToPvHfwVUqSgh+Y=",
+        "lastModified": 1705179344,
+        "narHash": "sha256-m09b8a87TgPouAk9CL04mpOLPrS/2U36jxtlAEt6ah4=",
         "owner": "ramytanios",
         "repo": "nix-lib",
-        "rev": "75dc52581707b47e0bbd15934e02f61b4d18da44",
+        "rev": "b15ad255798f7df5c64f4be63b027becc1f19d95",
         "type": "github"
       },
       "original": {
@@ -735,11 +735,11 @@
         "typelevel-nix": "typelevel-nix_3"
       },
       "locked": {
-        "lastModified": 1705102172,
-        "narHash": "sha256-ZWXz6EmyNSwjrkCCoIYjEKWz0V3bPnglBAsR8QHd4PE=",
+        "lastModified": 1705179659,
+        "narHash": "sha256-PG5adbbHl7xWPzcjVt69AgYfqGA3G9Zd4VLx4U/fGr4=",
         "owner": "ramytanios",
         "repo": "watch",
-        "rev": "046f692dd6c52e36067c562596fd61b8cca821ec",
+        "rev": "78f333bc8b078de40eb12ae758b7d77ca5e93e8a",
         "type": "github"
       },
       "original": {
