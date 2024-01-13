@@ -17,10 +17,18 @@
       url = "github:ramytanios/watch";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    live-server = {
+      url = "github:ramytanios/fs2-live-server";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    git-summary = {
+      url = "github:buntec/git-summary-scala";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, darwin, flake-utils
-    , colorscheme, watch, ... }:
+    , colorscheme, watch, live-server, git-summary, ... }:
     let
       inherit (nixpkgs) lib;
 
@@ -45,8 +53,12 @@
       nixosMachines = builtins.filter (machine: !isDarwin machine) machines;
 
       # Add here overlays
-      overlays =
-        [ colorscheme.overlays.kauz.default watch.overlays.default ];
+      overlays = [
+        colorscheme.overlays.kauz.default
+        watch.overlays.default
+        live-server.overlays.default
+        git-summary.overlays.default
+      ];
 
     in {
 

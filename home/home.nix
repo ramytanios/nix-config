@@ -62,6 +62,7 @@
       figlet
       fx
       fzf
+      # git-summary
       glow
       gnumake
       gum
@@ -70,6 +71,7 @@
       jdk
       just
       killall
+      live-server
       metals
       ncdu
       nodejs
