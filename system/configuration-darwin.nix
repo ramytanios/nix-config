@@ -20,14 +20,23 @@
 
   };
 
+  system.defaults.dock.autohide = true;
+  system.defaults.dock.static-only = true;
+  system.defaults.finder.AppleShowAllExtensions = true;
+  system.defaults.finder.AppleShowAllFiles = true;
+
+  # disable "natural" scroll direction
+  system.defaults.NSGlobalDomain."com.apple.swipescrolldirection" = false;
+
+  # key repeat: lower is faster
+  system.defaults.NSGlobalDomain.InitialKeyRepeat = 10;
+  system.defaults.NSGlobalDomain.KeyRepeat = 1;
+
   # Make sure the nix daemon always runs
   services.nix-daemon.enable = true;
 
   # Enable sudo authentication with Touch ID
   security.pam.enableSudoTouchIdAuth = true;
-
-  # Auto hide dock
-  system.defaults.dock.autohide = true;
 
   nix.package = pkgs.nix; # this is the default
 
