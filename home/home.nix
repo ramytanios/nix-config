@@ -62,7 +62,7 @@
       figlet
       fx
       fzf
-      # git-summary
+      git-summary
       glow
       gnumake
       gum
@@ -84,6 +84,8 @@
       thefuck
       tree
       treefmt
+      typst
+      typst-live
       unzip
       watch
       zip

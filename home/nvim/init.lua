@@ -156,3 +156,8 @@ opt.clipboard:append("unnamedplus")
 opt.splitright = true
 opt.splitbelow = true
 opt.swapfile = false
+
+-- workaround since .typ is currently recognized as filetype sql
+vim.cmd([[
+  autocmd! BufRead,BufNewFile *.typ set filetype=typst
+]])

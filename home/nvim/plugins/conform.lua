@@ -10,6 +10,7 @@ require("conform").setup({
 		json = { "prettier" },
 		html = { "prettier" },
 		xml = { "xmlformatter" },
+		typ = { "typstfmt" },
 	},
 	-- format_on_save = {
 	-- 	lsp_fallback = true,

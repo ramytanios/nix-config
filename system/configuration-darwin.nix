@@ -21,15 +21,18 @@
   };
 
   system.defaults.dock.autohide = true;
-  system.defaults.dock.static-only = true;
+  system.defaults.dock.static-only = false; # dont show only running apps, but all
   system.defaults.finder.AppleShowAllExtensions = true;
   system.defaults.finder.AppleShowAllFiles = true;
+system.defaults.NSGlobalDomain.ApplePressAndHoldEnabled = false;
+  # disable automatic spelling correction
+  system.defaults.NSGlobalDomain.NSAutomaticSpellingCorrectionEnabled = false;
 
-  # disable "natural" scroll direction
-  system.defaults.NSGlobalDomain."com.apple.swipescrolldirection" = false;
+  # enable "natural" scroll direction
+  system.defaults.NSGlobalDomain."com.apple.swipescrolldirection" = true;
 
   # key repeat: lower is faster
-  system.defaults.NSGlobalDomain.InitialKeyRepeat = 10;
+  system.defaults.NSGlobalDomain.InitialKeyRepeat = 15;
   system.defaults.NSGlobalDomain.KeyRepeat = 1;
 
   # Make sure the nix daemon always runs

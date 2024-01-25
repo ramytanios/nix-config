@@ -236,12 +236,14 @@
       nodePackages.bash-language-server
       nodePackages.typescript-language-server
       texlab
+      typst-lsp
 
       # Formatters and linters
       stylua
       ruff
       statix
       nixfmt
+      typstfmt
     ];
 
     extraLuaConfig = builtins.readFile ./init.lua;
