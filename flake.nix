@@ -29,7 +29,7 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, darwin, flake-utils
+  outputs = inputs@{ self, nixpkgs, home-manager, darwin, flake-utils, tokyonight
     , colorscheme, watch, live-server, git-summary, ... }:
     let
       inherit (nixpkgs) lib;
