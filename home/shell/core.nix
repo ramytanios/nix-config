@@ -7,7 +7,8 @@
     gs = "git status";
     ga = "git add";
     gc = "git commit";
-    gps = "git push";
+    gp = "git push";
+    gpt = "git push --follow-tags";
     gl = "git log";
     gd = "git diff";
 
