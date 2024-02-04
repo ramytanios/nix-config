@@ -8,11 +8,11 @@
         "tokyonight": "tokyonight"
       },
       "locked": {
-        "lastModified": 1705612261,
-        "narHash": "sha256-7HXSmRniAUYqoIUDwbT8Ynq02WpHQdcAzcwwAYLtlUY=",
+        "lastModified": 1707033692,
+        "narHash": "sha256-UdQK3GGPO8X45mt9gLmIiQ7L+KQRTxVNAoCFjWhdA/g=",
         "owner": "ramytanios",
         "repo": "colorschemes-nix-flake",
-        "rev": "1133fffff667bf6b439ab8fbcd93f72986ff7b96",
+        "rev": "3ed2aab5fe453feb0f774687afaaf600d2365387",
         "type": "github"
       },
       "original": {
@@ -28,11 +28,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1705915768,
-        "narHash": "sha256-+Jlz8OAqkOwJlioac9wtpsCnjgGYUhvLpgJR/5tP9po=",
+        "lastModified": 1706833576,
+        "narHash": "sha256-w7BL0EWRts+nD1lbLECIuz6fRzmmV+z8oWwoY7womR0=",
         "owner": "lnl7",
         "repo": "nix-darwin",
-        "rev": "1e706ef323de76236eb183d7784f3bd57255ec0b",
+        "rev": "bdbae6ecff8fcc322bf6b9053c0b984912378af7",
         "type": "github"
       },
       "original": {
@@ -280,11 +280,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1706080884,
-        "narHash": "sha256-qhxisCrSraN5YWVb0lNCFH8ovqnCw5W9ldac4Dzr0Nw=",
+        "lastModified": 1707029945,
+        "narHash": "sha256-GA6IOAKouQlTbile9PvAa3UUh7s5mi6NsZMX8lpgozg=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "6b28ab2d798c1c84e24053d95f4ee1dd9d81e2fb",
+        "rev": "230836bb7ca318aec7bad8442954da611d06a172",
         "type": "github"
       },
       "original": {
@@ -523,11 +523,11 @@
     },
     "nixpkgs_6": {
       "locked": {
-        "lastModified": 1705856552,
-        "narHash": "sha256-JXfnuEf5Yd6bhMs/uvM67/joxYKoysyE3M2k6T3eWbg=",
+        "lastModified": 1706732774,
+        "narHash": "sha256-hqJlyJk4MRpcItGYMF+3uHe8HvxNETWvlGtLuVpqLU0=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "612f97239e2cc474c13c9dafa0df378058c5ad8d",
+        "rev": "b8b232ae7b8b144397fdb12d20f592e5e7c1a64d",
         "type": "github"
       },
       "original": {
@@ -753,11 +753,11 @@
         "tokyonight": "tokyonight_3"
       },
       "locked": {
-        "lastModified": 1704978674,
-        "narHash": "sha256-+gIJLsztMWnvFMCcYTAzd4fVG/WEYQ8iixaFwl1/KQE=",
+        "lastModified": 1707033593,
+        "narHash": "sha256-Vvna044iNDWtugd/7nfCVwpOgufgi8slgzlzaskl5xQ=",
         "owner": "ramytanios",
         "repo": "tokyonight-colorscheme-nix-flake",
-        "rev": "f89d7c41de162933c80160d006ea353081442c3c",
+        "rev": "fbcf6a9d16f47b4dd89059d9aa36a76f2a7a479d",
         "type": "github"
       },
       "original": {

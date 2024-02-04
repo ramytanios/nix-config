@@ -71,7 +71,7 @@ system.defaults.NSGlobalDomain.ApplePressAndHoldEnabled = false;
       "discord"
       # "docker"
       "firefox"
-      # "kitty"
+      "kitty"
       "telegram"
       "whatsapp"
     ];
