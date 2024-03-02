@@ -19,6 +19,7 @@
       bind -r h resize-pane -L 5
       bind -r m resize-pane -Z
       unbind '"'
+      bind-key s choose-tree -ZsN
       bind - split-window -v
       unbind %
       bind | split-window -h
