@@ -62,7 +62,7 @@
       figlet
       fx
       fzf
-      git-summary
+      # git-summary
       glow
       gnumake
       gum
@@ -71,7 +71,7 @@
       jdk
       just
       killall
-      live-server
+      # live-server
       metals
       ncdu
       nodejs
@@ -87,7 +87,7 @@
       typst
       typst-live
       unzip
-      watch
+      # watch
       zip
     ];
 
