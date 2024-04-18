@@ -5,7 +5,7 @@ let core = import ./core.nix { inherit pkgs; };
 in {
   programs.zsh = {
     enable = true;
-    enableAutosuggestions = true;
+    autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     oh-my-zsh = {
       enable = true;

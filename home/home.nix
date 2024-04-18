@@ -1,11 +1,7 @@
 { config, pkgs, ... }: {
 
-  imports = [
-    ./tmux/tmux.nix
-    ./kitty/kitty.nix
-    ./nvim/nvim.nix
-    ./shell/default.nix
-  ];
+  imports =
+    [ ./tmux/tmux.nix ./kitty/kitty.nix ./nvim/nvim.nix ./shell/default.nix ];
 
   home = {
 
@@ -33,6 +29,11 @@
           scipy
           matplotlib
           ipython
+          scikitlearn
+          seaborn
+          statsmodels
+          jupyterlab
+          notebook
         ];
 
       python-with-packages = pkgs.python3.withPackages python-packages;
@@ -56,6 +57,7 @@
       # '')
       bat
       coursier
+      csvlens
       duf
       eza
       fd
@@ -147,6 +149,46 @@
     java.enable = true;
 
     ssh.enable = true;
+
+    vscode = {
+      enable = true;
+      extensions = with pkgs.vscode-extensions; [
+        vscodevim.vim
+        enkia.tokyo-night
+        yzhang.markdown-all-in-one
+        ms-python.python
+        ms-python.vscode-pylance
+        ms-toolsai.jupyter
+      ];
+      userSettings = {
+        "python.languageServer" = "Pylance";
+        "editor.fontLigatures" = true;
+        "workbench.colorTheme" = "Tokyo Night Storm";
+        "workbench.iconTheme" = "Monokai Pro Icons";
+        "editor.fontFamily" = "JetBrains Nerd Font Mono";
+        "editor.fontSize" = 15;
+        "vim.insertModeKeyBindings" = [{
+          "before" = [ "j" "k" ];
+          "after" = [ "<Esc>" ];
+        }];
+
+      };
+      keybindings = [
+        {
+          "key" = "ctrl+j";
+          "command" = "selectNextSuggestion";
+          "when" =
+            "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus";
+        }
+
+        {
+          "key" = "ctrl+k";
+          "command" = "selectPrevSuggestion";
+          "when" =
+            "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus";
+        }
+      ];
+    };
 
   };
 }
