@@ -1,6 +1,6 @@
 require("conform").setup({
 	formatters_by_ft = {
-		python = { "ruff" },
+		python = { "ruff_format" },
 		cpp = { "clang_format" },
 		lua = { "stylua" },
 		bash = { "shfmt" },
