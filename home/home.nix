@@ -35,6 +35,7 @@
           statsmodels
           jupyterlab
           notebook
+          joblib
         ];
 
       python-with-packages = pkgs.python3.withPackages python-packages;
