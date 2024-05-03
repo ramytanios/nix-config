@@ -196,6 +196,11 @@
         '';
       };
 
+      highlight-undo = {
+      plugin = pkgs.vimPlugins.highlight-undo-nvim;
+      type = "lua";
+      };
+
     in pkgs.lib.lists.flatten [
       lsp
       lsp-signature
@@ -225,6 +230,7 @@
       metals
       oil
       lua-dev
+      highlight-undo
     ];
 
     extraPackages = with pkgs; [
