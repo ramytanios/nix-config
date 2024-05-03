@@ -199,6 +199,9 @@
       highlight-undo = {
       plugin = pkgs.vimPlugins.highlight-undo-nvim;
       type = "lua";
+      config = ''
+        require('highlight-undo').setup({})
+      '';
       };
 
     in pkgs.lib.lists.flatten [
