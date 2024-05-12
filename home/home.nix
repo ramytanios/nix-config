@@ -164,6 +164,7 @@
       ];
       userSettings = {
         "python.languageServer" = "Pylance";
+        "jupyter.askForKernelRestart" = false;
         "editor.fontLigatures" = true;
         "workbench.colorTheme" = "Tokyo Night Storm";
         "workbench.iconTheme" = "Monokai Pro Icons";
