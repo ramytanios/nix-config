@@ -23,6 +23,7 @@
 
       python-packages = ps:
         with ps; [
+          mypy
           python-lsp-server
           requests
           pandas
