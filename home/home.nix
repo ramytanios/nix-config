@@ -23,6 +23,7 @@
 
       python-packages = ps:
         with ps; [
+          pydantic
           mypy
           python-lsp-server
           requests
