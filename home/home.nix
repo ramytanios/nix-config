@@ -38,6 +38,7 @@
           jupyterlab
           notebook
           joblib
+          multimethod
         ];
 
       python-with-packages = pkgs.python3.withPackages python-packages;
