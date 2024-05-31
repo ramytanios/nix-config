@@ -85,6 +85,7 @@
       podman
       python-with-packages
       ripgrep
+      ruff
       sbt
       scala-cli
       stow
