@@ -150,6 +150,7 @@
       userEmail = "ramy.tanios@gmail.com";
       userName = "Ramy Tanios";
       diff-so-fancy.enable = true;
+      extraConfig = { init.defaultBranch = "main"; };
     };
 
     java.enable = true;
