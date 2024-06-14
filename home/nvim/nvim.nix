@@ -67,6 +67,14 @@
         }
       ];
 
+      fidget = {
+        plugin = pkgs.vimPlugins.fidget-nvim;
+        type = "lua";
+        config = ''
+          require("fidget").setup {}
+        '';
+      };
+
       treesitter = {
         plugin = pkgs.vimPlugins.nvim-treesitter.withAllGrammars;
         type = "lua";
@@ -197,11 +205,11 @@
       };
 
       highlight-undo = {
-      plugin = pkgs.vimPlugins.highlight-undo-nvim;
-      type = "lua";
-      config = ''
-        require('highlight-undo').setup({})
-      '';
+        plugin = pkgs.vimPlugins.highlight-undo-nvim;
+        type = "lua";
+        config = ''
+          require('highlight-undo').setup({})
+        '';
       };
 
     in pkgs.lib.lists.flatten [
@@ -234,6 +242,7 @@
       oil
       lua-dev
       highlight-undo
+      fidget
     ];
 
     extraPackages = with pkgs; [
