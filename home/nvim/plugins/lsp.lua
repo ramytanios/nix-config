@@ -5,11 +5,11 @@ capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 lsp_config.util.default_config =
 	vim.tbl_extend("force", lsp_config.util.default_config, { capabilities = capabilities })
 
--- NOTE: haskell-language-server is managed by haskell-tools.nvim
--- lsp_config.hls.setup {}
-
--- NOTE: scala metals is managed by nvim-metals
--- lsp_config.metals.setup {}
+-- borders for lsp
+local border = "single"
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border })
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border })
+vim.diagnostic.config({float = {border = border})
 
 lsp_config.bashls.setup({})
 lsp_config.html.setup({})
