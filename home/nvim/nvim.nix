@@ -166,6 +166,17 @@
         '';
       };
 
+      noice = {
+        plugin = pkgs.vimPlugins.noice-nvim;
+        type = "lua";
+        config = builtins.readFile ./plugins/noice.lua;
+      };
+
+      nui = {
+        plugin = pkgs.vimPlugins.nui-nvim;
+        type = "lua";
+      };
+
       neoscroll = {
         plugin = pkgs.vimPlugins.neoscroll-nvim;
         type = "lua";
@@ -243,6 +254,8 @@
       lua-dev
       highlight-undo
       fidget
+      noice
+      nui
     ];
 
     extraPackages = with pkgs; [
