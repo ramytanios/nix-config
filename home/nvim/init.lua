@@ -31,13 +31,9 @@ map("n", "<leader>tr", tree.tree.toggle, { desc = "Toggle nvim tree" })
 
 map("n", "<leader>tt", trtoggle, { desc = "Toggle trouble" })
 
-map("n", "<leader>tw", function()
-	trtoggle("workspace_diagnostics")
-end, { desc = "Trouble work diagnostics" })
+map("n", "<leader>tw", "<cmd>Trouble diagnostics toggle<cr>", { desc = "Trouble work diagnostics" })
 
-map("n", "<leader>td", function()
-	trtoggle("document_diagnostics")
-end, { desc = "Trouble document diagnostics" })
+map("n", "<leader>td", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", { desc = "Trouble document diagnostics" })
 
 map("n", "<leader>tl", function()
 	trtoggle("loclist")
@@ -51,7 +47,7 @@ map("n", "<leader>d", function()
 	trtoggle("lsp_definitions")
 end, { desc = "Trouble lsp definitions" })
 
-map("n", "<leader>r", function()
+map("n", "<leader>rf", function()
 	trtoggle("lsp_references")
 end, { desc = "Trouble lsp references" })
 
@@ -73,7 +69,8 @@ map("n", "<leader>ws", vim.lsp.buf.workspace_symbol, { desc = "Lsp workspace sym
 
 map("n", "<leader>sh", vim.lsp.buf.signature_help, { desc = "Lsp signature help" })
 
-map("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Lsp rename" })
+-- map("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Lsp rename" })
+map("n", "<leader>rn", ":IncRename ", { desc = "Lsp rename" })
 
 map("n", "<leader>f", function()
 	cf.format({ lsp_fallback = true, async = false, timeout_ms = 3000 })

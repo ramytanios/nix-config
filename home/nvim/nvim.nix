@@ -161,9 +161,7 @@
       trouble = {
         plugin = pkgs.vimPlugins.trouble-nvim;
         type = "lua";
-        config = ''
-          require("trouble").setup({})
-        '';
+        config = builtins.readFile ./plugins/trouble.lua;
       };
 
       noice = {
@@ -223,6 +221,20 @@
         '';
       };
 
+      markdown-preview = {
+        plugin = pkgs.vimPlugins.markdown-preview-nvim;
+        type = "lua";
+        config = "";
+      };
+
+      inc-rename = {
+        plugin = pkgs.vimPlugins.inc-rename-nvim;
+        type = "lua";
+        config = ''
+          require('inc_rename').setup({})
+        '';
+      };
+
     in pkgs.lib.lists.flatten [
       lsp
       lsp-signature
@@ -256,6 +268,8 @@
       fidget
       noice
       nui
+      markdown-preview
+      inc-rename
     ];
 
     extraPackages = with pkgs; [
