@@ -134,18 +134,6 @@ map("n", "<leader>dv", ":DiffviewOpen<SPACE>", { noremap = true, desc = "" })
 map("n", "<leader>dvx", ":DiffviewClose<CR>", { noremap = true, desc = "" })
 map("n", "<leader>fh", ":DiffviewFileHistory %<CR>", { noremap = true, desc = "" })
 
-map({ "n", "i", "s" }, "<c-f>", function()
-	if not require("noice.lsp").scroll(4) then
-		return "<c-f>"
-	end
-end, { silent = true, expr = true })
-
-map({ "n", "i", "s" }, "<c-b>", function()
-	if not require("noice.lsp").scroll(-4) then
-		return "<c-b>"
-	end
-end, { silent = true, expr = true })
-
 local opt = vim.opt
 opt.relativenumber = true
 opt.number = true

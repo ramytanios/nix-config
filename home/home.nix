@@ -163,5 +163,7 @@
 
     ssh.enable = true;
 
+    helix.enable = true;
+
   };
 }

@@ -235,6 +235,8 @@
         '';
       };
 
+      vimcool = { plugin = pkgs.vimPlugins.vim-cool; };
+
     in pkgs.lib.lists.flatten [
       lsp
       lsp-signature
@@ -270,6 +272,7 @@
       nui
       markdown-preview
       inc-rename
+      vimcool
     ];
 
     extraPackages = with pkgs; [
