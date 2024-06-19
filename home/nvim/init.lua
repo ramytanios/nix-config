@@ -146,7 +146,6 @@ opt.ignorecase = true
 opt.smartcase = true
 opt.cursorline = true
 opt.termguicolors = true
-opt.background = "dark"
 opt.signcolumn = "yes"
 opt.backspace = "indent,eol,start"
 opt.clipboard:append("unnamedplus")
@@ -157,4 +156,10 @@ opt.swapfile = false
 -- workaround since .typ is currently recognized as filetype sql
 vim.cmd([[
   autocmd! BufRead,BufNewFile *.typ set filetype=typst
+]])
+
+-- black hole register 
+vim.cmd([[ 
+  nnoremap d "_d
+  vnoremap d "_d
 ]])
