@@ -1,5 +1,20 @@
 {
   "nodes": {
+    "catppuccin": {
+      "locked": {
+        "lastModified": 1718339789,
+        "narHash": "sha256-Q3fgY7huFE+uaw7BNsAl1x+FvjDAi3EDWPnlALJt5pM=",
+        "owner": "catppuccin",
+        "repo": "nix",
+        "rev": "73e06d5bd7ed34bdd0168030893ef8364fdc1d4a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "catppuccin",
+        "repo": "nix",
+        "type": "github"
+      }
+    },
     "colorscheme": {
       "inputs": {
         "kauz": "kauz",
@@ -601,6 +616,7 @@
     },
     "root": {
       "inputs": {
+        "catppuccin": "catppuccin",
         "colorscheme": "colorscheme",
         "darwin": "darwin",
         "flake-utils": "flake-utils",

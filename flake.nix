@@ -12,6 +12,7 @@
       url = "github:lnl7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    catppuccin.url = "github:catppuccin/nix";
     colorscheme.url = "github:ramytanios/colorschemes-nix-flake";
     # TODO: remove when colorscheme flake is fixed
     tokyonight.url = "github:ramytanios/tokyonight-colorscheme-nix-flake";
@@ -29,8 +30,9 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, darwin, flake-utils, tokyonight
-    , colorscheme, watch, live-server, git-summary, ... }:
+  outputs = inputs@{ self, nixpkgs, home-manager, darwin, flake-utils
+    , tokyonight, colorscheme, watch, live-server, git-summary, catppuccin, ...
+    }:
     let
       inherit (nixpkgs) lib;
 
@@ -118,6 +120,7 @@
                 else
                   "/home/${machine.user}";
               }
+              catppuccin.homeManagerModules.catppuccin
               ./home/home.nix
               ./home/home-${machine.os}.nix
             ];
