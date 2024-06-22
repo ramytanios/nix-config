@@ -94,6 +94,8 @@ map({ "n", "x", "o" }, "s", flash.jump, { desc = "Flash jump" })
 
 map({ "n", "x", "o" }, "S", flash.treesitter, { desc = "Flash treesitter search" })
 
+map({ "o", "x" }, "R", flash.treesitter_search, ({ desc = "Treesitter Search" }))
+
 map("n", "<leader>?", tb.oldfiles, { desc = "Telescope old files" })
 
 map("n", "<leader>ff", tb.find_files, { desc = "Telescope find files" })
@@ -131,7 +133,9 @@ map("n", "<leader>fd", vim.diagnostic.open_float, { desc = "Diagnostic open floa
 map("n", "-", oil.open, { desc = "Browse parent directory" })
 
 map("n", "<leader>dv", ":DiffviewOpen<SPACE>", { noremap = true, desc = "" })
+
 map("n", "<leader>dvx", ":DiffviewClose<CR>", { noremap = true, desc = "" })
+
 map("n", "<leader>fh", ":DiffviewFileHistory %<CR>", { noremap = true, desc = "" })
 
 local opt = vim.opt
@@ -158,7 +162,7 @@ vim.cmd([[
   autocmd! BufRead,BufNewFile *.typ set filetype=typst
 ]])
 
--- black hole register 
+-- black hole register
 vim.cmd([[ 
   nnoremap d "_d
   vnoremap d "_d
