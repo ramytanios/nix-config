@@ -106,7 +106,8 @@ map("n", "<leader>gr", tb.grep_string, { desc = "Telescope grep string" })
 
 map("n", "<leader>fb", tb.buffers, { desc = "Telescope buffers" })
 
-map("n", "<leader>ht", tb.help_tags, { desc = "Telescope help tags" })
+-- do I really use this?
+-- map("n", "<leader>ht", tb.help_tags, { desc = "Telescope help tags" })
 
 map("n", "<leader>fda", tb.diagnostics, { desc = "Telescope diagnostics" })
 
@@ -132,11 +133,10 @@ map("n", "<leader>fd", vim.diagnostic.open_float, { desc = "Diagnostic open floa
 
 map("n", "-", oil.open, { desc = "Browse parent directory" })
 
-map("n", "<leader>dv", ":DiffviewOpen<SPACE>", { noremap = true, desc = "" })
-
-map("n", "<leader>dvx", ":DiffviewClose<CR>", { noremap = true, desc = "" })
-
-map("n", "<leader>fh", ":DiffviewFileHistory %<CR>", { noremap = true, desc = "" })
+-- not frequently used, prefer to call manually
+-- map("n", "<leader>dv", ":DiffviewOpen<SPACE>", { noremap = true, desc = "" })
+-- map("n", "<leader>dvx", ":DiffviewClose<CR>", { noremap = true, desc = "" })
+-- map("n", "<leader>fh", ":DiffviewFileHistory %<CR>", { noremap = true, desc = "" })
 
 local opt = vim.opt
 opt.relativenumber = true
