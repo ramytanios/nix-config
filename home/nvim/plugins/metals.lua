@@ -5,8 +5,9 @@ local metals_config = require("metals").bare_config()
 metals_config.init_options.statusBarProvider = "off"
 
 metals_config.settings = {
-  useGlobalExecutable = true, 
-  metalsBinaryPath = metalsBinary, -- defined in nvim.nix
+	defaultBspToBuildTool = true,
+	useGlobalExecutable = true,
+	metalsBinaryPath = metalsBinary, -- defined in nvim.nix
 }
 
 metals_config.capabilities = require("cmp_nvim_lsp").default_capabilities()
