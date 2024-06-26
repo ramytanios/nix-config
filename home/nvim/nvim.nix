@@ -237,6 +237,13 @@
 
       vimcool = { plugin = pkgs.vimPlugins.vim-cool; };
 
+      marks = {plugin = pkgs.vimPlugins.marks-nvim;
+      type = "lua";
+      config = ''
+        require("marks").setup({})
+      '';
+      };
+
     in pkgs.lib.lists.flatten [
       lsp
       lsp-signature
@@ -273,6 +280,7 @@
       markdown-preview
       inc-rename
       vimcool
+      marks
     ];
 
     extraPackages = with pkgs; [

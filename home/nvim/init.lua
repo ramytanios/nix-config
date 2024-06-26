@@ -72,7 +72,7 @@ map("n", "<leader>sh", vim.lsp.buf.signature_help, { desc = "Lsp signature help"
 -- map("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Lsp rename" })
 map("n", "<leader>rn", ":IncRename ", { desc = "Lsp rename" })
 
-map("n", "<leader>f", function()
+map("n", "<leader>fo", function()
 	cf.format({ lsp_fallback = true, async = false, timeout_ms = 3000 })
 end, { desc = "Conform / LSP format" })
 
@@ -94,7 +94,7 @@ map({ "n", "x", "o" }, "s", flash.jump, { desc = "Flash jump" })
 
 map({ "n", "x", "o" }, "S", flash.treesitter, { desc = "Flash treesitter search" })
 
-map({ "o", "x" }, "R", flash.treesitter_search, ({ desc = "Treesitter Search" }))
+map({ "o", "x" }, "R", flash.treesitter_search, { desc = "Treesitter Search" })
 
 map("n", "<leader>?", tb.oldfiles, { desc = "Telescope old files" })
 
@@ -109,7 +109,8 @@ map("n", "<leader>fb", tb.buffers, { desc = "Telescope buffers" })
 -- do I really use this?
 -- map("n", "<leader>ht", tb.help_tags, { desc = "Telescope help tags" })
 
-map("n", "<leader>fda", tb.diagnostics, { desc = "Telescope diagnostics" })
+-- do I really use this?
+-- map("n", "<leader>fda", tb.diagnostics, { desc = "Telescope diagnostics" })
 
 map("n", "<leader>gc", tb.git_commits, { desc = "Telescope git commits" })
 
