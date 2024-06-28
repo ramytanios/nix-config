@@ -164,7 +164,5 @@ vim.cmd([[
 ]])
 
 -- black hole register
-vim.cmd([[ 
-  nnoremap d "_d
-  vnoremap d "_d
-]])
+vim.cmd.nnoremap('d', '"_d')
+vim.cmd.vnoremap('d', '"_d')
