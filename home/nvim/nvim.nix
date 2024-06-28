@@ -237,11 +237,22 @@
 
       vimcool = { plugin = pkgs.vimPlugins.vim-cool; };
 
-      marks = {plugin = pkgs.vimPlugins.marks-nvim;
-      type = "lua";
-      config = ''
-        require("marks").setup({})
-      '';
+      marks = {
+        plugin = pkgs.vimPlugins.marks-nvim;
+        type = "lua";
+        config = ''
+          require("marks").setup({})
+        '';
+      };
+
+      lightbulb = {
+        plugin = pkgs.vimPlugins.nvim-lightbulb;
+        type = "lua";
+        config = ''
+          require("nvim-lightbulb").setup({
+          autocmd = { enabled = true }
+        })
+        '';
       };
 
     in pkgs.lib.lists.flatten [
@@ -281,6 +292,7 @@
       inc-rename
       vimcool
       marks
+      lightbulb
     ];
 
     extraPackages = with pkgs; [
