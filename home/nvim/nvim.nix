@@ -249,9 +249,17 @@
         plugin = pkgs.vimPlugins.nvim-lightbulb;
         type = "lua";
         config = ''
-          require("nvim-lightbulb").setup({
-          autocmd = { enabled = true }
-        })
+            require("nvim-lightbulb").setup({
+            autocmd = { enabled = true }
+          })
+        '';
+      };
+
+      autopairs = {
+        plugin = pkgs.vimPlugins.nvim-autopairs;
+        type = "lua";
+        config = ''
+            require("nvim-autopairs").setup {}
         '';
       };
 
@@ -293,6 +301,7 @@
       vimcool
       marks
       lightbulb
+      autopairs
     ];
 
     extraPackages = with pkgs; [

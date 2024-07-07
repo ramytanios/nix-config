@@ -65,7 +65,6 @@
       # (pkgs.writeShellScriptBin "my-hello" ''
       #   echo "Hello, ${config.home.username}!"
       # '')
-      bat
       coursier
       csvlens
       duf
@@ -83,6 +82,7 @@
       jdk
       just
       killall
+      lazygit
       # live-server
       metals
       gdu # temporary replacement for ncdu
@@ -166,6 +166,8 @@
     ssh.enable = true;
 
     helix.enable = true;
+
+    bat.enable = true;
 
   };
 }
