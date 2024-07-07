@@ -99,6 +99,7 @@
       tldr
       tree
       treefmt
+      tree-sitter
       typst
       typst-live
       unzip

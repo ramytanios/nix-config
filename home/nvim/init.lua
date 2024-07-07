@@ -114,8 +114,8 @@ map("n", "<leader>fo", function()
 end, { desc = "Conform / LSP format" })
 
 -- gitsigns
-map("n", "<leader>[h", gs.prev_hunk, { desc = "Gitsigns previous hunk" })
-map("n", "<leader>]h", gs.next_hunk, { desc = "Gitsigns next hunk" })
+map("n", "[h", gs.prev_hunk, { desc = "Gitsigns previous hunk" })
+map("n", "]h", gs.next_hunk, { desc = "Gitsigns next hunk" })
 map("n", "<leader>hp", gs.preview_hunk, { desc = "Gitsigns preview hunk" })
 map("n", "<leader>hr", gs.reset_hunk, { desc = "Gitsigns reset hunk" })
 map("n", "<leader>hR", gs.reset_buffer, { desc = "Gitsigns reset buffer" })
