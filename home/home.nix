@@ -96,6 +96,7 @@
       scala-cli
       stow
       thefuck
+      tldr
       tree
       treefmt
       typst
@@ -155,7 +156,8 @@
       enable = true;
       userEmail = "ramy.tanios@gmail.com";
       userName = "Ramy Tanios";
-      diff-so-fancy.enable = true;
+      delta.enable = true;
+      delta.options = { side-by-side = true; };
       extraConfig = { init.defaultBranch = "main"; };
     };
 
