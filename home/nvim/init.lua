@@ -116,12 +116,12 @@ end, { desc = "Conform / LSP format" })
 -- gitsigns
 map("n", "[h", gs.prev_hunk, { desc = "Gitsigns previous hunk" })
 map("n", "]h", gs.next_hunk, { desc = "Gitsigns next hunk" })
-map("n", "<leader>hp", gs.preview_hunk, { desc = "Gitsigns preview hunk" })
-map("n", "<leader>hr", gs.reset_hunk, { desc = "Gitsigns reset hunk" })
-map("n", "<leader>hR", gs.reset_buffer, { desc = "Gitsigns reset buffer" })
-map("n", "<leader>hs", gs.select_hunk, { desc = "Gitsigns select hunk" })
-map("n", "<leader>hb", gs.toggle_current_line_blame, { desc = "Gitsigns toggle current blame" })
-map("n", "<leader>hd", gs.diffthis, { desc = "Gitsigns diff this" })
+map("n", "hp", gs.preview_hunk, { desc = "Gitsigns preview hunk" })
+map("n", "hr", gs.reset_hunk, { desc = "Gitsigns reset hunk" })
+map("n", "hR", gs.reset_buffer, { desc = "Gitsigns reset buffer" })
+map("n", "hs", gs.select_hunk, { desc = "Gitsigns select hunk" })
+map("n", "hb", gs.toggle_current_line_blame, { desc = "Gitsigns toggle current blame" })
+map("n", "hd", gs.diffthis, { desc = "Gitsigns diff this" })
 
 -- flash
 map({ "n", "x", "o" }, "s", flash.jump, { desc = "Flash jump" })
