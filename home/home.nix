@@ -170,5 +170,10 @@
 
     bat.enable = true;
 
+    yazi = {
+      enable = true;
+      enableFishIntegration = true;
+    };
+
   };
 }
