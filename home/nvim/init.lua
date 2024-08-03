@@ -29,6 +29,7 @@ local tree = require("nvim-tree.api")
 local trouble = require("trouble")
 local cf = require("conform")
 local gs = require("gitsigns")
+local todo = require("todo-comments")
 local flash = require("flash")
 local tb = require("telescope.builtin")
 local tel = require("telescope")
@@ -113,9 +114,13 @@ map("n", "<leader>fo", function()
 	cf.format({ lsp_fallback = true, async = false, timeout_ms = 3000 })
 end, { desc = "Conform / LSP format" })
 
+-- todo comments
+map("n", "]t", todo.jump_next, { desc = "Next todo comment" })
+map("n", "[t", todo.jump_prev, { desc = "Previous todo comment" })
+
 -- gitsigns
-map("n", "[h", gs.prev_hunk, { desc = "Gitsigns previous hunk" })
 map("n", "]h", gs.next_hunk, { desc = "Gitsigns next hunk" })
+map("n", "[h", gs.prev_hunk, { desc = "Gitsigns previous hunk" })
 map("n", "hp", gs.preview_hunk, { desc = "Gitsigns preview hunk" })
 map("n", "hr", gs.reset_hunk, { desc = "Gitsigns reset hunk" })
 map("n", "hR", gs.reset_buffer, { desc = "Gitsigns reset buffer" })
