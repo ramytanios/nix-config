@@ -252,6 +252,8 @@
         '';
       };
 
+      rest = { plugin = pkgs.vimPlugins.rest-nvim; };
+
     in pkgs.lib.lists.flatten [
       lsp
       lsp-signature
@@ -291,6 +293,7 @@
       marks
       lightbulb
       autopairs
+      rest
     ];
 
     extraPackages = with pkgs; [

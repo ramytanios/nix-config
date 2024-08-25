@@ -134,6 +134,9 @@ map("n", "<leader>cs", function()
 	tb.colorscheme({ enable_preview = true })
 end, { desc = "Select colorscheme" })
 
+-- rest
+map("n", "<leader>re", ":Rest run", { noremap = true, desc = "Rest run" })
+
 -- map("n", "<leader>gd", gs.diffthis, { desc = "Gitsigns diff this" })
 -- map("n", "<leader>tt", trouble.toggle, { desc = "Toggle trouble" })
 -- map("n", "<leader>ds", vim.lsp.buf.document_symbol, { desc = "Lsp document symbol" })
