@@ -9,7 +9,7 @@
     mouse = true;
     sensibleOnTop = false;
     terminal = "tmux-256color";
-    plugins = with pkgs.tmuxPlugins; [ vim-tmux-navigator resurrect];
+    plugins = with pkgs.tmuxPlugins; [ vim-tmux-navigator resurrect tmux-fzf];
     extraConfig = ''
       set -g @resurrect-capture-pane-contents 'on';
       set -g @resurrect-strategy-nvim 'session';
@@ -24,6 +24,8 @@
       unbind %
       bind | split-window -h
       set -g mouse on
+      TMUX_FZF_SESSION_FORMAT="#{session_windows} windows"
+      bind-key "f" run-shell -b "~/.tmux/plugins/tmux-fzf/scripts/session.sh switch"
     '';
   };
 
