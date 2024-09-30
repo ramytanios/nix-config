@@ -13,7 +13,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     catppuccin.url = "github:catppuccin/nix";
-    colorscheme.url = "github:ramytanios/colorschemes-nix-flake";
+    # colorscheme.url = "github:ramytanios/colorschemes-nix-flake";
     # TODO: remove when colorscheme flake is fixed
     tokyonight.url = "github:ramytanios/tokyonight-colorscheme-nix-flake";
     watch = {
