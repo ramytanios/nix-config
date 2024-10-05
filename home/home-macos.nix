@@ -1,5 +1,5 @@
 { inputs, pkgs, ... }: {
-  imports = [ inputs.tokyonight.homeModules.colorscheme ];
+  # imports = [ inputs.tokyonight.homeModules.colorscheme ];
 
   # colorscheme.tokyonight = {
   #   style = "storm";

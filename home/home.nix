@@ -160,6 +160,15 @@
       delta.enable = true;
       delta.options = { side-by-side = true; };
       extraConfig = { init.defaultBranch = "main"; };
+      aliases = {
+        s = "status";
+        a = "add";
+        c = "commit";
+        p = "push";
+        pt = "push --follow-tags";
+        l = "log";
+        d = "diff";
+      };
     };
 
     java.enable = true;

@@ -13,9 +13,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     catppuccin.url = "github:catppuccin/nix";
-    # colorscheme.url = "github:ramytanios/colorschemes-nix-flake";
-    # TODO: remove when colorscheme flake is fixed
-    tokyonight.url = "github:ramytanios/tokyonight-colorscheme-nix-flake";
     watch = {
       url = "github:ramytanios/watch";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -28,11 +25,11 @@
       url = "github:buntec/git-summary-scala";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    kauz.url = "github:buntec/kauz";
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, darwin, flake-utils
-    , tokyonight, colorscheme, watch, live-server, git-summary, catppuccin, ...
-    }:
+  outputs = inputs@{ self, nixpkgs, home-manager, darwin, flake-utils, watch
+    , live-server, git-summary, catppuccin, kauz, ... }:
     let
       inherit (nixpkgs) lib;
 
@@ -58,7 +55,7 @@
 
       # Add here overlays
       overlays = [
-        colorscheme.overlays.kauz.default
+        kauz.overlays.default
         watch.overlays.default
         live-server.overlays.default
         git-summary.overlays.default
