@@ -202,14 +202,6 @@
         '';
       };
 
-      highlight-undo = {
-        plugin = pkgs.vimPlugins.highlight-undo-nvim;
-        type = "lua";
-        config = ''
-          require('highlight-undo').setup({})
-        '';
-      };
-
       markdown-preview = {
         plugin = pkgs.vimPlugins.markdown-preview-nvim;
         type = "lua";
@@ -283,7 +275,6 @@
       metals
       oil
       lua-dev
-      highlight-undo
       fidget
       noice
       nui
