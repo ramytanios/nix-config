@@ -246,6 +246,15 @@
 
       rest = { plugin = pkgs.vimPlugins.rest-nvim; };
 
+      clangd_extensions-nvim = {
+        plugin = pkgs.vimPlugins.clangd_extensions-nvim;
+        type = "lua";
+        config = ''
+          require("clangd_extensions.inlay_hints").setup_autocmd()
+          require("clangd_extensions.inlay_hints").set_inlay_hints()
+        '';
+      };
+
     in pkgs.lib.lists.flatten [
       lsp
       lsp-signature
@@ -285,6 +294,7 @@
       lightbulb
       autopairs
       rest
+      clangd_extensions-nvim
     ];
 
     extraPackages = with pkgs; [
@@ -303,6 +313,7 @@
       statix
       nixfmt
       typstfmt
+      cpplint
     ];
 
     extraLuaConfig = builtins.readFile ./init.lua;

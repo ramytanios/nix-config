@@ -1,7 +1,7 @@
 require("conform").setup({
 	formatters_by_ft = {
 		python = { "ruff_format" },
-		cpp = { "clang_format" },
+		-- cpp = { "clang_format" }, # we prefer using clangd formatting
 		lua = { "stylua" },
 		bash = { "shfmt" },
 		typescript = { "prettier" },

@@ -1,7 +1,7 @@
 local lint = require("lint")
 lint.linters_by_ft = {
 	python = { "ruff", "mypy" },
-	cpp = { "cpplint" },
+	-- cpp = { "cpplint" },
 	typescript = { "eslint_d" },
 	javascript = { "eslint_d" },
   nix = { "statix" }
@@ -13,5 +13,3 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
 		lint.try_lint()
 	end,
 })
-
--- requre("lint").get_running()

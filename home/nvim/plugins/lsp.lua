@@ -10,7 +10,7 @@ lsp_config.html.setup({})
 lsp_config.pylsp.setup({})
 lsp_config.smithy_ls.setup({})
 lsp_config.tsserver.setup({})
-
+lsp_config.clangd.setup{}
 lsp_config.typst_lsp.setup({
 	settings = {
 		exportPdf = "onSave", -- Choose onType, onSave or never.
