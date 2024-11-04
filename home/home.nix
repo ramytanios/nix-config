@@ -67,6 +67,9 @@
       # '')
       coursier
       csvlens
+      docker 
+      docker-compose
+      lazydocker
       duf
       eza
       fd
