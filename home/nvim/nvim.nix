@@ -292,7 +292,7 @@
       vimcool
       marks
       lightbulb
-      autopairs
+      # autopairs
       rest
       clangd_extensions-nvim
     ];
