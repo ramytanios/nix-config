@@ -86,8 +86,8 @@
       just
       killall
       lazygit
-      # live-server
       metals
+      nodePackages.live-server
       gdu # temporary replacement for ncdu
       # ncdu # breaks for now
       nodejs
