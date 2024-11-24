@@ -285,7 +285,7 @@
       oil
       lua-dev
       fidget
-      noice
+      # noice
       nui
       markdown-preview
       inc-rename
