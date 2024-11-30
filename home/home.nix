@@ -88,12 +88,12 @@
       lazygit
       metals
       nodePackages.live-server
-      gdu # temporary replacement for ncdu
-      # ncdu # breaks for now
+      ncdu 
       nodejs
       podman
       postgresql
       python-with-packages
+      redis
       ripgrep
       ruff
       sbt
