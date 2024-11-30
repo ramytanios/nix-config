@@ -92,6 +92,7 @@
       # ncdu # breaks for now
       nodejs
       podman
+      postgresql
       python-with-packages
       ripgrep
       ruff
