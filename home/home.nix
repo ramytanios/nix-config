@@ -65,6 +65,7 @@
       # (pkgs.writeShellScriptBin "my-hello" ''
       #   echo "Hello, ${config.home.username}!"
       # '')
+      colima #"https://github.com/NixOS/nixpkgs/issues/47201#issuecomment-2041162985"
       coursier
       csvlens
       docker 

@@ -21,10 +21,11 @@
   };
 
   system.defaults.dock.autohide = true;
-  system.defaults.dock.static-only = false; # dont show only running apps, but all
+  system.defaults.dock.static-only =
+    false; # dont show only running apps, but all
   system.defaults.finder.AppleShowAllExtensions = true;
   system.defaults.finder.AppleShowAllFiles = true;
-system.defaults.NSGlobalDomain.ApplePressAndHoldEnabled = false;
+  system.defaults.NSGlobalDomain.ApplePressAndHoldEnabled = false;
   # disable automatic spelling correction
   system.defaults.NSGlobalDomain.NSAutomaticSpellingCorrectionEnabled = false;
 
@@ -67,14 +68,7 @@ system.defaults.NSGlobalDomain.ApplePressAndHoldEnabled = false;
       autoUpdate = true;
       cleanup = "zap";
     };
-    casks = [
-      "discord"
-      # "docker"
-      "firefox"
-      "kitty"
-      "telegram"
-      "whatsapp"
-    ];
+    casks = [ "discord" "docker" "firefox" "kitty" "telegram" "whatsapp" ];
   };
 
   # ZSH

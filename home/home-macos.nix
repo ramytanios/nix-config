@@ -9,6 +9,7 @@
   #   neovim.enable = true;
   # };
 
+  programs.tmux.catppuccin.enable = false;
   catppuccin = {
     enable = true; # will enable full support (tmux, nvim, kitty, etc ...)
     flavor = "frappe";

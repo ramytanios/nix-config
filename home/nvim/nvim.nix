@@ -306,14 +306,17 @@
       nodePackages.typescript-language-server
       texlab
       typst-lsp
+      yaml-language-server
 
       # Formatters and linters
       stylua
       ruff
       statix
       nixfmt
-      typstfmt
       cpplint
+      yamlfmt
+      yamllint
+      pgformatter
     ];
 
     extraLuaConfig = builtins.readFile ./init.lua;

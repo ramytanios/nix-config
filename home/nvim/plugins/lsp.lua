@@ -53,3 +53,6 @@ lsp_config.lua_ls.setup({
 		},
 	},
 })
+
+
+lsp_config.yamlls.setup{}
