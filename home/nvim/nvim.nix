@@ -255,6 +255,24 @@
         '';
       };
 
+      smear_cursor = let
+        smear_cursor = pkgs.vimUtils.buildVimPlugin {
+          name = "smear-cursor.nvim";
+          src = pkgs.fetchFromGitHub {
+            owner = "sphamba";
+            repo = "smear-cursor.nvim";
+            rev = "78c42170f9326fb70d09aff2184c81189eddf144";
+            sha256 = "rmNyjHjHGaRzFvnmBuzQnSH8VGZ2j5XfNxDwYcgPkPA=";
+          };
+        };
+      in {
+        plugin = smear_cursor;
+        type = "lua";
+        config = ''
+          require("smear_cursor").setup {}
+        '';
+      };
+
     in pkgs.lib.lists.flatten [
       lsp
       lsp-signature
@@ -295,6 +313,7 @@
       # autopairs
       rest
       clangd_extensions-nvim
+      smear_cursor
     ];
 
     extraPackages = with pkgs; [
