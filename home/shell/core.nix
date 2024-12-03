@@ -4,6 +4,9 @@
     vim = "nvim";
     v = "nvim";
 
+    jl = "jupyter-lab";
+    jn = "jupyter-notebook";
+
     gs = "git status";
     ga = "git add";
     gc = "git commit";
