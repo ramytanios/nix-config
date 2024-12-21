@@ -5,7 +5,7 @@
     ./kitty/kitty.nix
     ./nvim/nvim.nix
     ./shell/default.nix
-    ./vscode/vscode.nix
+    #./vscode/vscode.nix
   ];
 
   home = {
