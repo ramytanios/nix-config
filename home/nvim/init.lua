@@ -23,14 +23,12 @@ opt.swapfile = false
 
 -- keymaps
 local map = vim.keymap.set
-local trouble = require("trouble")
 local conform = require("conform")
 local gitsigns = require("gitsigns")
 local todo = require("todo-comments")
 local flash = require("flash")
-local telescope_builtin = require("telescope.builtin")
-local telescope = require("telescope")
 local oil = require("oil")
+local fzf = require("fzf-lua")
 
 map("i", "jk", "<ESC>", { desc = "insert to visual mode" })
 
@@ -58,29 +56,21 @@ map("n", "<leader>cf", "<cmd>edit $MYVIMRC<CR>", { desc = "open init.lua" })
 
 map("n", "-", oil.open, { desc = "browse parent directory" })
 
-map("n", "<leader>tw", "<cmd>Trouble diagnostics toggle<cr>", { desc = "trouble work diagnostics" })
+map("n", "<leader>tw", fzf.diagnostics_workspace, { desc = "workspace diagnostics" })
 
-map("n", "<leader>td", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", { desc = "trouble document diagnostics" })
+map("n", "<leader>td", fzf.diagnostics_document, { desc = "document diagnostics" })
 
-map("n", "<leader>ll", function() trouble.toggle("loclist") end, { desc = "trouble loclist" })
+map("n", "<leader>d", fzf.lsp_definitions, { desc = "lsp definitions" })
 
-map("n", "<leader>qf", function() trouble.toggle("quickfix") end, { desc = "trouble quickfix" })
-
-map("n", "<leader>d", function() trouble.toggle("lsp_definitions") end, { desc = "trouble lsp definitions" })
-
-map("n", "<leader>rf", function() trouble.toggle("lsp_references") end, { desc = "trouble lsp references" })
-
-map("n", "]e", function() trouble.next({ skip_groups = true, jump = true }) end, { desc = "trouble next" })
-
-map("n", "[e", function() trouble.previous({ skip_groups = true, jump = true }) end, { desc = "trouble previous" })
+map("n", "<leader>rf", fzf.lsp_references, { desc = "lsp references" })
 
 map("n", "<leader>h", vim.lsp.buf.hover, { desc = "lsp hover" })
 
-map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "lsp code action" })
+map("n", "<leader>ca", fzf.lsp_code_actions, { desc = "lsp code actions" })
 
-map("n", "<leader>fd", vim.diagnostic.open_float, { desc = "diagnostic open float" })
+map("n", "<leader>rn", vim.lsp.buf.rename, { desc = "lsp rename" })
 
-map("n", "<leader>rn", ":IncRename ", { desc = "lsp rename" })
+map("n", "<leader>fd", vim.diagnostic.open_float, { desc = "lsp rename" })
 
 map("n", "<leader>fo", function() conform.format({ lsp_fallback = true, async = false, timeout_ms = 3000 }) end, { desc = "Conform / LSP format" })
 
@@ -104,7 +94,8 @@ map("n", "<leader>gd", ":DiffviewOpen<CR>", { noremap = true, desc = "open Git d
 
 map("n", "<leader>bd", ":DiffviewOpen<SPACE>", { noremap = true, desc = "branch diff view" })
 
-map("n", "<leader>bb", ":Git blame<CR>", { desc = "gitsigns toggle current blame" })
+--map("n", "<leader>bb", ":Git blame<CR>", { desc = "gitsigns toggle current blame" })
+map("n", "<leader>bb", function() Snacks.git.blame_line() end, { desc = "gitsigns toggle current blame" })
 
 map("n", "<leader>gh", ":DiffviewFileHistory<CR>", { noremap = true, desc = "open git project history" })
 
@@ -118,29 +109,25 @@ map({ "n", "x", "o" }, "S", flash.treesitter, { desc = "flash treesitter search"
 
 map({ "o", "x" }, "R", flash.treesitter_search, { desc = "treesitter search" })
 
-map("n", "<leader>of", telescope_builtin.oldfiles, { desc = "telescope old files" })
+map("n", "<leader>of", fzf.oldfiles, { desc = "opened old files" })
 
-map("n", "<leader>ff", telescope_builtin.find_files, { desc = "telescope find files" })
+map("n", "<leader>ff", fzf.files, { desc = "find files" })
 
-map("n", "<leader>lg", telescope_builtin.live_grep, { desc = "telescope live grep" })
+map("n", "<leader>lg", fzf.live_grep, { desc = "live grep" })
 
-map("n", "<leader>gs", telescope_builtin.grep_string, { desc = "telescope grep string" })
+map("n", "<leader>gs", fzf.grep_cword, { desc = "grep word under cursor" })
 
-map("n", "<leader>bu", telescope_builtin.buffers, { desc = "telescope buffers" })
+map("n", "<leader>gc", fzf.git_commits, { desc = "git commits" })
 
-map("n", "<leader>gc", telescope_builtin.git_commits, { desc = "telescope git commits" })
+map("n", "<leader>gb", fzf.git_branches, { desc = "git branches" })
 
-map("n", "<leader>gb", telescope_builtin.git_branches, { desc = "telescope git branches" })
+map("n", "<leader>co", fzf.commands, { desc = "commands" })
 
-map("n", "<leader>co", telescope_builtin.commands, { desc = "telescope commands" })
+map("n", "<leader>cs", fzf.colorschemes, { desc = "colorschemes" })
 
-map("n", "<leader>gf", telescope_builtin.git_files, { desc = "telescope git files" })
+map("n", "<leader>gf", fzf.git_files, { desc = "git files" })
 
-map("n", "<leader>sy", telescope_builtin.symbols, { desc = "telescope symbols" })
-
-map("n", "<leader>mc", telescope.extensions.metals.commands, { desc = "metals commands" })
-
-
+--map("n", "<leader>gb", function() Snacks.gitbrowse() end, { desc = "git branches" })
 -- map("n", "<leader>re", ":Rest run", { noremap = true, desc = "Rest run" })
 -- map("n", "<leader>cs", function() telescope_builtin.colorscheme({ enable_preview = true }) end, { desc = "select colorscheme" })
 -- map("n", "<leader>gd", gs.diffthis, { desc = "Gitsigns diff this" })

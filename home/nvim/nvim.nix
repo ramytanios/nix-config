@@ -316,7 +316,7 @@
       # noice
       nui
       markdown-preview
-      inc-rename
+      #inc-rename
       vimcool
       marks
       lightbulb
