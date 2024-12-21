@@ -284,10 +284,15 @@
         config = builtins.readFile ./plugins/fzf-lua.lua;
       };
 
+      which-key = {
+        plugin = pkgs.vimPlugins.which-key-nvim;
+        type = "lua";
+        config = builtins.readFile ./plugins/which-key.lua;
+      };
     in pkgs.lib.lists.flatten [
       lsp
       lsp-signature
-      trouble
+      #trouble
       #neoscroll
       surround
       cmp
@@ -305,7 +310,7 @@
       diffview
       lualine
       treesitter
-      telescope
+      #telescope
       plenary
       comment
       todo-comments
@@ -326,6 +331,7 @@
       smear_cursor
       snacks
       fzf-lua
+      which-key
     ];
 
     extraPackages = with pkgs; [
