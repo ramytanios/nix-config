@@ -273,6 +273,12 @@
         '';
       };
 
+      snacks = {
+        plugin = pkgs.vimPlugins.snacks-nvim;
+        type = "lua";
+        config = builtins.readFile ./plugins/snacks.lua;
+      };
+
     in pkgs.lib.lists.flatten [
       lsp
       lsp-signature
@@ -285,7 +291,7 @@
       vim-tmux
       web-devicons
       dressing
-      indent
+      #indent
       notify
       tree
       flash
@@ -314,6 +320,7 @@
       rest
       clangd_extensions-nvim
       smear_cursor
+      snacks
     ];
 
     extraPackages = with pkgs; [
