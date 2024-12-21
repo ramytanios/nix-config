@@ -11,12 +11,6 @@ lsp_config.pylsp.setup({})
 lsp_config.smithy_ls.setup({})
 lsp_config.ts_ls.setup({})
 lsp_config.clangd.setup{}
-lsp_config.typst_lsp.setup({
-	settings = {
-		exportPdf = "onSave", -- Choose onType, onSave or never.
-		-- serverPath = "" -- Normally, there is no need to uncomment it.
-	},
-})
 
 lsp_config.nil_ls.setup({
 	settings = {
