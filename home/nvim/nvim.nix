@@ -30,9 +30,6 @@
         '';
       };
 
-      # We prefer the colorschemes flake
-      # tokyonight = { plugin = pkgs.vimPlugins.tokyonight-nvim; };
-
       comment = {
         plugin = pkgs.vimPlugins.comment-nvim;
         type = "lua";
@@ -100,14 +97,6 @@
         plugin = pkgs.vimPlugins.flash-nvim;
         type = "lua";
         config = builtins.readFile ./plugins/flash.lua;
-      };
-
-      tree = {
-        plugin = pkgs.vimPlugins.nvim-tree-lua;
-        type = "lua";
-        config = ''
-          require("nvim-tree").setup({})
-        '';
       };
 
       notify = {
@@ -289,6 +278,12 @@
         config = builtins.readFile ./plugins/snacks.lua;
       };
 
+      fzf-lua = {
+        plugin = pkgs.vimPlugins.fzf-lua;
+        type = "lua";
+        config = builtins.readFile ./plugins/fzf-lua.lua;
+      };
+
     in pkgs.lib.lists.flatten [
       lsp
       lsp-signature
@@ -303,7 +298,6 @@
       dressing
       #indent
       notify
-      tree
       flash
       lint
       conform
@@ -331,6 +325,7 @@
       clangd_extensions-nvim
       smear_cursor
       snacks
+      fzf-lua
     ];
 
     extraPackages = with pkgs; [
