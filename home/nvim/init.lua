@@ -72,7 +72,9 @@ map("n", "<leader>rn", vim.lsp.buf.rename, { desc = "lsp rename" })
 
 map("n", "<leader>fd", vim.diagnostic.open_float, { desc = "lsp rename" })
 
-map("n", "<leader>fo", function() conform.format({ lsp_fallback = true, async = false, timeout_ms = 3000 }) end, { desc = "Conform / LSP format" })
+map("n", "<leader>fo", function()
+	conform.format({ lsp_fallback = true, async = false, timeout_ms = 3000 })
+end, { desc = "Conform / LSP format" })
 
 map("n", "]t", todo.jump_next, { desc = "next todo comment" })
 
@@ -90,12 +92,18 @@ map("n", "<leader>rb", gitsigns.reset_buffer, { desc = "gitsigns reset buffer" }
 
 map("n", "<leader>sh", gitsigns.select_hunk, { desc = "gitsigns select hunk" })
 
-map("n", "<leader>gd", ":DiffviewOpen<CR>", { noremap = true, desc = "open Git diff view" })
+map("n", "<leader>gd", ":DiffviewOpen<CR>", { noremap = true, desc = "open git diff view" })
 
 map("n", "<leader>bd", ":DiffviewOpen<SPACE>", { noremap = true, desc = "branch diff view" })
+-- map("n", "<leader>bd", function()
+-- 	vim.ui.input({ prompt = "Enter branch name" }, function(branch)
+-- 		local command = ":DiffviewOpen " .. branch
+-- 		vim.cmd(command)
+-- 	end)
+-- end, { noremap = true, desc = "branch diff view" })
 
---map("n", "<leader>bb", ":Git blame<CR>", { desc = "gitsigns toggle current blame" })
-map("n", "<leader>bb", function() Snacks.git.blame_line() end, { desc = "gitsigns toggle current blame" })
+map("n", "<leader>bl", ":Git blame<CR>", { desc = "toggle git blame" })
+--map("n", "<leader>bb", function() Snacks.git.blame_line() end, { desc = "toggle git blame" })
 
 map("n", "<leader>gh", ":DiffviewFileHistory<CR>", { noremap = true, desc = "open git project history" })
 
