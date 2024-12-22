@@ -289,13 +289,20 @@
         type = "lua";
         config = builtins.readFile ./plugins/which-key.lua;
       };
+
+      blink-cmp = {
+        plugin = pkgs.vimPlugins.blink-cmp;
+        type = "lua";
+        config = builtins.readFile ./plugins/blink-cmp.lua;
+      };
+
     in pkgs.lib.lists.flatten [
       lsp
-      lsp-signature
+      #lsp-signature
       #trouble
       #neoscroll
       surround
-      cmp
+      #cmp
       lspkind
       fugitive
       vim-tmux
@@ -332,6 +339,7 @@
       snacks
       fzf-lua
       which-key
+      blink-cmp
     ];
 
     extraPackages = with pkgs; [
