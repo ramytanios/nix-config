@@ -40,6 +40,8 @@ map("v", "J", ":m '>+1<CR>gv=gv")
 
 map("v", "K", ":m '<-2<CR>gv=gv")
 
+map("n", "<leader>qq", ":q<CR>", { desc = ":q" })
+
 map("n", "<leader>sv", "<C-w>v", { desc = "split window vertically" })
 
 map("n", "<leader>ss", "<C-w>s", { desc = "split window horizontal" })
