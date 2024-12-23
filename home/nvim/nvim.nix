@@ -330,7 +330,7 @@
       markdown-preview
       #inc-rename
       vimcool
-      marks
+      #marks
       lightbulb
       # autopairs
       rest
