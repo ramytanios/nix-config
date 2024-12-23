@@ -70,7 +70,7 @@ map("n", "<leader>ca", fzf.lsp_code_actions, { desc = "lsp code actions" })
 
 map("n", "<leader>rn", vim.lsp.buf.rename, { desc = "lsp rename" })
 
-map("n", "<leader>fd", vim.diagnostic.open_float, { desc = "lsp rename" })
+map("n", "<leader>fd", vim.diagnostic.open_float, { desc = "diagnostic open float" })
 
 map("n", "<leader>fo", function()
 	conform.format({ lsp_fallback = true, async = false, timeout_ms = 3000 })
