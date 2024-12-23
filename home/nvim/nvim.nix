@@ -309,7 +309,7 @@
       web-devicons
       dressing
       #indent
-      notify
+      #notify
       flash
       lint
       conform
