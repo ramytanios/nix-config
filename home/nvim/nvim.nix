@@ -30,9 +30,6 @@
         '';
       };
 
-      # We prefer the colorschemes flake
-      # tokyonight = { plugin = pkgs.vimPlugins.tokyonight-nvim; };
-
       comment = {
         plugin = pkgs.vimPlugins.comment-nvim;
         type = "lua";
@@ -102,14 +99,6 @@
         config = builtins.readFile ./plugins/flash.lua;
       };
 
-      tree = {
-        plugin = pkgs.vimPlugins.nvim-tree-lua;
-        type = "lua";
-        config = ''
-          require("nvim-tree").setup({})
-        '';
-      };
-
       notify = {
         plugin = pkgs.vimPlugins.nvim-notify;
         type = "lua";
@@ -150,7 +139,9 @@
       trouble = {
         plugin = pkgs.vimPlugins.trouble-nvim;
         type = "lua";
-        config = builtins.readFile ./plugins/trouble.lua;
+        config = ''
+          require("trouble").setup({})
+        '';
       };
 
       noice = {
@@ -218,14 +209,6 @@
 
       vimcool = { plugin = pkgs.vimPlugins.vim-cool; };
 
-      marks = {
-        plugin = pkgs.vimPlugins.marks-nvim;
-        type = "lua";
-        config = ''
-          require("marks").setup({})
-        '';
-      };
-
       lightbulb = {
         plugin = pkgs.vimPlugins.nvim-lightbulb;
         type = "lua";
@@ -236,24 +219,7 @@
         '';
       };
 
-      autopairs = {
-        plugin = pkgs.vimPlugins.nvim-autopairs;
-        type = "lua";
-        config = ''
-          require("nvim-autopairs").setup {}
-        '';
-      };
-
       rest = { plugin = pkgs.vimPlugins.rest-nvim; };
-
-      clangd_extensions-nvim = {
-        plugin = pkgs.vimPlugins.clangd_extensions-nvim;
-        type = "lua";
-        config = ''
-          require("clangd_extensions.inlay_hints").setup_autocmd()
-          require("clangd_extensions.inlay_hints").set_inlay_hints()
-        '';
-      };
 
       smear_cursor = let
         smear_cursor = pkgs.vimUtils.buildVimPlugin {
@@ -273,21 +239,54 @@
         '';
       };
 
+      snacks = {
+        plugin = pkgs.vimUtils.buildVimPlugin {
+          pname = "snacks.nvim";
+          version = "2024-12-09";
+          src = pkgs.fetchFromGitHub {
+            owner = "folke";
+            repo = "snacks.nvim";
+            rev = "98df370703b3c47a297988f3e55ce99628639590";
+            sha256 = "sha256-Gvd2QfAgrpRxJvZ41LAOPRrDGwVdeZUb8BGrzzcpcHU=";
+          };
+          meta.homepage = "https://github.com/folke/snacks.nvim/";
+        };
+        type = "lua";
+        config = builtins.readFile ./plugins/snacks.lua;
+      };
+
+      fzf-lua = {
+        plugin = pkgs.vimPlugins.fzf-lua;
+        type = "lua";
+        config = builtins.readFile ./plugins/fzf-lua.lua;
+      };
+
+      which-key = {
+        plugin = pkgs.vimPlugins.which-key-nvim;
+        type = "lua";
+        config = builtins.readFile ./plugins/which-key.lua;
+      };
+
+      blink-cmp = {
+        plugin = pkgs.vimPlugins.blink-cmp;
+        type = "lua";
+        config = builtins.readFile ./plugins/blink-cmp.lua;
+      };
+
     in pkgs.lib.lists.flatten [
       lsp
-      lsp-signature
+      #lsp-signature
       trouble
-      neoscroll
+      #neoscroll
       surround
-      cmp
+      #cmp
       lspkind
       fugitive
       vim-tmux
       web-devicons
       dressing
-      indent
-      notify
-      tree
+      #indent
+      #notify
       flash
       lint
       conform
@@ -295,7 +294,7 @@
       diffview
       lualine
       treesitter
-      telescope
+      #telescope
       plenary
       comment
       todo-comments
@@ -306,37 +305,29 @@
       # noice
       nui
       markdown-preview
-      inc-rename
+      #inc-rename
       vimcool
-      marks
       lightbulb
       # autopairs
       rest
-      clangd_extensions-nvim
       smear_cursor
+      snacks
+      fzf-lua
+      which-key
+      blink-cmp
     ];
 
-    extraPackages = with pkgs; [
-      # LSPs
-      lua-language-server
-      nil
-      ruff-lsp
-      nodePackages.bash-language-server
-      nodePackages.typescript-language-server
-      texlab
-      typst-lsp
-      yaml-language-server
-
-      # Formatters and linters
-      stylua
-      ruff
-      statix
-      nixfmt
-      cpplint
-      yamlfmt
-      yamllint
-      pgformatter
-    ];
+    extraPackages = with pkgs;
+      let
+        lsps = [
+          lua-language-server
+          yaml-language-server
+          bash-language-server
+          python3Packages.python-lsp-server
+        ];
+        formatters = [ stylua nixfmt yamlfmt pgformatter black isort ruff];
+        linters = [ yamllint statix mypy python3Packages.flake8];
+      in lib.lists.flatten [ lsps formatters linters ];
 
     extraLuaConfig = builtins.readFile ./init.lua;
   };

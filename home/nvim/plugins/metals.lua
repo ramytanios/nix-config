@@ -10,11 +10,11 @@ metals_config.init_options = {
 metals_config.settings = {
 	defaultBspToBuildTool = true,
 	useGlobalExecutable = true,
-  superMethodLensesEnabled = true,
+	superMethodLensesEnabled = true,
 	metalsBinaryPath = metalsBinary, -- defined in nvim.nix
 }
 
-metals_config.capabilities = require("cmp_nvim_lsp").default_capabilities()
+metals_config.capabilities = require("blink.cmp").get_lsp_capabilities()
 
 local nvim_metals_group = api.nvim_create_augroup("nvim-metals", { clear = true })
 
