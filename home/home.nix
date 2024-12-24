@@ -29,8 +29,6 @@
       python-packages = ps:
         with ps; [
           pydantic
-          mypy
-          python-lsp-server
           requests
           pandas
           numpy
@@ -39,7 +37,7 @@
           ipython
           scikitlearn
           seaborn
-          # statsmodels # broken derivation
+          statsmodels 
           jupyterlab
           notebook
           joblib
@@ -105,8 +103,6 @@
       tree
       treefmt
       tree-sitter
-      typst
-      typst-live
       unzip
       # watch
       zip
@@ -188,6 +184,8 @@
       enable = true;
       enableFishIntegration = true;
     };
+
+    htop.enable = true;
 
   };
 }

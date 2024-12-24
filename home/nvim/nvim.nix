@@ -209,14 +209,6 @@
 
       vimcool = { plugin = pkgs.vimPlugins.vim-cool; };
 
-      marks = {
-        plugin = pkgs.vimPlugins.marks-nvim;
-        type = "lua";
-        config = ''
-          require("marks").setup({})
-        '';
-      };
-
       lightbulb = {
         plugin = pkgs.vimPlugins.nvim-lightbulb;
         type = "lua";
@@ -227,24 +219,7 @@
         '';
       };
 
-      autopairs = {
-        plugin = pkgs.vimPlugins.nvim-autopairs;
-        type = "lua";
-        config = ''
-          require("nvim-autopairs").setup {}
-        '';
-      };
-
       rest = { plugin = pkgs.vimPlugins.rest-nvim; };
-
-      clangd_extensions-nvim = {
-        plugin = pkgs.vimPlugins.clangd_extensions-nvim;
-        type = "lua";
-        config = ''
-          require("clangd_extensions.inlay_hints").setup_autocmd()
-          require("clangd_extensions.inlay_hints").set_inlay_hints()
-        '';
-      };
 
       smear_cursor = let
         smear_cursor = pkgs.vimUtils.buildVimPlugin {
@@ -332,11 +307,9 @@
       markdown-preview
       #inc-rename
       vimcool
-      #marks
       lightbulb
       # autopairs
       rest
-      clangd_extensions-nvim
       smear_cursor
       snacks
       fzf-lua
@@ -344,26 +317,17 @@
       blink-cmp
     ];
 
-    extraPackages = with pkgs; [
-      # LSPs
-      lua-language-server
-      nil
-      ruff-lsp
-      nodePackages.bash-language-server
-      texlab
-      pyright
-      yaml-language-server
-
-      # Formatters and linters
-      stylua
-      ruff
-      statix
-      nixfmt
-      cpplint
-      yamlfmt
-      yamllint
-      pgformatter
-    ];
+    extraPackages = with pkgs;
+      let
+        lsps = [
+          lua-language-server
+          yaml-language-server
+          bash-language-server
+          python3Packages.python-lsp-server
+        ];
+        formatters = [ stylua nixfmt yamlfmt pgformatter black isort ];
+        linters = [ yamllint statix mypy python3Packages.flake8];
+      in lib.lists.flatten [ lsps formatters linters ];
 
     extraLuaConfig = builtins.readFile ./init.lua;
   };
