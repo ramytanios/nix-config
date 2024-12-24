@@ -325,7 +325,7 @@
           bash-language-server
           python3Packages.python-lsp-server
         ];
-        formatters = [ stylua nixfmt yamlfmt pgformatter black isort ];
+        formatters = [ stylua nixfmt yamlfmt pgformatter black isort ruff];
         linters = [ yamllint statix mypy python3Packages.flake8];
       in lib.lists.flatten [ lsps formatters linters ];
 
