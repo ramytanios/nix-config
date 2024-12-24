@@ -7,7 +7,7 @@ require("conform").setup({
 		},
 	},
 	formatters_by_ft = {
-		python = { "ruff_format" },
+		python = { "ruff_format", "isort" },
 		lua = { "stylua" },
 		bash = { "shfmt" },
 		yml = { "yamlfmt" },

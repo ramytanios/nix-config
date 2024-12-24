@@ -6,10 +6,7 @@ lsp_config.util.default_config =
 	vim.tbl_extend("force", lsp_config.util.default_config, { capabilities = capabilities })
 
 lsp_config.bashls.setup({})
-lsp_config.html.setup({})
 lsp_config.pylsp.setup({})
-lsp_config.smithy_ls.setup({})
-lsp_config.ts_ls.setup({})
 lsp_config.clangd.setup{}
 
 lsp_config.nil_ls.setup({
@@ -49,4 +46,3 @@ lsp_config.lua_ls.setup({
 })
 
 
-lsp_config.yamlls.setup{}

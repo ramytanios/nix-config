@@ -350,9 +350,8 @@
       nil
       ruff-lsp
       nodePackages.bash-language-server
-      nodePackages.typescript-language-server
       texlab
-      typst-lsp
+      pyright
       yaml-language-server
 
       # Formatters and linters
