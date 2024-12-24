@@ -139,7 +139,9 @@
       trouble = {
         plugin = pkgs.vimPlugins.trouble-nvim;
         type = "lua";
-        config = builtins.readFile ./plugins/trouble.lua;
+        config = ''
+          require("trouble").setup({})
+        '';
       };
 
       noice = {
@@ -299,7 +301,7 @@
     in pkgs.lib.lists.flatten [
       lsp
       #lsp-signature
-      #trouble
+      trouble
       #neoscroll
       surround
       #cmp

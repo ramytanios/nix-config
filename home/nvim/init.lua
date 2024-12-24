@@ -29,6 +29,7 @@ local todo = require("todo-comments")
 local flash = require("flash")
 local oil = require("oil")
 local fzf = require("fzf-lua")
+local trouble = require("trouble")
 
 map("i", "jk", "<ESC>", { desc = "insert to visual mode" })
 
@@ -58,13 +59,13 @@ map("n", "<leader>cf", "<cmd>edit $MYVIMRC<CR>", { desc = "open init.lua" })
 
 map("n", "-", oil.open, { desc = "browse parent directory" })
 
-map("n", "<leader>tw", fzf.diagnostics_workspace, { desc = "workspace diagnostics" })
+map("n", "<leader>tw", "<cmd>Trouble diagnostics toggle<cr>", { desc = "workspace diagnostics" })
 
-map("n", "<leader>td", fzf.diagnostics_document, { desc = "document diagnostics" })
+map("n", "<leader>td", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", { desc = "document diagnostics" })
 
-map("n", "<leader>d", fzf.lsp_definitions, { desc = "lsp definitions" })
+map("n", "<leader>d", function() trouble.toggle("lsp_definitions") end, { desc = "lsp definitions" })
 
-map("n", "<leader>rf", fzf.lsp_references, { desc = "lsp references" })
+map("n", "<leader>rf", function() trouble.toggle("lsp_references") end, { desc = "lsp references" })
 
 map("n", "<leader>h", vim.lsp.buf.hover, { desc = "lsp hover" })
 
