@@ -139,7 +139,7 @@ map("n", "<leader>cs", fzf.colorschemes, { desc = "colorschemes" })
 
 map("n", "<leader>gf", fzf.git_files, { desc = "git files" })
 
-map("n", "<leader>mc", metals.commands(), { desc = "metals commands" })
+map("n", "<leader>mc", metals.commands, { desc = "metals commands" })
 
 --map("n", "<leader>gb", function() Snacks.gitbrowse() end, { desc = "git branches" })
 -- map("n", "<leader>re", ":Rest run", { noremap = true, desc = "Rest run" })
