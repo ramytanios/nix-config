@@ -30,6 +30,7 @@ local flash = require("flash")
 local oil = require("oil")
 local fzf = require("fzf-lua")
 local trouble = require("trouble")
+local metals = require("metals")
 
 map("i", "jk", "<ESC>", { desc = "insert to visual mode" })
 
@@ -137,6 +138,8 @@ map("n", "<leader>co", fzf.commands, { desc = "commands" })
 map("n", "<leader>cs", fzf.colorschemes, { desc = "colorschemes" })
 
 map("n", "<leader>gf", fzf.git_files, { desc = "git files" })
+
+map("n", "<leader>mc", metals.commands(), { desc = "metals commands" })
 
 --map("n", "<leader>gb", function() Snacks.gitbrowse() end, { desc = "git branches" })
 -- map("n", "<leader>re", ":Rest run", { noremap = true, desc = "Rest run" })
