@@ -42,6 +42,7 @@
           notebook
           joblib
           pytest
+          yfinance
         ];
 
       python-with-packages = pkgs.python3.withPackages python-packages;
