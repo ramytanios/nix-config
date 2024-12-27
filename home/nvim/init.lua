@@ -64,9 +64,13 @@ map("n", "<leader>tw", "<cmd>Trouble diagnostics toggle<cr>", { desc = "workspac
 
 map("n", "<leader>td", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", { desc = "document diagnostics" })
 
-map("n", "<leader>d", function() trouble.toggle("lsp_definitions") end, { desc = "lsp definitions" })
+map("n", "<leader>d", function()
+	trouble.toggle("lsp_definitions")
+end, { desc = "lsp definitions" })
 
-map("n", "<leader>rf", function() trouble.toggle("lsp_references") end, { desc = "lsp references" })
+map("n", "<leader>rf", function()
+	trouble.toggle("lsp_references")
+end, { desc = "lsp references" })
 
 map("n", "<leader>h", vim.lsp.buf.hover, { desc = "lsp hover" })
 
@@ -121,7 +125,7 @@ map({ "n", "x", "o" }, "S", flash.treesitter, { desc = "flash treesitter search"
 
 map({ "o", "x" }, "R", flash.treesitter_search, { desc = "treesitter search" })
 
-map("n", "<leader>of", fzf.oldfiles, { desc = "opened old files" })
+-- map("n", "<leader>of", fzf.oldfiles, { desc = "opened old files" })
 
 map("n", "<leader>ff", fzf.files, { desc = "find files" })
 
@@ -140,6 +144,8 @@ map("n", "<leader>cs", fzf.colorschemes, { desc = "colorschemes" })
 map("n", "<leader>gf", fzf.git_files, { desc = "git files" })
 
 map("n", "<leader>mc", metals.commands, { desc = "metals commands" })
+
+map("n", "<leader>o", "<cmd>Outline<CR>", { desc = "outline" })
 
 --map("n", "<leader>gb", function() Snacks.gitbrowse() end, { desc = "git branches" })
 -- map("n", "<leader>re", ":Rest run", { noremap = true, desc = "Rest run" })

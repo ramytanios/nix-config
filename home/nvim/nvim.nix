@@ -273,6 +273,14 @@
         config = builtins.readFile ./plugins/blink-cmp.lua;
       };
 
+      outline = {
+        plugin = pkgs.vimPlugins.outline-nvim;
+        type = "lua";
+        config = ''
+          require("outline").setup {}
+          '';
+      };
+
     in pkgs.lib.lists.flatten [
       lsp
       #lsp-signature
@@ -315,6 +323,7 @@
       fzf-lua
       which-key
       blink-cmp
+      outline
     ];
 
     extraPackages = with pkgs;
