@@ -1,12 +1,15 @@
 { pkgs, ... }: {
   shellAliases = {
+    # vim
+    v = "nvim";
     vi = "nvim";
     vim = "nvim";
-    v = "nvim";
 
+    # jupyter-lab
     jl = "jupyter-lab";
     jn = "jupyter-notebook";
 
+    # git 
     gs = "git status";
     ga = "git add";
     gc = "git commit";
@@ -19,6 +22,7 @@
     l = "eza -l --git --icons";
 
     groot = "cd (git rev-parse --show-toplevel)";
+
     cat = "${pkgs.bat}/bin/bat";
   };
 
