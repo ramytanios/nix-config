@@ -1,4 +1,5 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+{
 
   imports = [
     ./tmux/tmux.nix
@@ -21,93 +22,96 @@
 
     # The home.packages option allows you to install Nix packages into your
     # environment.
-    packages = let
-      hello-world = pkgs.writeShellScriptBin "hello-world" ''
-        echo "Hello world, I am ${config.home.username}"
-      '';
+    packages =
+      let
+        hello-world = pkgs.writeShellScriptBin "hello-world" ''
+          echo "Hello world, I am ${config.home.username}"
+        '';
 
-      python-packages = ps:
-        with ps; [
-          pydantic
-          requests
-          pandas
-          numpy
-          scipy
-          matplotlib
-          ipython
-          scikitlearn
-          seaborn
-          statsmodels 
-          jupyterlab
-          notebook
-          joblib
-          pytest
-          yfinance
-        ];
+        python-packages =
+          ps: with ps; [
+            pydantic
+            requests
+            pandas
+            numpy
+            scipy
+            matplotlib
+            ipython
+            scikitlearn
+            seaborn
+            statsmodels
+            jupyterlab
+            notebook
+            joblib
+            pytest
+            yfinance
+          ];
 
-      python-with-packages = pkgs.python3.withPackages python-packages;
+        python-with-packages = pkgs.python3.withPackages python-packages;
 
-    in with pkgs; [
-      # # Adds the 'hello' command to your environment. It prints a friendly
-      # # "Hello, world!" when run.
-      # pkgs.hello
+      in
+      with pkgs;
+      [
+        # # Adds the 'hello' command to your environment. It prints a friendly
+        # # "Hello, world!" when run.
+        # pkgs.hello
 
-      # # It is sometimes useful to fine-tune packages, for example, by applying
-      # # overrides. You can do that directly here, just don't forget the
-      # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-      # # fonts?
-      # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+        # # It is sometimes useful to fine-tune packages, for example, by applying
+        # # overrides. You can do that directly here, just don't forget the
+        # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
+        # # fonts?
+        # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
 
-      # # You can also create simple shell scripts directly inside your
-      # # configuration. For example, this adds a command 'my-hello' to your
-      # # environment:
-      # (pkgs.writeShellScriptBin "my-hello" ''
-      #   echo "Hello, ${config.home.username}!"
-      # '')
-      colima #"https://github.com/NixOS/nixpkgs/issues/47201#issuecomment-2041162985"
-      coursier
-      csvlens
-      docker 
-      docker-compose
-      lazydocker
-      duf
-      eza
-      fd
-      figlet
-      fx
-      fzf
-      # git-summary
-      glow
-      gnumake
-      gum
-      hello-world
-      httpie
-      jdk
-      just
-      killall
-      lazygit
-      metals
-      nodePackages.live-server
-      ncdu 
-      nodejs
-      podman
-      postgresql
-      python-with-packages
-      redis
-      ripgrep
-      ruff
-      sbt
-      scala-cli
-      stow
-      thefuck
-      tldr
-      tree
-      treefmt
-      tree-sitter
-      unzip
-      # watch
-      zip
-    ];
+        # # You can also create simple shell scripts directly inside your
+        # # configuration. For example, this adds a command 'my-hello' to your
+        # # environment:
+        # (pkgs.writeShellScriptBin "my-hello" ''
+        #   echo "Hello, ${config.home.username}!"
+        # '')
+        colima # "https://github.com/NixOS/nixpkgs/issues/47201#issuecomment-2041162985"
+        coursier
+        csvlens
+        docker
+        docker-compose
+        lazydocker
+        duf
+        eza
+        fd
+        figlet
+        fx
+        fzf
+        # git-summary
+        glow
+        gnumake
+        gum
+        hello-world
+        httpie
+        jdk
+        just
+        killall
+        lazygit
+        metals
+        nodePackages.live-server
+        ncdu
+        nodejs
+        podman
+        postgresql
+        python-with-packages
+        redis
+        ripgrep
+        ruff
+        sbt
+        scala-cli
+        stow
+        thefuck
+        tldr
+        tree
+        treefmt
+        tree-sitter
+        unzip
+        # watch
+        zip
+      ];
 
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
     # plain files is through 'home.file'.
@@ -160,8 +164,12 @@
       userEmail = "ramy.tanios@gmail.com";
       userName = "Ramy Tanios";
       delta.enable = true;
-      delta.options = { side-by-side = true; };
-      extraConfig = { init.defaultBranch = "main"; };
+      delta.options = {
+        side-by-side = true;
+      };
+      extraConfig = {
+        init.defaultBranch = "main";
+      };
       aliases = {
         s = "status";
         a = "add";
@@ -188,7 +196,7 @@
 
     htop.enable = true;
 
-    direnv.enable=true;
+    direnv.enable = true;
 
   };
 

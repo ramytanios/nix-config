@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   shellAliases = {
     # vim
     v = "nvim";
@@ -9,7 +10,7 @@
     jl = "jupyter-lab";
     jn = "jupyter-notebook";
 
-    # git 
+    # git
     gs = "git status";
     ga = "git add";
     gc = "git commit";
@@ -18,11 +19,11 @@
     gl = "git log";
     gd = "git diff";
 
-    #ls 
+    #ls
     la = "eza -la --git --icons";
     l = "eza -l --git --icons";
 
-    # scala 
+    # scala
     scala = "scala-cli";
 
     groot = "cd (git rev-parse --show-toplevel)";

@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   programs = {
     vscode = {
       enable = true;
@@ -19,25 +20,28 @@
         "workbench.iconTheme" = "Monokai Pro Icons";
         "editor.fontFamily" = "JetBrains Nerd Font Mono";
         "editor.fontSize" = 15;
-        "vim.insertModeKeyBindings" = [{
-          "before" = [ "j" "k" ];
-          "after" = [ "<Esc>" ];
-        }];
+        "vim.insertModeKeyBindings" = [
+          {
+            "before" = [
+              "j"
+              "k"
+            ];
+            "after" = [ "<Esc>" ];
+          }
+        ];
 
       };
       keybindings = [
         {
           "key" = "ctrl+j";
           "command" = "selectNextSuggestion";
-          "when" =
-            "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus";
+          "when" = "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus";
         }
 
         {
           "key" = "ctrl+k";
           "command" = "selectPrevSuggestion";
-          "when" =
-            "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus";
+          "when" = "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus";
         }
       ];
     };

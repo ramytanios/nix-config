@@ -1,4 +1,5 @@
-{ inputs, pkgs, ... }: {
+{ inputs, pkgs, ... }:
+{
   # imports = [ inputs.tokyonight.homeModules.colorscheme ];
 
   # colorscheme.tokyonight = {

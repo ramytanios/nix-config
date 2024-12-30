@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
 
   programs.tmux = {
     enable = true;
@@ -9,7 +10,11 @@
     mouse = true;
     sensibleOnTop = false;
     terminal = "tmux-256color";
-    plugins = with pkgs.tmuxPlugins; [ vim-tmux-navigator resurrect tmux-fzf];
+    plugins = with pkgs.tmuxPlugins; [
+      vim-tmux-navigator
+      resurrect
+      tmux-fzf
+    ];
     extraConfig = ''
       set -g @resurrect-capture-pane-contents 'on';
       set -g @resurrect-strategy-nvim 'session';

@@ -1,8 +1,10 @@
-{ pkgs, ...}:
+{ pkgs, ... }:
 
-let core = import ./core.nix { inherit pkgs; };
+let
+  core = import ./core.nix { inherit pkgs; };
 
-in {
+in
+{
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
@@ -12,7 +14,9 @@ in {
       theme = "robbyrussell";
       plugins = [ "git" ];
     };
-    shellAliases = core.shellAliases // { t = "_tmux"; };
+    shellAliases = core.shellAliases // {
+      t = "_tmux";
+    };
     inherit (core) initExtra;
   };
 }

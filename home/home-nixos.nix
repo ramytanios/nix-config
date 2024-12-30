@@ -1,4 +1,5 @@
-{ inputs, ... }: {
+{ inputs, ... }:
+{
   imports = [ inputs.colorscheme.homeModules.default.kauz ];
 
   colorscheme.kauz = {

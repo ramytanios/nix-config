@@ -18,5 +18,6 @@ require("conform").setup({
 		bash = { "shfmt" },
 		yml = { "yamlfmt" },
 		sql = { "pg_fmt" },
+		nix = { "nixfmt" },
 	},
 })

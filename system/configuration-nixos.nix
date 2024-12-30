@@ -7,7 +7,10 @@
 {
 
   nix = {
-    settings.experimental-features = [ "nix-command" "flakes" ];
+    settings.experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
 
     # automatic garbage collection
     # https://nixos.wiki/wiki/Storage_optimization
@@ -19,7 +22,8 @@
     };
   };
 
-  imports = [ # Include the results of the hardware scan.
+  imports = [
+    # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
 
@@ -85,7 +89,10 @@
   users.users.ramyt = {
     isNormalUser = true;
     description = "Ramy Tanios";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     packages = with pkgs; [
       firefox
       whatsapp-for-linux
@@ -115,14 +122,17 @@
 
   users.defaultUserShell = pkgs.zsh;
 
-  # Fonts 
+  # Fonts
   fonts.fontDir.enable = true;
-  fonts.packages = with pkgs;
-    [
-      (nerdfonts.override {
-        fonts = [ "FiraCode" "JetBrainsMono" "DroidSansMono" ];
-      })
-    ];
+  fonts.packages = with pkgs; [
+    (nerdfonts.override {
+      fonts = [
+        "FiraCode"
+        "JetBrainsMono"
+        "DroidSansMono"
+      ];
+    })
+  ];
 
   services.xserver.autoRepeatDelay = 220;
   services.xserver.autoRepeatInterval = 25;

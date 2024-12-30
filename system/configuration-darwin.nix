@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
 
   nix = {
     extraOptions = ''
@@ -21,8 +22,7 @@
   };
 
   system.defaults.dock.autohide = true;
-  system.defaults.dock.static-only =
-    false; # dont show only running apps, but all
+  system.defaults.dock.static-only = false; # dont show only running apps, but all
   system.defaults.finder.AppleShowAllExtensions = true;
   system.defaults.finder.AppleShowAllFiles = true;
   system.defaults.NSGlobalDomain.ApplePressAndHoldEnabled = false;
@@ -48,33 +48,42 @@
 
   # `home-manager` currently has issues adding them to `~/Applications`
   # Issue: https://github.com/nix-community/home-manager/issues/1341
-  environment.systemPackages = with pkgs;
-    [
-      # kitty
-    ];
+  environment.systemPackages = with pkgs; [
+    # kitty
+  ];
 
   fonts.fontDir.enable = true;
-  fonts.fonts = with pkgs;
-    [
-      (nerdfonts.override {
-        fonts = [ "FiraCode" "JetBrainsMono" "DroidSansMono" ];
-      })
-    ];
+  fonts.fonts = with pkgs; [
+    (nerdfonts.override {
+      fonts = [
+        "FiraCode"
+        "JetBrainsMono"
+        "DroidSansMono"
+      ];
+    })
+  ];
 
-  # homebrew 
+  # homebrew
   homebrew = {
     enable = true;
     onActivation = {
       autoUpdate = true;
       cleanup = "zap";
     };
-    casks = [ "discord" "docker" "firefox" "kitty" "telegram" "whatsapp" ];
+    casks = [
+      "discord"
+      "docker"
+      "firefox"
+      "kitty"
+      "telegram"
+      "whatsapp"
+    ];
   };
 
   # ZSH
   programs.zsh.enable = true;
 
-  # Allow unfree packages 
+  # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   users.users.ramytanios = {
