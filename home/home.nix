@@ -188,5 +188,8 @@
 
     htop.enable = true;
 
+    direnv.enable=true;
+
   };
+
 }
