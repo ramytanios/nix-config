@@ -306,7 +306,7 @@
         lsp
         #lsp-signature
         trouble
-        #neoscroll
+        neoscroll
         surround
         #cmp
         lspkind
