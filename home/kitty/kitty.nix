@@ -1,13 +1,11 @@
-{ ... }:
+{ pkgs, ... }:
 {
 
   programs.kitty = {
     enable = true;
     font.name = "JetBrainsMono Nerd Font Mono";
-    extraConfig = ''
-      cursor_shape block
-      hide_window_decorations titlebar-only
-    '';
+    font.size = pkgs.lib.mkDefault 14; # might want to override in machine-specific module
+    extraConfig = builtins.readFile ./extra.conf;
   };
 
 }

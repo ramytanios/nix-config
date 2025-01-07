@@ -14,7 +14,6 @@
 
     catppuccin.url = "github:catppuccin/nix";
 
-    kauz.url = "github:buntec/kauz";
   };
 
   outputs =
@@ -25,7 +24,6 @@
       darwin,
       flake-utils,
       catppuccin,
-      kauz,
       ...
     }:
     let
@@ -52,7 +50,7 @@
 
       nixosMachines = builtins.filter (machine: !isDarwin machine) machines;
 
-      overlays = [ kauz.overlays.default ];
+      overlays = [];
 
     in
     {

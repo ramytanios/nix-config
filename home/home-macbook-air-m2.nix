@@ -1,21 +1,18 @@
 { inputs, pkgs, ... }:
 {
-  # imports = [ inputs.tokyonight.homeModules.colorscheme ];
 
-  # colorscheme.tokyonight = {
-  #   style = "storm";
-  #   fish.enable = true;
-  #   tmux.enable = true;
-  #   kitty.enable = true;
-  #   neovim.enable = true;
-  # };
-
-  programs.tmux.catppuccin.enable = false;
   catppuccin = {
     enable = true;
     flavor = "frappe";
+    tmux.enable = false;
   };
 
-  programs.kitty.font.size = 15.5;
+  programs = {
+
+    kitty.font.size = 15.5;
+
+    git.diff-so-fancy.enable = true;
+
+  };
 
 }

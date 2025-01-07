@@ -6,7 +6,6 @@
     ./kitty/kitty.nix
     ./nvim/nvim.nix
     ./shell/default.nix
-    #./vscode/vscode.nix
   ];
 
   home = {
@@ -162,29 +161,17 @@
       enable = true;
       userEmail = "ramy.tanios@gmail.com";
       userName = "Ramy Tanios";
-      delta.enable = true;
-      delta.options = {
-        side-by-side = true;
-      };
+      diff-so-fancy.enable = pkgs.lib.mkDefault false; # might want to override in machine specific module
+      delta.enable = pkgs.lib.mkDefault false; # might want to override in machine specific module
+      delta.options.side-by-side = pkgs.lib.mkDefault false; # might want to override in machine specific module
       extraConfig = {
         init.defaultBranch = "main";
-      };
-      aliases = {
-        s = "status";
-        a = "add";
-        c = "commit";
-        p = "push";
-        pt = "push --follow-tags";
-        l = "log";
-        d = "diff";
       };
     };
 
     java.enable = true;
 
     ssh.enable = true;
-
-    helix.enable = true;
 
     bat.enable = true;
 
