@@ -19,5 +19,6 @@ require("conform").setup({
 		yml = { "yamlfmt" },
 		sql = { "pg_fmt" },
 		nix = { "nixfmt" },
+		justfile = { "just" },
 	},
 })

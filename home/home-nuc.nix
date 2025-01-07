@@ -9,6 +9,5 @@
     neovim.enable = true;
   };
 
-  # kitty font specification
   programs.kitty.font.size = 12.5;
 }

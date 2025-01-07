@@ -1,6 +1,8 @@
 { pkgs, ... }:
 {
 
+  system.stateVersion = 5;
+
   nix = {
     extraOptions = ''
       experimental-features = nix-command flakes
@@ -21,20 +23,34 @@
 
   };
 
-  system.defaults.dock.autohide = true;
-  system.defaults.dock.static-only = false; # dont show only running apps, but all
-  system.defaults.finder.AppleShowAllExtensions = true;
-  system.defaults.finder.AppleShowAllFiles = true;
-  system.defaults.NSGlobalDomain.ApplePressAndHoldEnabled = false;
-  # disable automatic spelling correction
-  system.defaults.NSGlobalDomain.NSAutomaticSpellingCorrectionEnabled = false;
+  system = {
+    defaults = {
 
-  # enable "natural" scroll direction
-  system.defaults.NSGlobalDomain."com.apple.swipescrolldirection" = true;
+      dock = {
+        autohide = true;
+        static-only = false; # dont show only running apps, but all
+      };
 
-  # key repeat: lower is faster
-  system.defaults.NSGlobalDomain.InitialKeyRepeat = 15;
-  system.defaults.NSGlobalDomain.KeyRepeat = 1;
+      finder = {
+        AppleShowAllExtensions = true;
+        AppleShowAllFiles = true;
+      };
+
+      NSGlobalDomain = {
+
+        ApplePressAndHoldEnabled = false;
+        NSAutomaticSpellingCorrectionEnabled = false; # disable automatic spelling correction
+
+        # enable "natural" scroll direction
+        "com.apple.swipescrolldirection" = true;
+
+        # key repeat: lower is faster
+        InitialKeyRepeat = 15;
+        KeyRepeat = 1;
+      };
+
+    };
+  };
 
   # Make sure the nix daemon always runs
   services.nix-daemon.enable = true;
@@ -52,15 +68,10 @@
     # kitty
   ];
 
-  fonts.fontDir.enable = true;
-  fonts.fonts = with pkgs; [
-    (nerdfonts.override {
-      fonts = [
-        "FiraCode"
-        "JetBrainsMono"
-        "DroidSansMono"
-      ];
-    })
+  fonts.packages = with pkgs; [
+    nerd-fonts.fira-code
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.droid-sans-mono
   ];
 
   # homebrew

@@ -3,28 +3,17 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+
     flake-utils.url = "github:numtide/flake-utils";
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    darwin = {
-      url = "github:lnl7/nix-darwin";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    darwin.url = "github:lnl7/nix-darwin";
+    darwin.inputs.nixpkgs.follows = "nixpkgs";
+
     catppuccin.url = "github:catppuccin/nix";
-    watch = {
-      url = "github:ramytanios/watch";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    live-server = {
-      url = "github:ramytanios/fs2-live-server";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    git-summary = {
-      url = "github:buntec/git-summary-scala";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+
     kauz.url = "github:buntec/kauz";
   };
 
@@ -35,9 +24,6 @@
       home-manager,
       darwin,
       flake-utils,
-      watch,
-      live-server,
-      git-summary,
       catppuccin,
       kauz,
       ...
@@ -47,31 +33,26 @@
 
       machines = [
         {
-          name = "nuc";
-          os = "nixos";
-          user = "ramyt";
+          name = "thinkpad";
+          user = "ramytanios";
           system = flake-utils.lib.system.x86_64-linux;
         }
         {
           name = "macbook-air-m2";
-          os = "macos";
           user = "ramytanios";
           system = flake-utils.lib.system.aarch64-darwin;
         }
       ];
 
       machinesBySystem = builtins.groupBy (machine: machine.system) machines;
-      isDarwin = machine: machine.os == "macos";
+
+      isDarwin = system: (builtins.match ".*darwin" system) != null;
+
       darwinMachines = builtins.filter isDarwin machines;
+
       nixosMachines = builtins.filter (machine: !isDarwin machine) machines;
 
-      # Add here overlays
-      overlays = [
-        kauz.overlays.default
-        watch.overlays.default
-        live-server.overlays.default
-        git-summary.overlays.default
-      ];
+      overlays = [ kauz.overlays.default ];
 
     in
     {
@@ -135,11 +116,11 @@
                 {
                   home.username = machine.user;
                   home.homeDirectory =
-                    if (isDarwin machine) then "/Users/${machine.user}" else "/home/${machine.user}";
+                    if (isDarwin machine.system) then "/Users/${machine.user}" else "/home/${machine.user}";
                 }
                 catppuccin.homeManagerModules.catppuccin
                 ./home/home.nix
-                ./home/home-${machine.os}.nix
+                ./home/home-${machine.name}.nix
               ];
             };
           }
@@ -155,11 +136,11 @@
               let
                 pkgs = import nixpkgs { inherit (machine) system; };
 
-                hmScript = pkgs.writeShellScript "hm-switch-${machine.os}" "${
+                hmScript = pkgs.writeShellScript "hm-switch-${machine.name}" "${
                   inputs.home-manager.packages.${machine.system}.home-manager
                 }/bin/home-manager switch --flake ${self}#${machine.name}";
 
-                rebuildScript = pkgs.writeShellScript "rebuild-${machine.os}" (
+                rebuildScript = pkgs.writeShellScript "rebuild-${machine.name}" (
                   if (isDarwin machine) then
                     "${
                       self.darwinConfigurations.${machine.name}.system
@@ -168,26 +149,26 @@
                     "${pkgs.nixos-rebuild}/bin/nixos-rebuild switch --flake ${self}#${machine.name}"
                 );
 
-                cleanScript = pkgs.writeShellScript "clean-${machine.os}" "nix-collect-garbage --delete-older-than 15d";
+                cleanScript = pkgs.writeShellScript "clean-${machine.name}" "nix-collect-garbage --delete-older-than 15d";
 
               in
               [
                 {
-                  name = "hm-switch-${machine.os}";
+                  name = "hm-switch-${machine.name}";
                   value = {
                     type = "app";
                     program = "${hmScript}";
                   };
                 }
                 {
-                  name = "rebuild-${machine.os}";
+                  name = "rebuild-${machine.name}";
                   value = {
                     type = "app";
                     program = "${rebuildScript}";
                   };
                 }
                 {
-                  name = "clean-${machine.os}";
+                  name = "clean-${machine.name}";
                   value = {
                     type = "app";
                     program = "${cleanScript}";

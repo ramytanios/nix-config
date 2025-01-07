@@ -12,13 +12,10 @@
 
   programs.tmux.catppuccin.enable = false;
   catppuccin = {
-    enable = true; # will enable full support (tmux, nvim, kitty, etc ...)
+    enable = true;
     flavor = "frappe";
   };
 
-  # kitty font specification
   programs.kitty.font.size = 15.5;
-
-  # home.packages = with pkgs; [ texlive.combined.scheme-full ];
 
 }

@@ -80,7 +80,6 @@
         figlet
         fx
         fzf
-        # git-summary
         glow
         gnumake
         gum
@@ -109,7 +108,7 @@
         treefmt
         tree-sitter
         unzip
-        # watch
+        uv
         zip
       ];
 
