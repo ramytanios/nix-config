@@ -51,8 +51,8 @@ sudo mv /etc/nix/nix.conf /etc/nix/.nix-darwin.bkp.nix.conf
 
 5. Clone this repo, `cd` into it, then build and activate with the following commands:
 ```bash
-nix run .#rebuild-macos # system configuration
-nix run .#hm-switch-macos # dotfiles and home configuration
+nix run .#rebuild-macbook-air-m2 # system configuration
+nix run .#hm-switch-macbook-air-m2 # dotfiles and home configuration
 ```
 
 ## Migrating an existing macOS install to Nix
