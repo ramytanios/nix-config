@@ -12,7 +12,7 @@ reload-tmux:
   tmux source-file ~/.config/tmux/tmux.conf
 
 [unix] 
-reload-fish: 
+reload-fish:  # does not work as intended
   fish -c 'source ~/.config/fish/**/*.fish'
 
 [unix]

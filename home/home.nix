@@ -5,7 +5,8 @@
     ./tmux/tmux.nix
     ./kitty/kitty.nix
     ./nvim/nvim.nix
-    ./shell/default.nix
+    ./fish/fish.nix
+    ./zsh/zsh.nix
   ];
 
   home = {
