@@ -1,11 +1,17 @@
 { inputs, pkgs, ... }:
 {
 
-  catppuccin = {
-    enable = true;
-    flavor = "frappe";
-    tmux.enable = false;
-  };
+  catppuccin =
+    let
+      flavor = "frappe";
+    in
+    {
+      enable = true;
+      inherit flavor;
+      tmux.enable = false;
+      zsh-syntax-highlighting.enable = true;
+      zsh-syntax-highlighting.flavor = flavor;
+    };
 
   programs = {
 
