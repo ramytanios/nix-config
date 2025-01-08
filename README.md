@@ -6,7 +6,7 @@ Nix configuration flake for my personal machines (macOS and NixOS).
 
 ⌛*This is work in progress!*
 
-💡*Heavily inspired by* [buntec](https://github.com/buntec/nix-config)
+💡*Inspired by* [buntec](https://github.com/buntec/nix-config)
 
 ## Fresh NixOS install
 After installing NixOS from a USB drive, follow these steps:
