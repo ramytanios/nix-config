@@ -183,7 +183,11 @@
 
     htop.enable = true;
 
-    direnv.enable = true;
+    direnv = {
+      enable = true;
+      # enableFishIntegration = true; # enabled by default
+      enableBashIntegration = true;
+    };
 
   };
 
