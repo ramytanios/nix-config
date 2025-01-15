@@ -7,13 +7,13 @@ host := `hostname`
 fmt:
     just --fmt --unstable
 
-[unix] 
+[unix]
 reload-tmux:
-  tmux source-file ~/.config/tmux/tmux.conf
+    tmux source-file ~/.config/tmux/tmux.conf
 
-[unix] 
-reload-fish:  # does not work as intended
-  fish -c 'source ~/.config/fish/**/*.fish'
+[unix]
+reload-fish:
+    fish -c 'source ~/.config/fish/**/*.fish'
 
 [unix]
 switch:
@@ -29,6 +29,10 @@ rebuild:
 clean:
     nix run .#clean-{{ host }}
 
-[unix] 
-flake-update: 
-  nix flake update
+[unix]
+flake-update:
+    nix flake update
+
+[unix]
+inspect-flake:
+    nix repl --expr "let flake = builtins.getFlake (toString $PWD); in {inherit flake;}"
