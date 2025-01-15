@@ -239,38 +239,16 @@
           plugin = pkgs.vimPlugins.rest-nvim;
         };
 
-        smear_cursor =
-          let
-            smear_cursor = pkgs.vimUtils.buildVimPlugin {
-              name = "smear-cursor.nvim";
-              src = pkgs.fetchFromGitHub {
-                owner = "sphamba";
-                repo = "smear-cursor.nvim";
-                rev = "78c42170f9326fb70d09aff2184c81189eddf144";
-                sha256 = "rmNyjHjHGaRzFvnmBuzQnSH8VGZ2j5XfNxDwYcgPkPA=";
-              };
-            };
-          in
-          {
-            plugin = smear_cursor;
-            type = "lua";
-            config = ''
-              require("smear_cursor").setup {}
-            '';
-          };
+        smear_cursor = {
+          plugin = pkgs.vimPlugins.smear-cursor-nvim;
+          type = "lua";
+          config = ''
+            require("smear_cursor").setup {}
+          '';
+        };
 
         snacks = {
-          plugin = pkgs.vimUtils.buildVimPlugin {
-            pname = "snacks.nvim";
-            version = "2024-12-09";
-            src = pkgs.fetchFromGitHub {
-              owner = "folke";
-              repo = "snacks.nvim";
-              rev = "98df370703b3c47a297988f3e55ce99628639590";
-              sha256 = "sha256-Gvd2QfAgrpRxJvZ41LAOPRrDGwVdeZUb8BGrzzcpcHU=";
-            };
-            meta.homepage = "https://github.com/folke/snacks.nvim/";
-          };
+          plugin = pkgs.vimPlugins.snacks-nvim;
           type = "lua";
           config = builtins.readFile ./plugins/snacks.lua;
         };
@@ -333,7 +311,7 @@
         fidget
         # noice
         nui
-        markdown-preview
+        # markdown-preview
         #inc-rename
         vimcool
         lightbulb

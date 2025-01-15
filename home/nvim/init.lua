@@ -1,6 +1,7 @@
+---@diagnostic disable: missing-fields
+
 vim.g.mapleader = " "
 
--- options
 local opt = vim.opt
 opt.relativenumber = true
 opt.number = true
@@ -21,15 +22,22 @@ opt.splitright = true
 opt.splitbelow = true
 opt.swapfile = false
 
--- keymaps
 local map = vim.keymap.set
+
 local conform = require("conform")
+
 local gitsigns = require("gitsigns")
+
 local todo = require("todo-comments")
+
 local flash = require("flash")
+
 local oil = require("oil")
+
 local fzf = require("fzf-lua")
+
 local trouble = require("trouble")
+
 local metals = require("metals")
 
 map("i", "jk", "<ESC>", { desc = "insert to visual mode" })

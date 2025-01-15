@@ -1,4 +1,7 @@
+---@diagnostic disable: missing-fields
+
 local blink = require("blink.cmp")
+
 blink.setup({
 	-- 'default' for mappings similar to built-in completion
 	-- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys to navigate)
@@ -6,10 +9,9 @@ blink.setup({
 	-- see the "default configuration" section below for full documentation on how to define
 	-- your own keymap.
 	keymap = {
-		preset = "default",
-		["<C-k>"] = { "select_prev", "fallback" },
-		["<C-j>"] = { "select_next", "fallback" },
-		["<CR>"] = { "select_and_accept", "fallback" },
+		preset = "enter",
+		-- ["<C-k>"] = { "select_prev", "fallback" },
+		-- ["<C-j>"] = { "select_next", "fallback" },
 	},
 
 	appearance = {
@@ -33,5 +35,10 @@ blink.setup({
 	-- experimental signature help support
 	signature = { enabled = true },
 
-	completion = { ghost_text = { enabled = true }, treesitter = { "lsp" } },
+	completion = {
+		list = {
+			selection = { preselect = false, auto_insert = true },
+		},
+		ghost_text = { enabled = false },
+	},
 })

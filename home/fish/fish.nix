@@ -19,20 +19,18 @@
 
     functions = { };
 
+    # we prefer abbreviations over aliases
     shellAbbrs = {
       fish-reload-config = "source ~/.config/fish/**/*.fish";
       tmux-reload-config = "tmux source-file ~/.config/tmux/tmux.conf";
 
-      # vim
       v = "nvim";
       vi = "nvim";
       vim = "nvim";
 
-      # jupyter-lab
       jl = "jupyter-lab";
       jn = "jupyter-notebook";
 
-      # git
       gs = "git status";
       ga = "git add";
       gc = "git commit";
@@ -41,11 +39,9 @@
       gl = "git log";
       gd = "git diff";
 
-      #ls
       la = "eza -la --git --icons";
       l = "eza -l --git --icons";
 
-      # scala
       scala = "scala-cli";
 
       groot = "cd (git rev-parse --show-toplevel)";

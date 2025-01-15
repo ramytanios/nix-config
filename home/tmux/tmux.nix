@@ -16,9 +16,7 @@
       resurrect
       tmux-fzf
     ];
-    extraConfig = ''
-      ${builtins.readFile ./extra.conf}
-    '';
+    extraConfig = builtins.readFile ./extra.conf;
   };
 
 }

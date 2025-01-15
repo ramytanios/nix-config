@@ -28,3 +28,7 @@ rebuild:
 [unix]
 clean:
     nix run .#clean-{{ host }}
+
+[unix] 
+flake-update: 
+  nix flake update
