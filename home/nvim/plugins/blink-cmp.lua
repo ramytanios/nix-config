@@ -10,8 +10,8 @@ blink.setup({
 	-- your own keymap.
 	keymap = {
 		preset = "enter",
-		-- ["<C-k>"] = { "select_prev", "fallback" },
-		-- ["<C-j>"] = { "select_next", "fallback" },
+		["<C-k>"] = { "select_prev", "fallback" },
+		["<C-j>"] = { "select_next", "fallback" },
 	},
 
 	appearance = {
