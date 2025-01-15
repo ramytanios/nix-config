@@ -29,7 +29,7 @@ blink.setup({
 	sources = {
 		default = { "lsp", "path", "snippets", "buffer" },
 		-- optionally disable cmdline completions
-		-- cmdline = {},
+		cmdline = { preset = "none" },
 	},
 
 	-- experimental signature help support
