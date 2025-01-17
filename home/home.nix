@@ -99,7 +99,7 @@
         redis
         ripgrep
         ruff
-        # sbt
+        sbt
         scala-cli
         stow
         thefuck
