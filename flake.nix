@@ -14,6 +14,8 @@
 
     catppuccin.url = "github:catppuccin/nix";
 
+    devenv.url = "github:cachix/devenv";
+    devenv.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -24,6 +26,7 @@
       darwin,
       flake-utils,
       catppuccin,
+      devenv,
       ...
     }:
     let
@@ -50,10 +53,48 @@
 
       nixosMachines = builtins.filter (machine: !isDarwin machine) machines;
 
+      systems = builtins.attrNames machinesBySystem;
+
+      eachSystem = nixpkgs.lib.genAttrs systems;
+
+      pkgsBySystem = builtins.listToAttrs (
+        builtins.map (system: {
+          name = system;
+          value = import nixpkgs {
+            inherit system;
+            inherit overlays;
+            config.allowUnfree = true;
+          };
+        }) systems
+      );
+
       overlays = [ ];
 
     in
     {
+
+      # dev shells
+      devShells = eachSystem (
+        system:
+        let
+          pkgs = pkgsBySystem.${system};
+        in
+        {
+          default = devenv.lib.mkShell {
+            inherit inputs pkgs;
+
+            modules = [
+              (
+                { pkgs, config, ... }:
+                {
+                  languages.lua.enable = true;
+                  languages.nix.enable = true;
+                }
+              )
+            ];
+          };
+        }
+      );
 
       # NixOS configuration entry point
       nixosConfigurations = builtins.listToAttrs (
@@ -96,14 +137,7 @@
         builtins.map (
           machine:
           let
-            pkgs = import nixpkgs {
-              inherit (machine) system;
-              inherit overlays;
-              config = {
-                allowUnfree = true;
-              };
-            };
-
+            pkgs = pkgsBySystem.${machine.system};
           in
           {
             inherit (machine) name;
@@ -132,7 +166,7 @@
             builtins.map (
               machine:
               let
-                pkgs = import nixpkgs { inherit (machine) system; };
+                pkgs = pkgsBySystem.${machine.system};
 
                 hmScript = pkgs.writeShellScript "hm-switch-${machine.name}" "${
                   inputs.home-manager.packages.${machine.system}.home-manager
