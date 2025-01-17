@@ -329,6 +329,7 @@
       with pkgs;
       let
         lsps = [
+          nil
           lua-language-server
           yaml-language-server
           bash-language-server

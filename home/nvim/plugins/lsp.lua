@@ -8,7 +8,15 @@ lsp_config.util.default_config =
 lsp_config.bashls.setup({})
 lsp_config.pylsp.setup({})
 lsp_config.clangd.setup{}
-
+lsp_config.nil_ls.setup({
+  settings = {
+    ["nil"] = {
+      formatting = {
+        command = { "nixfmt" },
+      },
+    },
+  },
+})
 lsp_config.lua_ls.setup({
 	settings = {
 		Lua = {

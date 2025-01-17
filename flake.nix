@@ -50,7 +50,7 @@
 
       nixosMachines = builtins.filter (machine: !isDarwin machine) machines;
 
-      overlays = [];
+      overlays = [ ];
 
     in
     {
