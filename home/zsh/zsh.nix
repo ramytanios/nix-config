@@ -9,5 +9,9 @@
 
     syntaxHighlighting.enable = true;
 
+    shellAliases = {
+      t = "tmux attach -t HOME";
+    };
+
   };
 }
