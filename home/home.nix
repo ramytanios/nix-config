@@ -100,7 +100,7 @@
         ripgrep
         ruff
         sbt
-        # scala-cli
+        scala-cli
         stow
         thefuck
         tldr
