@@ -16,6 +16,9 @@
 
     devenv.url = "github:cachix/devenv";
     devenv.inputs.nixpkgs.follows = "nixpkgs";
+
+    dummy-app.url = "github:ramytanios/scala-app-template";
+    dummy-app.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -27,6 +30,7 @@
       flake-utils,
       catppuccin,
       devenv,
+      dummy-app,
       ...
     }:
     let
@@ -68,7 +72,7 @@
         }) systems
       );
 
-      overlays = [ ];
+      overlays = [ dummy-app.overlays.default ];
 
     in
     {

@@ -75,6 +75,7 @@
         docker-compose
         lazydocker
         duf
+        dummy-app
         eza
         fd
         figlet
