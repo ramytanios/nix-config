@@ -108,11 +108,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1737729971,
-        "narHash": "sha256-q9aKFibB8t+9pl9w7eGs6lW4iZ2aJqN6BWskS1w1Ue8=",
+        "lastModified": 1737908954,
+        "narHash": "sha256-yrXs3TjsI2pNh0Ud+7hDNlHdoB4pb6/qN2sws2dBa9o=",
         "owner": "cachix",
         "repo": "devenv",
-        "rev": "68a6d54dbeb5622b8435d7f1acf9ce239a075635",
+        "rev": "52448c52aa63ebdae05dc08fcc2a112911ac7886",
         "type": "github"
       },
       "original": {
@@ -155,11 +155,11 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1737886451,
-        "narHash": "sha256-dHwhZuUMeLAUTq5ca3StogAwyw9F7zky+aJZMMPnphk=",
+        "lastModified": 1737910312,
+        "narHash": "sha256-KPythpJeerH37dxpBj+hmRkkHhsBdzI1jckXk84PRxk=",
         "owner": "ramytanios",
         "repo": "scala-app-template",
-        "rev": "850bc3b16f9b27a073d9e2206645388f39414908",
+        "rev": "c9c9bd3986d78f08b0f1110daef17e04f387de8d",
         "type": "github"
       },
       "original": {
