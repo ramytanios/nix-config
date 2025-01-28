@@ -215,7 +215,7 @@
         };
 
       in
-      pkgs.lib.lists.flatten [
+      lib.lists.flatten [
         lsp
         trouble
         neoscroll

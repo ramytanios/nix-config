@@ -1,11 +1,10 @@
 { pkgs, ... }:
 {
-  programs = {
+  programs = with pkgs; {
     vscode = {
       enable = true;
-      extensions = with pkgs.vscode-extensions; [
+      extensions = with vscode-extensions; [
         vscodevim.vim
-        # enkia.tokyo-night
         yzhang.markdown-all-in-one
         ms-python.python
         ms-python.vscode-pylance

@@ -1,20 +1,20 @@
 { pkgs, ... }:
 
 {
-  programs.fish = {
+  programs.fish = with pkgs; {
 
     enable = true;
 
     plugins = [
       {
         name = "pure";
-        inherit (pkgs.fishPlugins.pure) src;
+        inherit (fishPlugins.pure) src;
       }
     ];
 
     interactiveShellInit = ''
       fish_vi_key_bindings
-      ${pkgs.thefuck}/bin/thefuck --alias | source
+      ${thefuck}/bin/thefuck --alias | source
     '';
 
     functions = { };
@@ -46,7 +46,7 @@
 
       groot = "cd (git rev-parse --show-toplevel)";
 
-      cat = "${pkgs.bat}/bin/bat";
+      cat = "${bat}/bin/bat";
 
     };
 

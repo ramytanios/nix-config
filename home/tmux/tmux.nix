@@ -1,16 +1,16 @@
 { pkgs, ... }:
 {
 
-  programs.tmux = {
+  programs.tmux = with pkgs; {
     enable = true;
     prefix = "C-a";
     keyMode = "vi";
-    shell = "${pkgs.fish}/bin/fish";
+    shell = "${fish}/bin/fish";
     clock24 = true;
     mouse = true;
     sensibleOnTop = false;
     terminal = "tmux-256color";
-    plugins = with pkgs.tmuxPlugins; [
+    plugins = with tmuxPlugins; [
       prefix-highlight
       vim-tmux-navigator
       resurrect

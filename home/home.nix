@@ -7,6 +7,7 @@
     ./nvim/nvim.nix
     ./fish/fish.nix
     ./zsh/zsh.nix
+    ./git/git.nix
   ];
 
   home = {
@@ -146,30 +147,8 @@
 
   # Let Home Manager install and manage itself.
   programs = {
+
     home-manager.enable = true;
-
-    gh = {
-      enable = true;
-      settings = {
-        git_protocol = "ssh";
-        prompt = "enabled";
-        aliases = { };
-        editor = "nvim";
-        version = 1; # see issue https://github.com/cli/cli/issues/8462
-      };
-    };
-
-    git = {
-      enable = true;
-      userEmail = "ramy.tanios@gmail.com";
-      userName = "Ramy Tanios";
-      diff-so-fancy.enable = pkgs.lib.mkDefault false; # might want to override in machine specific module
-      delta.enable = pkgs.lib.mkDefault false; # might want to override in machine specific module
-      delta.options.side-by-side = pkgs.lib.mkDefault false; # might want to override in machine specific module
-      extraConfig = {
-        init.defaultBranch = "main";
-      };
-    };
 
     java.enable = true;
 
