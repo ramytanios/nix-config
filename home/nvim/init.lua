@@ -135,7 +135,9 @@ map({ "o", "x" }, "R", flash.treesitter_search, { desc = "treesitter search" })
 
 -- map("n", "<leader>of", fzf.oldfiles, { desc = "opened old files" })
 
-map("n", "<leader>ff", fzf.files, { desc = "find files" })
+map("n", "<leader>ff", function()
+	Snacks.picker.files()
+end, { desc = "find files" })
 
 map("n", "<leader>lg", fzf.live_grep, { desc = "live grep" })
 
