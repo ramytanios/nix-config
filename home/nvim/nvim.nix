@@ -214,6 +214,16 @@
           '';
         };
 
+        precognition = {
+          plugin = vimPlugins.precognition-nvim;
+          type = "lua";
+          config = ''
+            require("precognition").setup {
+              startVisible = false
+            }
+          '';
+        };
+
       in
       lib.lists.flatten [
         lsp
@@ -249,6 +259,7 @@
         which-key
         blink-cmp
         outline
+        precognition
       ];
 
     extraPackages =

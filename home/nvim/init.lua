@@ -40,6 +40,8 @@ local trouble = require("trouble")
 
 local metals = require("metals")
 
+local precognition = require("precognition")
+
 map("i", "jk", "<ESC>", { desc = "insert to visual mode" })
 
 map("i", "jj", "<ESC>", { desc = "insert to visual mode" })
@@ -156,6 +158,8 @@ map("n", "<leader>mc", metals.commands, { desc = "metals commands" })
 map("n", "<leader>o", "<cmd>Outline<CR>", { desc = "outline" })
 
 map("n", "<leader>sf", metals.run_scalafix, { desc = "scala fix run" })
+
+map("n", "<leader>pc", precognition.toggle, { desc = "toggle precognition" })
 
 --map("n", "<leader>gb", function() Snacks.gitbrowse() end, { desc = "git branches" })
 -- map("n", "<leader>re", ":Rest run", { noremap = true, desc = "Rest run" })
