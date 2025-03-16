@@ -104,7 +104,7 @@
         sbt
         scala-cli
         stow
-        thefuck
+        #thefuck
         tldr
         tree
         treefmt

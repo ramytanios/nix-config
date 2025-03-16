@@ -14,7 +14,6 @@
 
     interactiveShellInit = ''
       fish_vi_key_bindings
-      ${thefuck}/bin/thefuck --alias | source
     '';
 
     functions = { };
