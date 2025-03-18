@@ -97,6 +97,7 @@
         nodejs
         podman
         postgresql
+        pulsarctl
         python-with-packages
         redis
         ripgrep
