@@ -5,7 +5,12 @@ capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
 lsp_config.util.default_config =
 	vim.tbl_extend("force", lsp_config.util.default_config, { capabilities = capabilities })
 
-lsp_config.bashls.setup({})
+if vim.lsp.inlay_hint.enable then
+  vim.keymap.set('n', '<leader>uh', function()
+    vim.lsp.inlay_hint.enable(false, nil)
+  end, { desc = 'Toggle Inlay Hints' })
+end
+
 lsp_config.pylsp.setup({})
 lsp_config.clangd.setup{}
 lsp_config.yamlls.setup{}

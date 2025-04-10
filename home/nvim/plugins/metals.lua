@@ -8,10 +8,18 @@ metals_config.init_options = {
 }
 
 metals_config.settings = {
+	metalsBinaryPath = metalsBinary, -- defined in nvim.nix
 	defaultBspToBuildTool = true,
 	useGlobalExecutable = true,
 	superMethodLensesEnabled = true,
-	metalsBinaryPath = metalsBinary, -- defined in nvim.nix
+	autoImportBuild = "all",
+	inlayHints = {
+		hintsInPatternMatch = { enable = true },
+		implicitArguments = { enable = true },
+		implicitConversions = { enable = true },
+		inferredTypes = { enable = true },
+		typeParameters = { enable = true },
+	},
 }
 
 metals_config.capabilities = require("blink.cmp").get_lsp_capabilities()
