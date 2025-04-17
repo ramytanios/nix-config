@@ -5,10 +5,11 @@ capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
 lsp_config.util.default_config =
 	vim.tbl_extend("force", lsp_config.util.default_config, { capabilities = capabilities })
 
-lsp_config.bashls.setup({})
+lsp_config.bashls.setup{}
 lsp_config.pylsp.setup({})
 lsp_config.clangd.setup{}
 lsp_config.yamlls.setup{}
+lsp_config.kulala_ls.setup{} -- kulala-ls is not installed yet
 lsp_config.nil_ls.setup({
   settings = {
     ["nil"] = {

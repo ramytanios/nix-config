@@ -110,6 +110,7 @@
         tree
         treefmt
         tree-sitter
+        websocat
         unzip
         uv
         zip

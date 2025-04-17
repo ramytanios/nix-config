@@ -161,6 +161,12 @@ map("n", "<leader>sf", metals.run_scalafix, { desc = "scala fix run" })
 
 map("n", "<leader>pc", precognition.toggle, { desc = "toggle precognition" })
 
+vim.filetype.add({
+  extension = {
+    ['http'] = 'http',
+  },
+})
+
 --map("n", "<leader>gb", function() Snacks.gitbrowse() end, { desc = "git branches" })
 -- map("n", "<leader>re", ":Rest run", { noremap = true, desc = "Rest run" })
 -- map("n", "<leader>cs", function() telescope_builtin.colorscheme({ enable_preview = true }) end, { desc = "select colorscheme" })

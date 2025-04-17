@@ -154,7 +154,7 @@
                   home.homeDirectory =
                     if (isDarwin machine.system) then "/Users/${machine.user}" else "/home/${machine.user}";
                 }
-                catppuccin.homeManagerModules.catppuccin
+                catppuccin.homeModules.catppuccin
                 ./home/home.nix
                 ./home/home-${machine.name}.nix
               ];

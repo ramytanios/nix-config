@@ -20,5 +20,6 @@ require("conform").setup({
 		sql = { "pg_fmt" },
 		nix = { "nixfmt" },
 		justfile = { "just" },
+		http = { "kulala-fmt" },
 	},
 })
