@@ -282,7 +282,7 @@
           yaml-language-server
           bash-language-server
           python3Packages.python-lsp-server
-          # kulala_lsp
+          # kulala_lsp # currently broken
         ];
         formatters = [
           stylua

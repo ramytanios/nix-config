@@ -38,5 +38,5 @@ inspect-flake:
     nix repl --expr "let flake = builtins.getFlake (toString $PWD); in {inherit flake;}"
 
 [unix]
-develop: 
+develop:
     nix develop --no-pure-eval
