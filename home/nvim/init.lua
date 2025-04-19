@@ -98,44 +98,11 @@ map("n", "]t", todo.jump_next, { desc = "next todo comment" })
 
 map("n", "[t", todo.jump_prev, { desc = "previous todo comment" })
 
-map("n", "]h", gitsigns.next_hunk, { desc = "gitsigns next hunk" })
-
-map("n", "[h", gitsigns.prev_hunk, { desc = "gitsigns previous hunk" })
-
-map("n", "<leader>ph", gitsigns.preview_hunk, { desc = "gitsigns preview hunk" })
-
-map("n", "<leader>rh", gitsigns.reset_hunk, { desc = "gitsigns reset hunk" })
-
-map("n", "<leader>rb", gitsigns.reset_buffer, { desc = "gitsigns reset buffer" })
-
-map("n", "<leader>sh", gitsigns.select_hunk, { desc = "gitsigns select hunk" })
-
-map("n", "<leader>gd", ":DiffviewOpen<CR>", { noremap = true, desc = "open git diff view" })
-
-map("n", "<leader>bd", ":DiffviewOpen<SPACE>", { noremap = true, desc = "branch diff view" })
--- map("n", "<leader>bd", function()
--- 	vim.ui.input({ prompt = "Enter branch name" }, function(branch)
--- 		local command = ":DiffviewOpen " .. branch
--- 		vim.cmd(command)
--- 	end)
--- end, { noremap = true, desc = "branch diff view" })
-
-map("n", "<leader>bl", ":Git blame<CR>", { desc = "toggle git blame" })
---map("n", "<leader>bb", function() Snacks.git.blame_line() end, { desc = "toggle git blame" })
-
-map("n", "<leader>gh", ":DiffviewFileHistory<CR>", { noremap = true, desc = "open git project history" })
-
-map("n", "<leader>fh", ":DiffviewFileHistory %<CR>", { noremap = true, desc = "open git current file history" })
-
-map("n", "<leader>gx", ":DiffviewClose<CR>", { noremap = true, desc = "close diff view" })
-
 map({ "n", "x", "o" }, "s", flash.jump, { desc = "flash jump" })
 
 map({ "n", "x", "o" }, "S", flash.treesitter, { desc = "flash treesitter search" })
 
 map({ "o", "x" }, "R", flash.treesitter_search, { desc = "treesitter search" })
-
--- map("n", "<leader>of", fzf.oldfiles, { desc = "opened old files" })
 
 map("n", "<leader>ff", fzf.files, { desc = "find files" })
 
@@ -143,15 +110,26 @@ map("n", "<leader>lg", fzf.live_grep, { desc = "live grep" })
 
 map("n", "<leader>gs", fzf.grep_cword, { desc = "grep word under cursor" })
 
-map("n", "<leader>gc", fzf.git_commits, { desc = "git commits" })
-
-map("n", "<leader>gb", fzf.git_branches, { desc = "git branches" })
+-- git keymaps
+map("n", "<leader>Gh", ":DiffviewFileHistory<CR>", { noremap = true, desc = "[G]it [h]istory" })
+map("n", "<leader>Gfh", ":DiffviewFileHistory %<CR>", { noremap = true, desc = "[G]it [f]ile [h]istory" })
+map("n", "<leader>Gcd", ":DiffviewClose<CR>", { noremap = true, desc = "[G]it [c]lose [d]iffview" })
+map("n", "<leader>Gph", gitsigns.preview_hunk, { desc = "[G]it [p]review [h]unk" })
+map("n", "<leader>Grh", gitsigns.reset_hunk, { desc = "[G]it [r]eset [h]unk" })
+map("n", "<leader>Grb", gitsigns.reset_buffer, { desc = "[G]it [r]eset [b]uffer" })
+map("n", "<leader>Gsh", gitsigns.select_hunk, { desc = "[G]it [s]elect [h]unk" })
+map("n", "<leader>Gd", ":DiffviewOpen<CR>", { noremap = true, desc = "[G]it [d]iff" })
+map("n", "<leader>Gdb", ":DiffviewOpen<SPACE>", { noremap = true, desc = "[G]it [d]iff [b]ranch" })
+map("n", "<leader>Gb", ":Git blame<CR>", { desc = "[G]it [b]lame" })
+map("n", "]h", gitsigns.next_hunk, { desc = "gitsigns next hunk" })
+map("n", "[h", gitsigns.prev_hunk, { desc = "gitsigns previous hunk" })
+-- map("n", "<leader>Gc", fzf.git_commits, { desc = "git commits" })
+-- map("n", "<leader>Gf", fzf.git_files, { desc = "git files" })
+-- map("n", "<leader>Gb", fzf.git_branches, { desc = "git branches" })
 
 map("n", "<leader>co", fzf.commands, { desc = "commands" })
 
 map("n", "<leader>cs", fzf.colorschemes, { desc = "colorschemes" })
-
-map("n", "<leader>gf", fzf.git_files, { desc = "git files" })
 
 map("n", "<leader>mc", metals.commands, { desc = "metals commands" })
 
@@ -162,9 +140,9 @@ map("n", "<leader>sf", metals.run_scalafix, { desc = "scala fix run" })
 map("n", "<leader>pc", precognition.toggle, { desc = "toggle precognition" })
 
 vim.filetype.add({
-  extension = {
-    ['http'] = 'http',
-  },
+	extension = {
+		["http"] = "http",
+	},
 })
 
 --map("n", "<leader>gb", function() Snacks.gitbrowse() end, { desc = "git branches" })
@@ -180,3 +158,9 @@ vim.filetype.add({
 -- map("n", "<leader>sh", vim.lsp.buf.signature_help, { desc = "Lsp signature help" })
 -- map("n", "<leader>dvx", ":DiffviewClose<CR>", { noremap = true, desc = "" })
 -- map("n", "<leader>fh", ":DiffviewFileHistory %<CR>", { noremap = true, desc = "" })
+-- map("n", "<leader>bd", function()
+-- 	vim.ui.input({ prompt = "Enter branch name" }, function(branch)
+-- 		local command = ":DiffviewOpen " .. branch
+-- 		vim.cmd(command)
+-- 	end)
+-- end, { noremap = true, desc = "branch diff view" })
