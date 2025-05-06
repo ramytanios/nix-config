@@ -145,6 +145,9 @@ vim.filetype.add({
 	},
 })
 
+-- highlight trailing whitespace
+vim.fn.matchadd("ErrorMsg", [[\s\+$]])
+
 --map("n", "<leader>gb", function() Snacks.gitbrowse() end, { desc = "git branches" })
 -- map("n", "<leader>re", ":Rest run", { noremap = true, desc = "Rest run" })
 -- map("n", "<leader>cs", function() telescope_builtin.colorscheme({ enable_preview = true }) end, { desc = "select colorscheme" })
