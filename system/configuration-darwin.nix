@@ -2,6 +2,8 @@
 {
 
   system.stateVersion = 5;
+  system.primaryUser = "ramytanios";
+  ids.gids.nixbld = 30000;
 
   nix = {
     extraOptions = ''
@@ -18,7 +20,6 @@
         Minute = 0;
       };
       options = "--delete-older-than 30d";
-      user = "ramytanios";
     };
 
   };
@@ -52,11 +53,8 @@
     };
   };
 
-  # Make sure the nix daemon always runs
-  services.nix-daemon.enable = true;
-
   # Enable sudo authentication with Touch ID
-  security.pam.enableSudoTouchIdAuth = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
 
   nix.package = pkgs.nix; # this is the default
 

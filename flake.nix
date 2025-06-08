@@ -51,7 +51,7 @@
 
       machinesBySystem = builtins.groupBy (machine: machine.system) machines;
 
-      isDarwin = system: (builtins.match ".*darwin" system) != null;
+      isDarwin = machine: (builtins.match (machine: ".*darwin" machine.system) != null);
 
       darwinMachines = builtins.filter isDarwin machines;
 

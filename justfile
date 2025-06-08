@@ -23,7 +23,7 @@ switch:
 
 [unix]
 rebuild:
-    nix run .#rebuild-{{ host }}
+    sudo nix run .#rebuild-{{ host }}
 
 [unix]
 clean:
