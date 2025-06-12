@@ -153,6 +153,8 @@ map("n", "<leader>cs", fzf.colorschemes, { desc = "colorschemes" })
 
 map("n", "<leader>gf", fzf.git_files, { desc = "git files" })
 
+map("n", "<leader>ls", fzf.lsp_live_workspace_symbols, { desc = "live workspace symbols" })
+
 map("n", "<leader>mc", metals.commands, { desc = "metals commands" })
 
 map("n", "<leader>o", "<cmd>Outline<CR>", { desc = "outline" })
@@ -162,9 +164,9 @@ map("n", "<leader>sf", metals.run_scalafix, { desc = "scala fix run" })
 map("n", "<leader>pc", precognition.toggle, { desc = "toggle precognition" })
 
 vim.filetype.add({
-  extension = {
-    ['http'] = 'http',
-  },
+	extension = {
+		["http"] = "http",
+	},
 })
 
 --map("n", "<leader>gb", function() Snacks.gitbrowse() end, { desc = "git branches" })
