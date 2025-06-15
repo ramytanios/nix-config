@@ -171,6 +171,12 @@
       enableBashIntegration = true;
     };
 
+    broot = {
+      enable = true;
+      enableFishIntegration = true;
+      settings = { };
+    };
+
   };
 
 }
