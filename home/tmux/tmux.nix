@@ -15,6 +15,7 @@
       vim-tmux-navigator
       resurrect
       tmux-fzf
+      gitmux
     ];
     extraConfig = builtins.readFile ./extra.conf;
   };
