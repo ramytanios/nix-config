@@ -254,7 +254,7 @@
         nui
         vimcool
         lightbulb
-        kulala
+        # kulala
         smear_cursor
         snacks
         fzf-lua
@@ -292,7 +292,7 @@
           black
           isort
           ruff
-          kulala-fmt
+          # kulala-fmt
         ];
         linters = [
           yamllint
