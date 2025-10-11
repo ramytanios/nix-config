@@ -170,12 +170,6 @@
           '';
         };
 
-        kulala = {
-          plugin = vimPlugins.kulala-nvim;
-          type = "lua";
-          config = builtins.readFile ./plugins/kulala.lua;
-        };
-
         smear_cursor = {
           plugin = vimPlugins.smear-cursor-nvim;
           type = "lua";
@@ -216,16 +210,6 @@
           '';
         };
 
-        precognition = {
-          plugin = vimPlugins.precognition-nvim;
-          type = "lua";
-          config = ''
-            require("precognition").setup {
-              startVisible = false
-            }
-          '';
-        };
-
       in
       lib.lists.flatten [
         lsp
@@ -254,35 +238,21 @@
         nui
         vimcool
         lightbulb
-        # kulala
         smear_cursor
         snacks
-        fzf-lua
         which-key
         blink-cmp
         outline
-        precognition
       ];
 
     extraPackages =
       let
-        kulala_lsp = buildNpmPackage {
-          name = "kulala-ls";
-          src = fetchFromGitHub {
-            owner = "mistweaverco";
-            repo = "kulala-ls";
-            rev = "v1.9.0";
-            sha256 = "sha256-We7d6if++n8Y0eouY3I9hbb5iJ+YyaPyFSvu6Ff5U0U=";
-          };
-          npmDepsHash = "sha256-/6JZYsIYDJHS/8TOPjtR/SrRbzTbL43X0g/tPIn2YfQ=";
-        };
         lsps = [
           nil
           lua-language-server
           yaml-language-server
           bash-language-server
           python3Packages.python-lsp-server
-          # kulala_lsp # currently broken
         ];
         formatters = [
           stylua
@@ -292,7 +262,6 @@
           black
           isort
           ruff
-          # kulala-fmt
         ];
         linters = [
           yamllint

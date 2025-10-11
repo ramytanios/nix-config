@@ -1,16 +1,20 @@
 local lsp_config = require("lspconfig")
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
-lsp_config.util.default_config =
-	vim.tbl_extend("force", lsp_config.util.default_config, { capabilities = capabilities })
 
-lsp_config.bashls.setup({})
-lsp_config.pylsp.setup({})
-lsp_config.clangd.setup({})
-lsp_config.yamlls.setup({})
-lsp_config.kulala_ls.setup({})
-lsp_config.nil_ls.setup({
+capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
+
+vim.lsp.config("*", {
+	capabilities = capabilities,
+})
+
+vim.lsp.enable("bashls")
+vim.lsp.enable("pylsp")
+vim.lsp.enable("yamlls")
+vim.lsp.enable("lua_ls")
+vim.lsp.enable("nil_ls")
+
+vim.lsp.config("nil_ls", {
 	settings = {
 		["nil"] = {
 			formatting = {
@@ -19,7 +23,8 @@ lsp_config.nil_ls.setup({
 		},
 	},
 })
-lsp_config.lua_ls.setup({
+
+vim.lsp.config("lua_ls", {
 	settings = {
 		Lua = {
 			format = {

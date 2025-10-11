@@ -34,13 +34,9 @@ local flash = require("flash")
 
 local oil = require("oil")
 
-local fzf = require("fzf-lua")
-
 local trouble = require("trouble")
 
 local metals = require("metals")
-
-local precognition = require("precognition")
 
 map("i", "jk", "<ESC>", { desc = "insert to visual mode" })
 
@@ -84,8 +80,6 @@ end, { desc = "lsp references" })
 
 map("n", "<leader>h", vim.lsp.buf.hover, { desc = "lsp hover" })
 
-map("n", "<leader>ca", fzf.lsp_code_actions, { desc = "lsp code actions" })
-
 map("n", "<leader>rn", vim.lsp.buf.rename, { desc = "lsp rename" })
 
 map("n", "<leader>fd", vim.diagnostic.open_float, { desc = "diagnostic open float" })
@@ -120,8 +114,7 @@ map("n", "<leader>bd", ":DiffviewOpen<SPACE>", { noremap = true, desc = "branch 
 -- 	end)
 -- end, { noremap = true, desc = "branch diff view" })
 
-map("n", "<leader>bl", ":Git blame<CR>", { desc = "toggle git blame" })
---map("n", "<leader>bb", function() Snacks.git.blame_line() end, { desc = "toggle git blame" })
+map("n", "<leader>bl",  function() Snacks.git.blame_line() end, { desc = "toggle git blame line" })
 
 map("n", "<leader>gh", ":DiffviewFileHistory<CR>", { noremap = true, desc = "open git project history" })
 
@@ -135,33 +128,25 @@ map({ "n", "x", "o" }, "S", flash.treesitter, { desc = "flash treesitter search"
 
 map({ "o", "x" }, "R", flash.treesitter_search, { desc = "treesitter search" })
 
--- map("n", "<leader>of", fzf.oldfiles, { desc = "opened old files" })
+map("n", "<leader>fe", function() Snacks.picker.explorer() end, { desc = "file explorer" })
 
-map("n", "<leader>ff", fzf.files, { desc = "find files" })
+map("n", "<leader>ff", function() Snacks.picker.files() end, { desc = "find files" })
 
-map("n", "<leader>lg", fzf.live_grep, { desc = "live grep" })
+map("n", "<leader>lg", function() Snacks.picker.grep() end, { desc = "live grep" })
 
-map("n", "<leader>gs", fzf.grep_cword, { desc = "grep word under cursor" })
+map("n", "<leader>gs", function() Snacks.picker.grep_word() end, { desc = "grep word or selection" })
 
-map("n", "<leader>gc", fzf.git_commits, { desc = "git commits" })
+map("n", "<leader>co", function() Snacks.picker.commands() end, { desc = "commands" })
 
-map("n", "<leader>gb", fzf.git_branches, { desc = "git branches" })
+map("n", "<leader>cs", function() Snacks.picker.colorschemes() end, { desc = "colorschemes" })
 
-map("n", "<leader>co", fzf.commands, { desc = "commands" })
-
-map("n", "<leader>cs", fzf.colorschemes, { desc = "colorschemes" })
-
-map("n", "<leader>gf", fzf.git_files, { desc = "git files" })
-
-map("n", "<leader>ls", fzf.lsp_live_workspace_symbols, { desc = "live workspace symbols" })
+map("n", "<leader>ls", function() Snacks.picker.lsp_workspace_symbols() end, { desc = "live workspace symbols" })
 
 map("n", "<leader>mc", metals.commands, { desc = "metals commands" })
 
 map("n", "<leader>o", "<cmd>Outline<CR>", { desc = "outline" })
 
 map("n", "<leader>sf", metals.run_scalafix, { desc = "scala fix run" })
-
-map("n", "<leader>pc", precognition.toggle, { desc = "toggle precognition" })
 
 vim.filetype.add({
 	extension = {
