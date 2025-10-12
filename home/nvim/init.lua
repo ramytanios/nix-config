@@ -80,6 +80,8 @@ end, { desc = "lsp references" })
 
 map("n", "<leader>h", vim.lsp.buf.hover, { desc = "lsp hover" })
 
+map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "lsp code action" })
+
 map("n", "<leader>rn", vim.lsp.buf.rename, { desc = "lsp rename" })
 
 map("n", "<leader>fd", vim.diagnostic.open_float, { desc = "diagnostic open float" })
