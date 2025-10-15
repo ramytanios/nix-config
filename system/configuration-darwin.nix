@@ -84,6 +84,7 @@
       "docker"
       "firefox"
       "kitty"
+      "ghostty"
       "telegram"
       "whatsapp"
     ];

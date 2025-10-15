@@ -8,6 +8,7 @@
     ./fish/fish.nix
     ./zsh/zsh.nix
     ./git/git.nix
+    ./ghostty/ghostty.nix
   ];
 
   home = {
