@@ -11,7 +11,8 @@
       font-thicken-strength = 200;
       cursor-style = "block";
       shell-integration = "fish";
-      # theme = Catppuccin Frappe; # already set by catpuccin
+      mouse-hide-while-typing = true;
+      window-save-state = "always";
     };
   };
 
