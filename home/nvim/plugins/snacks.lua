@@ -13,5 +13,5 @@ snacks.setup({
 	input = { enabled = true },
 	notifier = { enabled = true },
 	quickfile = { enabled = true },
-	picker = {},
+	picker = { main = { file = false, current = true } },
 })
