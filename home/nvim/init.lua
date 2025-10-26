@@ -144,6 +144,12 @@ map("n", "<leader>cs", function() Snacks.picker.colorschemes() end, { desc = "co
 
 map("n", "<leader>ls", function() Snacks.picker.lsp_workspace_symbols() end, { desc = "live workspace symbols" })
 
+map({ "n", "t" }, "]]", function() Snacks.words.jump(vim.v.count1) end, { desc = "Next Reference"})
+
+map({ "n", "t" }, "[[", function() Snacks.words.jump(-vim.v.count1) end, { desc = "Prev Reference"})
+
+map("n", "<leader>sj", function() Snacks.picker.jumps() end, { desc = "Jumps" })
+
 map("n", "<leader>mc", metals.commands, { desc = "metals commands" })
 
 map("n", "<leader>o", "<cmd>Outline<CR>", { desc = "outline" })
