@@ -150,6 +150,8 @@ map({ "n", "t" }, "[[", function() Snacks.words.jump(-vim.v.count1) end, { desc 
 
 map("n", "<leader>sj", function() Snacks.picker.jumps() end, { desc = "Jumps" })
 
+map("n", "<leader>lz", function() Snacks.lazygit.open() end, { desc = "Lazygit" })
+
 map("n", "<leader>mc", metals.commands, { desc = "metals commands" })
 
 map("n", "<leader>o", "<cmd>Outline<CR>", { desc = "outline" })
