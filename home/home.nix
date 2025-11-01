@@ -39,7 +39,7 @@
             scipy
             matplotlib
             ipython
-            scikitlearn
+            scikit-learn
             seaborn
             statsmodels
             jupyterlab

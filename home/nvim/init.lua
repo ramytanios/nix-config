@@ -152,6 +152,14 @@ map("n", "<leader>sj", function() Snacks.picker.jumps() end, { desc = "Jumps" })
 
 map("n", "<leader>lz", function() Snacks.lazygit.open() end, { desc = "Lazygit" })
 
+map("n",  "<leader>gi", function() Snacks.picker.gh_issue() end, { desc = "GitHub Issues (open)" })
+
+map("n",  "<leader>gI", function() Snacks.picker.gh_issue({ state = "all" }) end, { desc = "GitHub Issues (all)"})
+
+map("n",  "<leader>gp", function() Snacks.picker.gh_pr() end, {desc = "GitHub Pull Requests (open)"})
+
+map("n",  "<leader>gP", function() Snacks.picker.gh_pr({ state = "all" }) end, {desc = "GitHub Pull Requests (all)"})
+
 map("n", "<leader>mc", metals.commands, { desc = "metals commands" })
 
 map("n", "<leader>o", "<cmd>Outline<CR>", { desc = "outline" })
@@ -164,16 +172,3 @@ vim.filetype.add({
 	},
 })
 
---map("n", "<leader>gb", function() Snacks.gitbrowse() end, { desc = "git branches" })
--- map("n", "<leader>re", ":Rest run", { noremap = true, desc = "Rest run" })
--- map("n", "<leader>cs", function() telescope_builtin.colorscheme({ enable_preview = true }) end, { desc = "select colorscheme" })
--- map("n", "<leader>gd", gs.diffthis, { desc = "Gitsigns diff this" })
--- map("n", "<leader>tt", trouble.toggle, { desc = "Toggle trouble" })
--- map("n", "<leader>ds", vim.lsp.buf.document_symbol, { desc = "Lsp document symbol" })
--- map("n", "<leader>ws", vim.lsp.buf.workspace_symbol, { desc = "Lsp workspace symbol" })
--- map("n", "<leader>i", vim.lsp.buf.implementation, { desc = "Lsp implementation" })
--- map("n", "<leader>gs", tb.git_status, { desc = "Telescope git status" })
--- map("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Lsp rename" })
--- map("n", "<leader>sh", vim.lsp.buf.signature_help, { desc = "Lsp signature help" })
--- map("n", "<leader>dvx", ":DiffviewClose<CR>", { noremap = true, desc = "" })
--- map("n", "<leader>fh", ":DiffviewFileHistory %<CR>", { noremap = true, desc = "" })

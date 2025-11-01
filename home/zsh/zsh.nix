@@ -8,7 +8,7 @@
     syntaxHighlighting.enable = true;
     shellAliases = {
       t = "tmux attach -t HOME";
-      lg = "lazygit";
+      lz = "lazygit";
     };
     initContent = pkgs.lib.mkOrder 1000 "bindkey '$' autosuggest-accept";
 

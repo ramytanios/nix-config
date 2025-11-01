@@ -30,7 +30,7 @@
       jl = "jupyter-lab";
       jn = "jupyter-notebook";
 
-      lg = "lazygit";
+      lz = "lazygit";
 
       gs = "git status";
       ga = "git add";

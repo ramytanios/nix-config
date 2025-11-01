@@ -14,5 +14,6 @@ snacks.setup({
 	notifier = { enabled = true },
 	quickfile = { enabled = true },
 	lazygit = { enabled = true },
+	gh = { enabled = true },
 	picker = { main = { file = false, current = true } },
 })
