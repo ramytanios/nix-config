@@ -7,18 +7,17 @@ require("conform").setup({
 		},
 	},
 	formatters_by_ft = {
-		python = {
-			"ruff_format",
-			"ruff_fix",
-			"ruff_organize_imports",
-			-- "black", -- we prefer ruff
-			-- "isort", -- we prefer ruff
-		},
+		python = { "ruff_format", "ruff_fix", "ruff_organize_imports" },
 		lua = { "stylua" },
 		bash = { "shfmt" },
 		yml = { "yamlfmt" },
 		sql = { "pg_fmt" },
 		nix = { "nixfmt" },
 		justfile = { "just" },
+		css = { "prettierd", "stylelint" },
+		html = { "prettierd" },
+		javascript = { "prettierd" },
+		json = { "jq" },
+		markdown = { "prettierd" },
 	},
 })

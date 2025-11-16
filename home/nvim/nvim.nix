@@ -268,6 +268,8 @@
           statix
           mypy
           python3Packages.flake8
+          stylelint
+          prettierd
         ];
       in
       lib.lists.flatten [

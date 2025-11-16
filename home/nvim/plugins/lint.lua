@@ -1,10 +1,6 @@
 local lint = require("lint")
 lint.linters_by_ft = {
-	python = {
-		"ruff",
-		"mypy",
-		-- "flake8" -- we prefer ruff,
-	},
+	python = { "ruff", "mypy" },
 	nix = { "statix" },
 	yaml = { "yamllint" },
 }
