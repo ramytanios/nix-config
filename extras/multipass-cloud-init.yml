@@ -12,5 +12,10 @@ users:
       - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAlUeIv4TgFoflN4ZbpnYrdUu6fswndD3HpSvlS6QZph ramytanios@Ramys-MacBook-Air.local
 packages:
   - just
+write_files:
+- path: /etc/environment
+  content: |
+    TERM="xterm-256color"
+  append: true
 runcmd:
   - curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install --determinate --no-confirm
