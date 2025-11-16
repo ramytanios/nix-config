@@ -70,12 +70,8 @@
         # (pkgs.writeShellScriptBin "my-hello" ''
         #   echo "Hello, ${config.home.username}!"
         # '')
-        colima # "https://github.com/NixOS/nixpkgs/issues/47201#issuecomment-2041162985"
         coursier
         csvlens
-        docker
-        docker-compose
-        lazydocker
         duf
         dummy-app
         eza
@@ -106,7 +102,6 @@
         sbt
         scala-cli
         stow
-        #thefuck
         tldr
         tree
         treefmt
