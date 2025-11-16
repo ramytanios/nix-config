@@ -87,6 +87,7 @@
       "ghostty"
       "telegram"
       "whatsapp"
+      "multipass"
     ];
   };
 

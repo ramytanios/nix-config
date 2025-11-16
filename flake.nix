@@ -47,6 +47,13 @@
           user = "ramytanios";
           system = flake-utils.lib.system.aarch64-darwin;
         }
+        {
+          # HM inside multipass guest (Ubuntu) on Apple Silicon
+          name = "multipass-guest";
+          user = "ramytanios";
+          system = flake-utils.lib.system.aarch64-linux;
+
+        }
       ];
 
       machinesBySystem = builtins.groupBy (machine: machine.system) machines;

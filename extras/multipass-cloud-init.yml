@@ -1,0 +1,16 @@
+#cloud-config
+#
+#https://docs.cloud-init.io/en/latest/reference/examples.html#yaml-examples
+
+hostname: multipass-guest
+users:
+  - default
+  - name: ramytanios
+    sudo: "ALL=(ALL) NOPASSWD:ALL"
+    shell: /bin/bash
+    ssh_authorized_keys:
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAlUeIv4TgFoflN4ZbpnYrdUu6fswndD3HpSvlS6QZph ramytanios@Ramys-MacBook-Air.local
+packages:
+  - just
+runcmd:
+  - curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install --determinate --no-confirm
