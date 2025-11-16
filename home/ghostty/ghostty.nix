@@ -13,6 +13,7 @@
       shell-integration = "fish";
       mouse-hide-while-typing = true;
       window-save-state = "always";
+      shell-integration-features = "ssh-terminfo";
     };
   };
 
