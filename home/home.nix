@@ -91,6 +91,7 @@
         metals
         nodePackages.live-server
         ncdu
+        nix-tree
         nodejs
         podman
         postgresql
