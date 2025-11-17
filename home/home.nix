@@ -70,6 +70,7 @@
         # (pkgs.writeShellScriptBin "my-hello" ''
         #   echo "Hello, ${config.home.username}!"
         # '')
+        bloop
         coursier
         csvlens
         duf
