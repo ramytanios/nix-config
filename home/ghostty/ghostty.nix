@@ -13,6 +13,8 @@
       shell-integration = "fish";
       mouse-hide-while-typing = true;
       window-save-state = "always";
+      background-opacity = 0.9;
+      background-blur = true;
     };
   };
 

@@ -48,9 +48,7 @@
         fidget = {
           plugin = vimPlugins.fidget-nvim;
           type = "lua";
-          config = ''
-            require("fidget").setup {}
-          '';
+          config = builtins.readFile ./plugins/fidget.lua; 
         };
 
         treesitter = {
