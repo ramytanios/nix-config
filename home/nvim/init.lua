@@ -166,6 +166,8 @@ map("n", "<leader>o", "<cmd>Outline<CR>", { desc = "outline" })
 
 map("n", "<leader>sf", metals.run_scalafix, { desc = "scala fix run" })
 
+map("n", "<leader>a", "<cmd>AerialToggle!<CR>", { desc = "aerial toggle"})
+
 vim.filetype.add({
 	extension = {
 		["http"] = "http",

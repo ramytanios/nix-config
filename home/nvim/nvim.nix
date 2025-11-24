@@ -182,12 +182,6 @@
           config = builtins.readFile ./plugins/snacks.lua;
         };
 
-        fzf-lua = {
-          plugin = vimPlugins.fzf-lua;
-          type = "lua";
-          config = builtins.readFile ./plugins/fzf-lua.lua;
-        };
-
         which-key = {
           plugin = vimPlugins.which-key-nvim;
           type = "lua";
@@ -200,12 +194,11 @@
           config = builtins.readFile ./plugins/blink-cmp.lua;
         };
 
-        outline = {
-          plugin = vimPlugins.outline-nvim;
+
+        aerial = {
+          plugin = vimPlugins.aerial-nvim;
           type = "lua";
-          config = ''
-            require("outline").setup {}
-          '';
+          config = builtins.readFile ./plugins/aerial.lua;
         };
 
       in
@@ -240,7 +233,7 @@
         snacks
         which-key
         blink-cmp
-        outline
+        aerial
       ];
 
     extraPackages =

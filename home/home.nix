@@ -108,6 +108,7 @@
         tree
         treefmt
         tree-sitter
+        vhs
         websocat
         unzip
         uv
