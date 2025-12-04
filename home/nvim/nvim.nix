@@ -185,7 +185,6 @@
         which-key = {
           plugin = vimPlugins.which-key-nvim;
           type = "lua";
-          config = builtins.readFile ./plugins/which-key.lua;
         };
 
         blink-cmp = {
@@ -244,6 +243,7 @@
           yaml-language-server
           bash-language-server
           python3Packages.python-lsp-server
+          pyrefly
         ];
         formatters = [
           stylua
@@ -257,8 +257,6 @@
         linters = [
           yamllint
           statix
-          mypy
-          python3Packages.flake8
           stylelint
           prettierd
         ];
