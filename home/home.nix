@@ -96,6 +96,7 @@
         nodejs
         podman
         postgresql
+        posting
         pulsarctl
         python-with-packages
         redis
