@@ -90,7 +90,6 @@
         killall
         lazygit
         metals
-        nodePackages.live-server
         ncdu
         nix-tree
         nodejs
