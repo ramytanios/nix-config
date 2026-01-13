@@ -93,6 +93,7 @@
         ncdu
         nix-tree
         nodejs
+        opencode
         podman
         postgresql
         posting
@@ -104,6 +105,7 @@
         sbt
         scala-cli
         stow
+        sqlite
         tldr
         tree
         treefmt
