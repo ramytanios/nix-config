@@ -11,9 +11,9 @@ metals_config.settings = {
 	defaultBspToBuildTool = true,
 	useGlobalExecutable = true,
 	superMethodLensesEnabled = true,
-	metalsBinaryPath = metalsBinary, -- defined in nvim.nix 
-  startMcpServer = true, 
-  mcpClient = "claude"
+	metalsBinaryPath = metalsBinary, -- defined in nvim.nix
+	startMcpServer = true,
+	mcpClient = "claude",
 }
 
 metals_config.capabilities = require("blink.cmp").get_lsp_capabilities()
