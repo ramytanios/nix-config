@@ -203,6 +203,11 @@
           type = "lua";
           config = builtins.readFile ./plugins/copilot.lua;
         };
+        
+        markview = {
+          plugin = vimPlugins.markview-nvim;
+          type = "lua";
+        };
 
       in
       lib.lists.flatten [
@@ -238,6 +243,7 @@
         blink-cmp
         aerial
         copilot
+        markview
       ];
 
     extraPackages =
