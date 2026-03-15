@@ -54,7 +54,6 @@
         treesitter = {
           plugin = vimPlugins.nvim-treesitter.withAllGrammars;
           type = "lua";
-          config = builtins.readFile ./plugins/treesitter.lua;
         };
 
         lualine = {
