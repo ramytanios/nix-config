@@ -138,7 +138,8 @@ map("n", "<leader>lg", function() Snacks.picker.grep() end, { desc = "live grep"
 
 map("n", "<leader>gs", function() Snacks.picker.grep_word() end, { desc = "grep word or selection" })
 
-map("n", "<leader>co", function() Snacks.picker.commands() end, { desc = "commands" })
+-- disabled in favor of copilot's keymaps in `copilot.lua`
+-- map("n", "<leader>co", function() Snacks.picker.commands() end, { desc = "commands" })
 
 map("n", "<leader>cs", function() Snacks.picker.colorschemes() end, { desc = "colorschemes" })
 

@@ -48,7 +48,7 @@
         fidget = {
           plugin = vimPlugins.fidget-nvim;
           type = "lua";
-          config = builtins.readFile ./plugins/fidget.lua; 
+          config = builtins.readFile ./plugins/fidget.lua;
         };
 
         treesitter = {
@@ -193,11 +193,16 @@
           config = builtins.readFile ./plugins/blink-cmp.lua;
         };
 
-
         aerial = {
           plugin = vimPlugins.aerial-nvim;
           type = "lua";
           config = builtins.readFile ./plugins/aerial.lua;
+        };
+
+        copilot = {
+          plugin = vimPlugins.copilot-lua;
+          type = "lua";
+          config = builtins.readFile ./plugins/copilot.lua;
         };
 
       in
@@ -233,6 +238,7 @@
         which-key
         blink-cmp
         aerial
+        copilot
       ];
 
     extraPackages =
