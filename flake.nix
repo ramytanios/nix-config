@@ -60,7 +60,7 @@
 
       machinesBySystem = builtins.groupBy (machine: machine.system) machines;
 
-      isDarwin = machine: (builtins.match (machine: ".*darwin" machine.system) != null);
+      isDarwin = machine: (builtins.match ".*darwin" machine.system) != null;
 
       darwinMachines = builtins.filter isDarwin machines;
 
@@ -161,7 +161,7 @@
                 {
                   home.username = machine.user;
                   home.homeDirectory =
-                    if (isDarwin machine.system) then "/Users/${machine.user}" else "/home/${machine.user}";
+                    if (isDarwin machine) then "/Users/${machine.user}" else "/home/${machine.user}";
                 }
                 catppuccin.homeModules.catppuccin
                 ./home/home.nix
