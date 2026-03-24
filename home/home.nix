@@ -30,27 +30,6 @@
           echo "Hello world, I am ${config.home.username}"
         '';
 
-        python-packages =
-          ps: with ps; [
-            pydantic
-            requests
-            pandas
-            numpy
-            scipy
-            matplotlib
-            ipython
-            scikit-learn
-            seaborn
-            statsmodels
-            jupyterlab
-            notebook
-            joblib
-            pytest
-            yfinance
-          ];
-
-        python-with-packages = pkgs.python3.withPackages python-packages;
-
       in
       with pkgs;
       [
