@@ -40,11 +40,6 @@
 
       machines = [
         {
-          name = "thinkpad";
-          user = "ramytanios";
-          system = flake-utils.lib.system.x86_64-linux;
-        }
-        {
           name = "macbook-air-m2";
           user = "ramytanios";
           system = flake-utils.lib.system.aarch64-darwin;

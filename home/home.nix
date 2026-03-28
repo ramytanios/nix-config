@@ -79,7 +79,6 @@
         postgresql
         posting
         pulsarctl
-        python-with-packages
         redis
         ripgrep
         ruff
@@ -158,6 +157,10 @@
       enable = true;
       enableFishIntegration = true;
       settings = { };
+    };
+
+    gpg = {
+      enable = true;
     };
 
   };
