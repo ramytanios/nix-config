@@ -30,6 +30,11 @@
           echo "Hello world, I am ${config.home.username}"
         '';
 
+        # TODO remove when available in nixpkgs
+        ccusage = pkgs.writeShellScriptBin "ccusage" ''
+          exec ${pkgs.nodejs}/bin/npx --yes ccusage@latest "$@"
+        '';
+
       in
       with pkgs;
       [
@@ -50,6 +55,7 @@
         #   echo "Hello, ${config.home.username}!"
         # '')
         bloop
+        ccusage
         claude-code
         coursier
         csvlens
