@@ -66,6 +66,7 @@
         figlet
         fx
         fzf
+        github-copilot-cli
         glow
         gnumake
         gum
