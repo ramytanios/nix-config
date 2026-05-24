@@ -55,7 +55,6 @@ nix run .#hm-switch-macbook-air-m2 # dotfiles and home configuration
 
 1. Clone this repo, then launch a VM (cloud-init installs Nix automatically):
 ```powershell
-git clone <your-repo-url> && cd nix-config
 multipass launch -n nix -c 2 -m 8G -d 64G --cloud-init extras\multipass-cloud-init.yml
 ```
 
@@ -66,11 +65,9 @@ multipass exec nix -- sudo su - xxx
 
 3. Clone this repo inside the VM and apply the configuration:
 ```bash
-git clone <your-repo-url> ~/nix-config && cd ~/nix-config
 nix run .#hm-multipass-guest-x86
 ```
 
-For subsequent updates, `just` is now available: run `just multipass-guest-x86` from `~/nix-config`.
 
 ## Migrating an existing macOS install to Nix
 1. Uninstall Homebrew:
