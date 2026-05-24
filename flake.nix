@@ -51,6 +51,12 @@
           system = flake-utils.lib.system.aarch64-linux;
 
         }
+        {
+          # HM inside multipass guest (Ubuntu) on x86_64 (e.g. Windows host)
+          name = "multipass-guest-x86";
+          user = "ramytanios";
+          system = flake-utils.lib.system.x86_64-linux;
+        }
       ];
 
       machinesBySystem = builtins.groupBy (machine: machine.system) machines;
