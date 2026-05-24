@@ -59,11 +59,10 @@ git clone <your-repo-url> && cd nix-config
 multipass launch -n nix -c 2 -m 8G -d 64G --cloud-init extras\multipass-cloud-init.yml
 ```
 
-2. Wait for cloud-init to finish, shell in, and switch to the `ramytanios` user:
+2. Wait for cloud-init to finish, shell in, and switch to the `xxx` user:
 ```powershell
-multipass shell nix
+multipass exec nix -- sudo su - xxx
 ```
-```bash
 sudo su - ramytanios
 ```
 
