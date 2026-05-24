@@ -63,8 +63,6 @@ multipass launch -n nix -c 2 -m 8G -d 64G --cloud-init extras\multipass-cloud-in
 ```powershell
 multipass exec nix -- sudo su - xxx
 ```
-sudo su - ramytanios
-```
 
 3. Clone this repo inside the VM and apply the configuration:
 ```bash
