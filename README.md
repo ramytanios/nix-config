@@ -51,6 +51,38 @@ nix run .#rebuild-macbook-air-m2 # system configuration
 nix run .#hm-switch-macbook-air-m2 # dotfiles and home configuration
 ```
 
+## Fresh WSL install
+
+1. Install WSL from PowerShell:
+```powershell
+wsl --install
+```
+
+2. Set the hostname to `wsl` by editing `/etc/wsl.conf` inside the WSL distro:
+```ini
+[network]
+hostname=wsl
+generateHosts=false
+```
+
+3. Install Nix:
+```bash
+curl -L https://nixos.org/nix/install | sh
+```
+
+4. Enable flakes:
+```bash
+mkdir -p ~/.config/nix
+cat <<EOF > ~/.config/nix/nix.conf
+experimental-features = nix-command flakes
+EOF
+```
+
+5. Clone this repo and apply the configuration:
+```bash
+nix run .#hm-switch-wsl
+```
+
 ## Fresh Windows install (via Multipass)
 
 1. Clone this repo, then launch a VM (cloud-init installs Nix automatically):
