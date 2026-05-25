@@ -17,6 +17,9 @@
 
     git.diff-so-fancy.enable = true;
 
+    # correct vim colors on Windows Terminal (WSL)
+    tmux.extraConfig = "set -as terminal-overrides ',*:Tc'";
+
   };
 
 }

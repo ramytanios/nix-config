@@ -14,8 +14,6 @@ reload-fish:
 
 switch:
     nix run .#hm-switch-{{ host }}
-    just reload-tmux 
-    just reload-fish
 
 rebuild:
     sudo nix run .#rebuild-{{ host }}
