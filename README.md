@@ -55,7 +55,7 @@ nix run .#hm-switch-macbook-air-m2 # dotfiles and home configuration
 
 1. Clone this repo, then launch a VM (cloud-init installs Nix automatically):
 ```powershell
-multipass launch -n nix -c 2 -m 8G -d 64G --cloud-init extras\multipass-cloud-init.yml
+multipass launch -n nix -c 2 -m 8G -d 64G --cloud-init extras\multipass-cloud-init-x86.yml
 ```
 
 2. Wait for cloud-init to finish, shell in, and switch to the `xxx` user:
