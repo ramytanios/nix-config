@@ -34,4 +34,4 @@ create-multipass-instance:
     multipass launch -n nix -c 1 -m 8G -d 128G --mount ~:/home/ramytanios/host --cloud-init extras/multipass-cloud-init.yml
 
 ssh-nix:
-    ssh $(multipass info nix | grep IPv4 | awk '{print $2}')
+    multipass exec nix -- sudo su - ramytanios
