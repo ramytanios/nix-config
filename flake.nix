@@ -57,6 +57,12 @@
           user = "ramytanios";
           system = flake-utils.lib.system.x86_64-linux;
         }
+        {
+          # WSL
+          name = "wsl";
+          user = "ramytanios";
+          system = flake-utils.lib.system.x86_64-linux;
+        }
       ];
 
       machinesBySystem = builtins.groupBy (machine: machine.system) machines;
