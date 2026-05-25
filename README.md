@@ -65,6 +65,8 @@ hostname=wsl
 generateHosts=false
 ```
 
+After editing `/etc/wsl.conf`, run `wsl --shutdown` from PowerShell and restart WSL for the changes to take effect.
+
 3. Install Nix:
 ```bash
 curl -L https://nixos.org/nix/install | sh
