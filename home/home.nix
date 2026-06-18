@@ -77,6 +77,7 @@
         killall
         lazygit
         metals
+        mise
         ncdu
         nix-tree
         nodejs
