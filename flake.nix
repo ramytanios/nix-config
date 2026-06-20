@@ -2,10 +2,7 @@
   description = "Home configuration";
 
   inputs = {
-
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-
-    flake-utils.url = "github:numtide/flake-utils";
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -15,12 +12,8 @@
 
     catppuccin.url = "github:catppuccin/nix";
 
-    devenv.url = "github:cachix/devenv";
-    devenv.inputs.nixpkgs.follows = "nixpkgs";
-
     dummy-app.url = "github:ramytanios/scala-app-template";
     dummy-app.inputs.nixpkgs.follows = "nixpkgs";
-
   };
 
   outputs =
@@ -29,9 +22,7 @@
       nixpkgs,
       home-manager,
       darwin,
-      flake-utils,
       catppuccin,
-      devenv,
       dummy-app,
       ...
     }:
@@ -42,26 +33,25 @@
         {
           name = "macbook-air-m2";
           user = "ramytanios";
-          system = flake-utils.lib.system.aarch64-darwin;
+          system = "aarch64-darwin";
         }
         {
           # HM inside multipass guest (Ubuntu) on Apple Silicon
           name = "multipass-guest";
           user = "ramytanios";
-          system = flake-utils.lib.system.aarch64-linux;
-
+          system = "aarch64-linux";
         }
         {
           # HM inside multipass guest (Ubuntu) on x86_64 (e.g. Windows host)
           name = "multipass-guest-x86";
           user = "ramytanios";
-          system = flake-utils.lib.system.x86_64-linux;
+          system = "x86_64-linux";
         }
         {
           # WSL
           name = "wsl";
           user = "ramytanios";
-          system = flake-utils.lib.system.x86_64-linux;
+          system = "x86_64-linux";
         }
       ];
 
@@ -70,59 +60,47 @@
       isDarwin = machine: (builtins.match ".*darwin" machine.system) != null;
 
       darwinMachines = builtins.filter isDarwin machines;
-
       nixosMachines = builtins.filter (machine: !isDarwin machine) machines;
 
       systems = builtins.attrNames machinesBySystem;
 
-      eachSystem = nixpkgs.lib.genAttrs systems;
+      eachSystem = lib.genAttrs systems;
+
+      overlays = [ dummy-app.overlays.default ];
 
       pkgsBySystem = builtins.listToAttrs (
         builtins.map (system: {
           name = system;
           value = import nixpkgs {
-            inherit system;
-            inherit overlays;
+            inherit system overlays;
             config.allowUnfree = true;
           };
         }) systems
       );
 
-      overlays = [ dummy-app.overlays.default ];
-
     in
     {
 
-      # dev shells
       devShells = eachSystem (
         system:
         let
           pkgs = pkgsBySystem.${system};
         in
         {
-          default = devenv.lib.mkShell {
-            inherit inputs pkgs;
-
-            modules = [
-              (
-                { pkgs, config, ... }:
-                {
-                  languages.lua.enable = true;
-                  languages.nix.enable = true;
-                }
-              )
+          default = pkgs.mkShell {
+            packages = with pkgs; [
+              lua
+              lua-language-server
+              nixfmt-rfc-style
             ];
           };
         }
       );
 
-      # NixOS configuration entry point
       nixosConfigurations = builtins.listToAttrs (
         builtins.map (machine: {
           inherit (machine) name;
           value = nixpkgs.lib.nixosSystem {
-            # specialArgs = {inherit inputs outputs;};
-            # > Our main nixos configuration file <
             modules = [
               {
                 nixpkgs.overlays = overlays;
@@ -134,7 +112,6 @@
         }) nixosMachines
       );
 
-      # Darwin configuration entry point
       darwinConfigurations = builtins.listToAttrs (
         builtins.map (machine: {
           inherit (machine) name;
@@ -151,8 +128,6 @@
         }) darwinMachines
       );
 
-      # Home manager configuration entry point
-      # Attribute set machine name -> home manager configuration
       homeConfigurations = builtins.listToAttrs (
         builtins.map (
           machine:
@@ -168,7 +143,7 @@
                 {
                   home.username = machine.user;
                   home.homeDirectory =
-                    if (isDarwin machine) then "/Users/${machine.user}" else "/home/${machine.user}";
+                    if isDarwin machine then "/Users/${machine.user}" else "/home/${machine.user}";
                 }
                 catppuccin.homeModules.catppuccin
                 ./home/home.nix
@@ -179,57 +154,49 @@
         ) machines
       );
 
-      apps = builtins.mapAttrs (
-        system: machines:
-        builtins.listToAttrs (
-          lib.flatten (
-            builtins.map (
-              machine:
-              let
-                pkgs = pkgsBySystem.${machine.system};
+      apps = eachSystem (
+        system:
+        let
+          machines = machinesBySystem.${system};
+        in
+        lib.mergeAttrsList (
+          builtins.map (
+            machine:
+            let
+              pkgs = pkgsBySystem.${machine.system};
 
-                hmScript = pkgs.writeShellScript "hm-switch-${machine.name}" "${
-                  inputs.home-manager.packages.${machine.system}.home-manager
-                }/bin/home-manager switch --flake ${self}#${machine.name}";
+              hmScript = pkgs.writeShellScript "hm-switch-${machine.name}" ''
+                ${inputs.home-manager.packages.${machine.system}.home-manager}/bin/home-manager switch --flake ${self}#${machine.name}
+              '';
 
-                rebuildScript = pkgs.writeShellScript "rebuild-${machine.name}" (
-                  if (isDarwin machine) then
-                    "${
-                      self.darwinConfigurations.${machine.name}.system
-                    }/sw/bin/darwin-rebuild switch --flake ${self}#${machine.name}"
-                  else
-                    "${pkgs.nixos-rebuild}/bin/nixos-rebuild switch --flake ${self}#${machine.name}"
-                );
+              rebuildScript = pkgs.writeShellScript "rebuild-${machine.name}" (
+                if isDarwin machine then
+                  ''${self.darwinConfigurations.${machine.name}.system}/sw/bin/darwin-rebuild switch --flake ${self}#${machine.name}''
+                else
+                  ''${pkgs.nixos-rebuild}/bin/nixos-rebuild switch --flake ${self}#${machine.name}''
+              );
 
-                cleanScript = pkgs.writeShellScript "clean-${machine.name}" "nix-collect-garbage --delete-older-than 15d";
+              cleanScript = pkgs.writeShellScript "clean-${machine.name}" ''
+                nix-collect-garbage --delete-older-than 15d
+              '';
 
-              in
-              [
-                {
-                  name = "hm-switch-${machine.name}";
-                  value = {
-                    type = "app";
-                    program = "${hmScript}";
-                  };
-                }
-                {
-                  name = "rebuild-${machine.name}";
-                  value = {
-                    type = "app";
-                    program = "${rebuildScript}";
-                  };
-                }
-                {
-                  name = "clean-${machine.name}";
-                  value = {
-                    type = "app";
-                    program = "${cleanScript}";
-                  };
-                }
-              ]
-            ) machines
-          )
+            in
+            {
+              "hm-switch-${machine.name}" = {
+                type = "app";
+                program = "${hmScript}";
+              };
+              "rebuild-${machine.name}" = {
+                type = "app";
+                program = "${rebuildScript}";
+              };
+              "clean-${machine.name}" = {
+                type = "app";
+                program = "${cleanScript}";
+              };
+            }
+          ) machines
         )
-      ) machinesBySystem;
+      );
     };
 }
