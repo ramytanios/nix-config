@@ -144,13 +144,17 @@
 
     java.enable = true;
 
-    ssh.enable = true;
+    ssh = {
+      enable = true;
+      enableDefaultConfig = false;
+    };
 
     bat.enable = true;
 
     yazi = {
       enable = true;
       enableFishIntegration = true;
+      shellWrapperName = "y";
     };
 
     htop.enable = true;

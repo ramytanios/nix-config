@@ -7,6 +7,7 @@
     in
     {
       enable = true;
+      autoEnable = true;
       inherit flavor;
 
       tmux.enable = false;
@@ -24,7 +25,10 @@
 
     kitty.font.size = 15.5;
 
-    git.diff-so-fancy.enable = true;
+    diff-so-fancy = {
+      enable = true;
+      enableGitIntegration = true;
+    };
 
   };
 
