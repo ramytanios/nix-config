@@ -13,6 +13,7 @@ vim.lsp.enable("pyrefly")
 vim.lsp.enable("yamlls")
 vim.lsp.enable("lua_ls")
 vim.lsp.enable("nil_ls")
+vim.lsp.enable("ts_ls")
 
 vim.lsp.config("nil_ls", {
 	settings = {

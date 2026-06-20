@@ -173,5 +173,10 @@ vim.filetype.add({
 	extension = {
 		["http"] = "http",
 	},
+	filename = {
+		["justfile"] = "just",
+		["Justfile"] = "just",
+		[".justfile"] = "just",
+	},
 })
 

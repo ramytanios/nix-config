@@ -255,6 +255,7 @@
           bash-language-server
           python3Packages.python-lsp-server
           pyrefly
+          typescript-language-server
         ];
         formatters = [
           stylua
@@ -270,6 +271,7 @@
           statix
           stylelint
           prettierd
+          eslint_d
         ];
       in
       lib.lists.flatten [
