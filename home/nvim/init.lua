@@ -109,12 +109,6 @@ map("n", "<leader>sh", gitsigns.select_hunk, { desc = "gitsigns select hunk" })
 map("n", "<leader>gd", ":DiffviewOpen<CR>", { noremap = true, desc = "open git diff view" })
 
 map("n", "<leader>bd", ":DiffviewOpen<SPACE>", { noremap = true, desc = "branch diff view" })
--- map("n", "<leader>bd", function()
--- 	vim.ui.input({ prompt = "Enter branch name" }, function(branch)
--- 		local command = ":DiffviewOpen " .. branch
--- 		vim.cmd(command)
--- 	end)
--- end, { noremap = true, desc = "branch diff view" })
 
 map("n", "<leader>bl",  function() Snacks.git.blame_line() end, { desc = "toggle git blame line" })
 
