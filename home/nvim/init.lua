@@ -110,7 +110,16 @@ map("n", "<leader>gd", ":DiffviewOpen<CR>", { noremap = true, desc = "open git d
 
 map("n", "<leader>bd", ":DiffviewOpen<SPACE>", { noremap = true, desc = "branch diff view" })
 
-map("n", "<leader>bl",  function() Snacks.git.blame_line() end, { desc = "toggle git blame line" })
+map("n", "<leader>bl", function()
+	for _, win in ipairs(vim.api.nvim_list_wins()) do
+		local buf = vim.api.nvim_win_get_buf(win)
+		if vim.bo[buf].filetype == "gitsigns-blame" then
+			vim.api.nvim_win_close(win, false)
+			return
+		end
+	end
+	gitsigns.blame()
+end, { desc = "toggle git blame" })
 
 map("n", "<leader>gh", ":DiffviewFileHistory<CR>", { noremap = true, desc = "open git project history" })
 

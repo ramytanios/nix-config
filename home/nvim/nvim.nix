@@ -104,10 +104,6 @@
           plugin = vimPlugins.vim-tmux-navigator;
         };
 
-        fugitive = {
-          plugin = pkgs.vimPlugins.vim-fugitive;
-        };
-
         lspkind = {
           plugin = pkgs.vimPlugins.lspkind-nvim;
         };
@@ -218,7 +214,6 @@
         neoscroll
         surround
         lspkind
-        fugitive
         vim-tmux
         web-devicons
         dressing
