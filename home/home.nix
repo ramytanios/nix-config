@@ -74,6 +74,7 @@
         httpie
         jdk
         just
+        jq
         killall
         lazygit
         metals
